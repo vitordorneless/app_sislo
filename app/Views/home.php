@@ -16,7 +16,7 @@
     <body>
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="home">Lotérica Mel</a>
+                <a class="navbar-brand" href="home">Sislô - Sistema de Gestão Lotérico</a>
                 <a class="btn btn-primary" href="login">Acessar Sislô</a>
             </div>
         </nav>
@@ -34,6 +34,33 @@
         <section class="features-icons bg-light text-center">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                            <div class="features-icons-icon d-flex">
+                                <i class="icon-wallet m-auto text-primary"></i>
+                            </div>
+                            <h3>Quer trabalhar em uma Lotérica no Brasil?</h3>
+                            <p class="lead mb-0">Cadastre-se aqui!!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                            <div class="features-icons-icon d-flex">
+                                <i class="icon-organization m-auto text-primary"></i>
+                            </div>
+                            <h3>Vagas</h3>
+                            <p class="lead mb-0">Controle Insumos, Insumos fornecidos pela CEF.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                            <div class="features-icons-icon d-flex">
+                                <i class="icon-briefcase m-auto text-primary"></i>
+                            </div>
+                            <h3>Lotérico, quer contratar pessoas?</h3>
+                            <p class="lead mb-0">Saiba aqui nossa forma de recrutamento!</p>
+                        </div>
+                    </div>
                     <div class="col-lg-4">
                         <div class="features-icons-item mx-auto mb-0 mb-lg-3">
                             <div class="features-icons-icon d-flex">
