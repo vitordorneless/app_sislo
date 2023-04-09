@@ -49,7 +49,7 @@
                                 <i class="icon-organization m-auto text-primary"></i>
                             </div>
                             <h3>Vagas</h3>
-                            <p class="lead mb-0">Controle Insumos, Insumos fornecidos pela CEF.</p>
+                            <p class="lead mb-0">Veja as oportunidades que temos em aberto!</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
