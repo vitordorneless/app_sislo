@@ -8,14 +8,14 @@ class Sislo_FechamentoCofre extends BaseController {
         if ($this->session->get('user_id')) {
             $sislo_model = new \App\Models\Sislo_UsuariosModel;
             $sislo_protege_model = new \App\Models\Sislo_CarroForteProtegeModel;
-            $sislo_fechamento_model = new \App\Models\Sislo_FechamentoCaixaModel;            
+            $sislo_fechamento_model = new \App\Models\Sislo_FechamentoCaixaModel;
             $result = $sislo_model->find($this->session->get('user_id'));
 
             $data_senha = new \Datetime('now');
             $sislo_protege = $sislo_protege_model->where('cod_loterico', $this->session->get('cod_lot'))
                             ->where('validade', $data_senha->format('Y'))->where('status', 1)
                             ->orderBy('validade', 'desc')->findAll();
-            
+
             foreach ($sislo_protege as $value) {
                 switch ($data_senha->format('l')) {
                     case 'Monday':
@@ -179,7 +179,7 @@ class Sislo_FechamentoCofre extends BaseController {
 
             $data_fechamento = $sislo_fechamento_model->select("MAX(data_fechamento) AS 'data_fechamento'")
                     ->where("cod_loterico", $this->session->get('cod_lot'))
-                   ->find();                    
+                    ->find();
 
             $sislo_fechamentos = $sislo_fechamento_model->where("cod_loterico", $this->session->get('cod_lot'))
                     ->where('data_fechamento', $data_fechamento[0]->data_fechamento)
@@ -226,12 +226,12 @@ class Sislo_FechamentoCofre extends BaseController {
         return $query;
     }
 
-    public function sislo_fechamento_cofre_execute() {
+    public function sislo_fechamento_cofre_novo_execute() {
         if ($this->request->isAJAX()) {
             $sislo_model = new \App\Models\Sislo_FechamentoCofreModel;
 
             $datas = array();
-            $remessa = $sobra_cx = 0;
+            $remessa = $sobra_cx = $somatudo = 0;
 
             foreach ($this->request->getPost('remessa') as $remessas) {
                 $remessa = bcadd($remessa, $this->limparValoresMonetarios($remessas), 2);
@@ -260,16 +260,38 @@ class Sislo_FechamentoCofre extends BaseController {
             $sislo_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
 
             if ($sislo_model->insert() == true) {
-                $total_outros = bcadd($this->limparValoresMonetarios($this->request->getPost('pag_lot_fed')), bcadd($this->limparValoresMonetarios($this->request->getPost('pag_telesena')), $this->limparValoresMonetarios($this->request->getPost('pag_outros')), 2), 2);
-                $total_cofress = bcadd($this->limparValoresMonetarios($datas['sobra_cx']), $total_outros, 2);
-                $total_cofres = bcadd($total_cofress, $this->limparValoresMonetarios($datas['remessa']), 2);
-                $total_cofre = $total_cofres - !empty($this->request->getPost('comissao')) ? $this->limparValoresMonetarios($this->request->getPost('comissao')) : 0;
-                $porextenso = $this->Extenso($total_cofre, 2);
+
+                $mostra_tela_remessa = !empty($datas['remessa']) ? $datas['remessa'] : 0;
+                $mostra_tela_sobracaixa = !empty($datas['sobra_cx']) ? $datas['sobra_cx'] : 0;
+                $mostra_tela_pag_lot_fed = $this->limparValoresMonetarios(!empty($this->request->getPost('pag_lot_fed')) ? $this->request->getPost('pag_lot_fed') : 0);
+                $mostra_tela_pag_outros = $this->limparValoresMonetarios(!empty($this->request->getPost('pag_outros')) ? $this->request->getPost('pag_outros') : 0);
+                $mostra_tela_pag_telesena = $this->limparValoresMonetarios(!empty($this->request->getPost('pag_telesena')) ? $this->request->getPost('pag_telesena') : 0);
+                $mostra_tela_comissao = $this->limparValoresMonetarios(!empty($this->request->getPost('comissao')) ? $this->request->getPost('comissao') : 0);                
+
+                $somatudo = bcadd($somatudo, $mostra_tela_remessa);
+                $somatudo = bcadd($somatudo, $mostra_tela_sobracaixa);
+
+                $total_outros = 0;
+                $total_outros = bcadd($total_outros, $mostra_tela_pag_lot_fed,2);
+                $total_outros = bcadd($total_outros, $mostra_tela_pag_outros,2);
+                $total_outros = bcadd($total_outros, $mostra_tela_pag_telesena,2);
+
+                $somatudo = bcadd($somatudo, $total_outros,2);
+                $total_cofrinho = bcsub($somatudo, $mostra_tela_comissao,2);
+                $porextenso = $this->Extenso($total_cofrinho, 2);                
 
                 $table = '<div class="col-sm-12">';
                 $table .= '<table class="table table-striped table-bordered table-responsive text text-sm text-center">';
                 $table .= '<thead><tr><th colspan="2">Resumo</th></tr></thead>';
                 $table .= '<tbody>';
+                $table .= '<tr>';
+                $table .= '<td>';
+                $table .= 'Senha Protege';
+                $table .= '</td>';
+                $table .= '<td>';
+                $table .= $this->request->getPost('senha_protege');
+                $table .= '</td>';
+                $table .= '</tr>';
                 $table .= '<tr>';
                 $table .= '<td>';
                 $table .= 'Remessas';
@@ -299,7 +321,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Comissão Jogos';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= $this->formataValoresMonetarios($this->limparValoresMonetarios($this->request->getPost('comissao')));
+                $table .= $this->formataValoresMonetarios($mostra_tela_comissao);
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '<tr>';
@@ -307,7 +329,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Total Cofre';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= number_format($total_cofre, 2, ',', '.');
+                $table .= $this->formataValoresMonetarios($total_cofrinho);
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '<tr>';

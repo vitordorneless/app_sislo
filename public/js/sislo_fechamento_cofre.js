@@ -43,7 +43,8 @@ $(document).ready(function () {
         submitHandler: function (form) {
             $.ajax({
                 type: "POST",
-                url: BASE_URL + "sislo_fechamento_cofre_execute",
+                //url: BASE_URL + "sislo_fechamento_cofre_execute",
+                url: BASE_URL + "sislo_fechamento_cofre_novo_execute",
                 dataType: "html",
                 data: $(form).serialize(),
                 beforeSend: function () {

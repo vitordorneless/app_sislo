@@ -56,6 +56,9 @@ $routes->add('sislo_ajustahora', 'Sislo_Horas::sislo_ajustahora');
 //inicio base crud ajaxsislo_horas
 $routes->add('sislo_fechamento_dia', 'Sislo_FechamentoCofre::index');
 $routes->add('sislo_fechamento_cofre_execute', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_execute');
+
+$routes->add('sislo_fechamento_cofre', 'Sislo_FechamentoCofre::index');
+$routes->add('sislo_fechamento_cofre_novo_execute', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_novo_execute');
 //fim base crud ajax
 //inicio base crud ajaxsislo_horas
 $routes->add('sislo_indicadores_caixas', 'Sislo_Indicadores_Caixas::index');

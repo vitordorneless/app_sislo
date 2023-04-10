@@ -344,7 +344,7 @@
                         <i class="far fa-circle nav-icon"></i>
                         <p>Fechamento Cofre</p>
                     </a>
-                </li>                
+                </li>                                
                 <li class="nav-item">
                     <a href="<?= base_url('sislo_loteria_federal'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
