@@ -181,11 +181,12 @@ class Sislo_FechamentoCofre extends BaseController {
                     ->where("cod_loterico", $this->session->get('cod_lot'))
                     ->find();
 
-            $sislo_fechamentos = $sislo_fechamento_model->where("cod_loterico", $this->session->get('cod_lot'))
+            $sislo_fechamentos = $sislo_fechamento_model->select("caixa_operador, total_sobra_cx")
+                    ->where("cod_loterico", $this->session->get('cod_lot'))
                     ->where('data_fechamento', $data_fechamento[0]->data_fechamento)
                     ->groupBy('caixa_operador')
                     ->orderBy('caixa_operador', 'asc')
-                    ->findAll();
+                    ->get();
 
             $data = array(
                 "scripts" => array(
@@ -199,7 +200,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 "cod_loterico" => $this->session->get('cod_lot'),
                 "senha_protege" => array_sum($soma),
                 "dados_remessas" => $this->carrega_sangrias()->getResult(),
-                "dados_sobra_cx" => $sislo_fechamentos
+                "dados_sobra_cx" => $sislo_fechamentos->getResult()
             );
             echo view('template/header', $data);
             echo view('template/menu');
