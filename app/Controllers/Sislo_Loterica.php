@@ -35,13 +35,27 @@ class Sislo_Loterica extends BaseController {
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
             foreach ($sislo_lotericas as $value) {
+                switch ($value->plano){
+                    case 1:
+                        $plano = "Bronze";
+                        break;
+                    case 2:
+                        $plano = "Ouro";
+                        break;
+                    case 3:
+                        $plano = "Diamante";
+                        break;
+                    default :
+                        $plano = "Bronze";
+                }
                 $row = array();
                 $row[] = $tt;
                 $row[] = $value->cod_loterico;
                 $row[] = $value->nome_fantasia;
                 $row[] = $value->cidade;
                 $row[] = $value->uf;
-                $row[] = $value->sislo_status == 1 ? "Ativo" : "Inativo";
+                $row[] = $plano;
+                $row[] = $value->sislo_status == 1 ? "Ativo" : "Inativo";                
                 $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_loterica/?id=' . $value->idsislo_loterica) . '">Editar</a>';
                 ++$tt;
                 ++$tb;
@@ -97,6 +111,7 @@ class Sislo_Loterica extends BaseController {
                 $dados['caixaaqui_codlot'] = '';
                 $dados['caixaaqui_pass'] = '';
                 $dados['sislo_status'] = '';
+                $dados['plano'] = '1';
             } else {
                 $incluir = 2;
                 $dados_loterica = $sislo_loterica_model->find($this->request->getGet('id'));
@@ -129,6 +144,7 @@ class Sislo_Loterica extends BaseController {
                 $dados['caixaaqui_codlot'] = $dados_loterica->caixaaqui_codlot;
                 $dados['caixaaqui_pass'] = $dados_loterica->caixaaqui_pass;
                 $dados['sislo_status'] = $dados_loterica->sislo_status;
+                $dados['plano'] = $dados_loterica->plano;
                 unset($dados_loterica);
             }
             $data = array(
@@ -168,6 +184,7 @@ class Sislo_Loterica extends BaseController {
                 "caixaaqui_cod" => $dados['caixaaqui_cod'],
                 "caixaaqui_codlot" => $dados['caixaaqui_codlot'],
                 "caixaaqui_pass" => $dados['caixaaqui_pass'],
+                "plano" => $dados['plano'],
                 "sislo_status" => $dados['sislo_status']
             );
             echo view('template/header', $data);
@@ -214,6 +231,7 @@ class Sislo_Loterica extends BaseController {
             $sislo_loterica_model->set('caixaaqui_codlot', $this->request->getPost('caixaaqui_codlot'));
             $sislo_loterica_model->set('caixaaqui_pass', $this->request->getPost('caixaaqui_pass'));
             $sislo_loterica_model->set('sislo_status', $this->request->getPost('sislo_status'));
+            $sislo_loterica_model->set('plano', $this->request->getPost('plano'));
             $sislo_loterica_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
             
             if ($this->request->getPost('incluir') == '1') {                

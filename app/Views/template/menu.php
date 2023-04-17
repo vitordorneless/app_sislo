@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('lotericas'); ?>" class="nav-link">
+                    <a href="<?= base_url('planos_lotericas'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Planos Lotéricas</p>
                     </a>

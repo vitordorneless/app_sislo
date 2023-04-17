@@ -193,7 +193,23 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Plano</label>
+                        <select id="plano" name="plano" class="form-control">
+                            <?php
+                            $selected_bronze = $plano == '1' ? 'selected' : '';
+                            $selected_ouro = $plano == '2' ? 'selected' : '';
+                            $selected_diamante = $plano == '3' ? 'selected' : '';
+                            ?>
+                            <option value="1" <?= $selected_bronze; ?>>Bronze</option>
+                            <option value="2" <?= $selected_ouro; ?>>Ouro</option>
+                            <option value="3" <?= $selected_diamante; ?>>Diamante</option>                            
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label>Status</label>
                         <select id="sislo_status" name="sislo_status" class="form-control">

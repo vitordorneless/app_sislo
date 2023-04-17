@@ -14,6 +14,7 @@
                     <th>Nome</th>
                     <th>Cidade</th>
                     <th>UF</th>
+                    <th>Plano</th>
                     <th>Status</th>
                     <th>Ação</th>
                 </tr>
