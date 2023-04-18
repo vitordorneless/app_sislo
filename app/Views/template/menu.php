@@ -348,7 +348,7 @@
                 <li class="nav-item">
                     <a href="<?= base_url('sislo_loteria_federal'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Loteria Federal (Bilhete) *</p>
+                        <p>Loteria Federal (Bilhete)</p>
                     </a>
                 </li>
                 <li class="nav-item">
