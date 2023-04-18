@@ -57,7 +57,7 @@ class Sislo_LoteriaFederal extends BaseController {
         }
     }
 
-    public function redireciona_loteria_federal() {//falta esse e o ajax save form
+    public function redireciona_loteria_federal() {
         if ($this->session->get('user_id')) {
             $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;
             $sislo_model = new \App\Models\Sislo_LoteriaFederalModel;
