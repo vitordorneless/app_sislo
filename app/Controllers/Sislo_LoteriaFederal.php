@@ -36,6 +36,7 @@ class Sislo_LoteriaFederal extends BaseController {
 
             foreach ($sislo as $value) {
                 $row = array();
+                $row[] = $tt;
                 $row[] = $value->extracao;
                 $row[] = $value->total_bilhetes_recibo;
                 $row[] = $this->formataValoresMonetarios($value->preco_plano);
@@ -94,6 +95,7 @@ class Sislo_LoteriaFederal extends BaseController {
                 $dados['data_extracao'] = $dados_loterica->data_extracao;
                 $dados['preco_plano'] = $dados_loterica->preco_plano;
                 $dados['valor_bruto_recibo'] = $dados_loterica->valor_bruto_recibo;
+                $dados['valor_bruto_liquido'] = $dados_loterica->valor_bruto_liquido;
                 $dados['comissao_recibo'] = $dados_loterica->comissao_recibo;
                 $dados['valor_liquido_recibo'] = $dados_loterica->valor_liquido_recibo;
                 $dados['valor_liquido_real'] = $dados_loterica->valor_liquido_real;
@@ -113,6 +115,7 @@ class Sislo_LoteriaFederal extends BaseController {
                     "util.js"
                 ),
                 "user_name" => $dadosuser->sislo_nome,
+                "cod_loterico" => $this->session->get('cod_lot'),
                 "incluir" => $incluir,
                 "id" => $dados['id'],
                 "modalidade" => $dados['modalidade'],
@@ -122,6 +125,7 @@ class Sislo_LoteriaFederal extends BaseController {
                 "data_extracao" => $dados['data_extracao'],
                 "preco_plano" => $dados['preco_plano'],
                 "valor_bruto_recibo" => $dados['valor_bruto_recibo'],
+                "valor_bruto_liquido" => $dados['valor_bruto_liquido'],
                 "comissao_recibo" => $dados['comissao_recibo'],
                 "valor_liquido_recibo" => $dados['valor_liquido_recibo'],
                 "valor_liquido_real" => $dados['valor_liquido_real'],
@@ -145,20 +149,22 @@ class Sislo_LoteriaFederal extends BaseController {
 
         if ($this->request->isAJAX()) {
             $sislo_model = new \App\Models\Sislo_LoteriaFederalModel;
+            $sislo_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
             $sislo_model->set('modalidade', $this->request->getPost('modalidade'));
             $sislo_model->set('total_bilhetes_recibo', $this->request->getPost('total_bilhetes_recibo'));
             $sislo_model->set('total_bilhetes_liquido', $this->request->getPost('total_bilhetes_liquido'));
             $sislo_model->set('extracao', $this->request->getPost('extracao'));
             $sislo_model->set('data_extracao', $this->request->getPost('data_extracao'));
-            $sislo_model->set('preco_plano', $this->request->getPost('preco_plano'));
-            $sislo_model->set('valor_bruto_recibo', $this->request->getPost('valor_bruto_recibo'));
-            $sislo_model->set('comissao_recibo', $this->request->getPost('comissao_recibo'));
-            $sislo_model->set('valor_liquido_recibo', $this->request->getPost('valor_liquido_recibo'));
+            $sislo_model->set('preco_plano', $this->limparValoresMonetarios($this->request->getPost('preco_plano')));
+            $sislo_model->set('valor_bruto_recibo', $this->limparValoresMonetarios($this->request->getPost('valor_bruto_recibo')));
+            $sislo_model->set('comissao_recibo', $this->limparValoresMonetarios($this->request->getPost('comissao_recibo')));
+            $sislo_model->set('valor_liquido_recibo', $this->limparValoresMonetarios($this->request->getPost('valor_liquido_recibo')));
             $sislo_model->set('valor_liquido_real', $this->limparValoresMonetarios($this->request->getPost('valor_liquido_real')));
-            $sislo_model->set('lote', $this->limparValoresMonetarios($this->request->getPost('lote')));
-            $sislo_model->set('caixa', $this->limparValoresMonetarios($this->request->getPost('caixa')));
-            $sislo_model->set('quantidade_encalhe', $this->limparValoresMonetarios($this->request->getPost('quantidade_encalhe')));
-            $sislo_model->set('status', $this->limparValoresMonetarios($this->request->getPost('status')));
+            $sislo_model->set('lote', $this->request->getPost('lote'));
+            $sislo_model->set('caixa', $this->request->getPost('caixa'));
+            $sislo_model->set('quantidade_encalhe', $this->request->getPost('quantidade_encalhe'));
+            $sislo_model->set('status', $this->request->getPost('status'));
+            $sislo_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
 
             if ($this->request->getPost('incluir') == '1') {
                 echo $sislo_model->insert() == true ? 1 : 0;
