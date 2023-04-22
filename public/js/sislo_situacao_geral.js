@@ -30,6 +30,7 @@ $(document).ready(function () {
                     $("#comissao_bolao").html(datas.comissao_bolao);
                     $("#comissao_jogos_silce").html(datas.comissao_jogos_silce);
                     $("#comissao_jogos_ibc").html(datas.comissao_jogos_ibc);
+                    $("#comissao_bilhete_federal").html(datas.comissao_bilhete_federal);
                     $("#total_jogos").html(datas.total_jogos);
                     $("#total_silce").html(datas.total_silce);
                     $("#premios_pagos").html(datas.premios_pagos);
@@ -40,8 +41,7 @@ $(document).ready(function () {
                     $("#total_todos_jogos").html(datas.total_todos_jogos);
                     $("#total_todos_nao_jogos").html(datas.total_todos_nao_jogos);
                     $("#total_todos_deveres").html(datas.total_todos_deveres);
-                    $("#total_todos_situacao").html(datas.total_todos_situacao);
-                    $("#total_bilhete_federal").html(datas.total_bilhete_federal);
+                    $("#total_todos_situacao").html(datas.total_todos_situacao);                    
                     
                     //$('html,body').animate({scrollTop: document.body.scrollHeight}, "fast");
                     

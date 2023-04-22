@@ -230,7 +230,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3 id="total_bilhete_federal"></h3>
+                        <h3 id="comissao_bilhete_federal"></h3>
                         <p>Total Bilhete Federal</p>
                     </div>
                     <div class="icon">
