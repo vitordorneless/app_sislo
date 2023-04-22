@@ -234,11 +234,11 @@ class Sislo_Situacao_Geral extends BaseController {
                 $comissao_jogos = bcadd($comissao_jogos, $value->comissao, 2);
                 $data[] = $row;
             }
-            
+
             foreach ($sislo_comissao_bilhete_federal as $value) {
                 $row = array();
                 $row[] = $tt;
-                $row[] = $value->extracao;                
+                $row[] = $value->extracao;
                 $row[] = $this->formataValoresMonetarios($value->valor_bruto_recibo);
                 $row[] = $this->formataValoresMonetarios($value->comissao);
                 ++$tt;
@@ -350,7 +350,7 @@ class Sislo_Situacao_Geral extends BaseController {
 
             $total_todos_deveres = bcadd($salarios, $contas_pagar, 2);
 
-            $todos_recebiveis = bcadd($nao_jogos, $total_todos_jogos);
+            $todos_recebiveis = bcadd($nao_jogos, $total_todos_jogos, 2);
             $total_todos_situacao = bcsub($todos_recebiveis, $total_todos_deveres, 2);
 
             $json = array(
