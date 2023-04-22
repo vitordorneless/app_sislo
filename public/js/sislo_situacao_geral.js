@@ -41,6 +41,7 @@ $(document).ready(function () {
                     $("#total_todos_nao_jogos").html(datas.total_todos_nao_jogos);
                     $("#total_todos_deveres").html(datas.total_todos_deveres);
                     $("#total_todos_situacao").html(datas.total_todos_situacao);
+                    $("#total_bilhete_federal").html(datas.total_bilhete_federal);
                     
                     //$('html,body').animate({scrollTop: document.body.scrollHeight}, "fast");
                     
@@ -106,6 +107,14 @@ $(document).ready(function () {
                         searching: false,
                         ordering: false,
                         data: datas.data_ibc
+                    });
+                    
+                    $("#table_sislo_bilhete_federal").DataTable({
+                        oLanguage: DATATABLE_PTBR,
+                        destroy: true,
+                        searching: false,
+                        ordering: false,
+                        data: datas.data_bilhete_federal
                     });
                     
                     $("#table_sislo_premios_pagos").DataTable({

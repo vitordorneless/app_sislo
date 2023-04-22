@@ -57,7 +57,7 @@
                 <div class="small-box bg-dark">
                     <div class="inner">
                         <h3 id="total_todos_jogos"></h3>
-                        <p>Jogos + Bolão + SILCE + IBC</p>
+                        <p>Jogos + Bolão + SILCE + IBC + Federal</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -214,12 +214,24 @@
             <!-- ./col -->
         </div>
         <div class="row">
-            <div class="col-lg-6 col-4">
+            <div class="col-lg-3 col-4">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3 id="total_jogos"></h3>
                         <p>Total Jogos / Bolões</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-lg-3 col-4">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3 id="total_bilhete_federal"></h3>
+                        <p>Total Bilhete Federal</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -309,6 +321,21 @@
                         <th>Jogo</th>                        
                         <th>Valor Comissão</th>
                         <th>Comissão Total</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            
+            <table id="table_sislo_bilhete_federal" class="table table-striped table-bordered table-responsive text text-sm text-center">
+                <thead>
+                    <tr>
+                        <th colspan="4">Bilhete Federal</th>
+                    </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Extração</th>                        
+                        <th>Valor Bruto</th>
+                        <th>Comissão</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
