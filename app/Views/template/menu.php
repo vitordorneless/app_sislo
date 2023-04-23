@@ -411,9 +411,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('sislo_metas_nao_jogos'); ?>" class="nav-link">
+                    <a href="<?= base_url('sislo_metas_jogos'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Meta Jogos *</p>
+                        <p>Meta Jogos</p>
                     </a>
                 </li>
                 <li class="nav-item">
