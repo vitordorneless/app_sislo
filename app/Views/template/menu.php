@@ -407,7 +407,7 @@
                 <li class="nav-item">
                     <a href="<?= base_url('sislo_metas_nao_jogos'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Meta Não Jogos *</p>
+                        <p>Meta Não Jogos</p>
                     </a>
                 </li>
                 <li class="nav-item">
