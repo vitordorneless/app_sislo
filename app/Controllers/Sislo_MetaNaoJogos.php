@@ -85,7 +85,7 @@ class Sislo_MetaNaoJogos extends BaseController {
                 $dados['maio'] = '';
                 $dados['junho'] = '';
                 $dados['julho'] = '';
-                $dados['agosto'] = '0';
+                $dados['agosto'] = '';
                 $dados['setembro'] = '';
                 $dados['outubro'] = '';
                 $dados['novembro'] = '';
