@@ -47,7 +47,7 @@ $(document).ready(function () {
         submitHandler: function (form) {
             $.ajax({
                 type: "POST",
-                url: BASE_URL + "salva_sislo_meta_nao_jogos",
+                url: BASE_URL + "salva_meta_nao_jogos",
                 dataType: "html",
                 data: $(form).serialize(),
                 beforeSend: function () {
