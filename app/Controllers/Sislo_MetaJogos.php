@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Sislo_MetaNaoJogos extends BaseController {
+class Sislo_MetaJogos extends BaseController {
 
     public function index() {
         if ($this->session->get('user_id')) {
@@ -10,7 +10,7 @@ class Sislo_MetaNaoJogos extends BaseController {
             $result = $sislo_model->find($this->session->get('user_id'));
             $data = array(
                 "scripts" => array(
-                    "sislo_meta_nao_jogos.js",
+                    "sislo_meta_jogos.js",
                     "util.js"
                 ),
                 "user_name" => $result->sislo_nome
@@ -18,7 +18,7 @@ class Sislo_MetaNaoJogos extends BaseController {
             echo view('template/header', $data);
             echo view('template/menu');
             echo view('template/content');
-            echo view('sislo_meta_nao_jogos', $data);
+            echo view('sislo_meta_jogos', $data);
             echo view('template/footer', $data);
             echo view('template/scripts', $data);
         } else {
@@ -26,9 +26,9 @@ class Sislo_MetaNaoJogos extends BaseController {
         }
     }
 
-    public function ajax_list_meta_nao_jogos() {
+    public function ajax_list_meta_jogos() {
         if ($this->request->isAJAX()) {
-            $sislo_jogos_cef_model = new \App\Models\Sislo_MetaNaoJogosModel;
+            $sislo_jogos_cef_model = new \App\Models\Sislo_MetaJogosModel;
             $sislo = $sislo_jogos_cef_model->orderBy('ano', 'desc')->findAll();
             $data = array();
             $tt = 1; //mostra contagem na datatable
@@ -38,6 +38,7 @@ class Sislo_MetaNaoJogos extends BaseController {
                 $row = array();
                 $row[] = $tt;
                 $row[] = $value->ano;
+                $row[] = $value->jogo;
                 $row[] = $this->formataValoresMonetarios($value->janeiro);
                 $row[] = $this->formataValoresMonetarios($value->fevereiro);
                 $row[] = $this->formataValoresMonetarios($value->marco);
@@ -50,7 +51,7 @@ class Sislo_MetaNaoJogos extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value->outubro);
                 $row[] = $this->formataValoresMonetarios($value->novembro);
                 $row[] = $this->formataValoresMonetarios($value->dezembro);
-                $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_meta_nao_jogos/?id=' . $value->id_sislo_meta_nao_jogos) . '">Editar</a>';
+                $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_meta_jogos/?id=' . $value->id_sislo_meta_jogos) . '">Editar</a>';
                 ++$tt;
                 ++$tb;
                 $data[] = $row;
@@ -66,17 +67,20 @@ class Sislo_MetaNaoJogos extends BaseController {
         }
     }
 
-    public function redireciona_meta_nao_jogos() {
+    public function redireciona_meta_jogos() {
         if ($this->session->get('user_id')) {
             $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;
-            $sislo_model = new \App\Models\Sislo_MetaNaoJogosModel;
+            $sislo_model = new \App\Models\Sislo_MetaJogosModel;
+            $sislo_jogos = new \App\Models\SisloJogosCefModel;
+            $jogos = $sislo_jogos->where('status', 1)->orderBy('nome', 'asc')->findAll();
             $dadosuser = $sislo_usuarios_model->find($this->session->get('user_id'));
 
             $incluir = NULL;
             $dados = array();
             if ($this->request->getGet('id') == '0') {
                 $incluir = 1;
-                $dados['id_sislo_meta_nao_jogos'] = '';
+                $dados['id_sislo_meta_jogos'] = '';
+                $dados['id_sislo_jogos_cef'] = '';
                 $dados['ano'] = '';
                 $dados['janeiro'] = '';
                 $dados['fevereiro'] = '';
@@ -93,27 +97,28 @@ class Sislo_MetaNaoJogos extends BaseController {
                 $dados['status'] = '';
             } else {
                 $incluir = 2;
-                $dados_novembrorica = $sislo_model->find($this->request->getGet('id'));
-                $dados['id_sislo_meta_nao_jogos'] = $dados_novembrorica->id_sislo_meta_nao_jogos;
-                $dados['ano'] = $dados_novembrorica->ano;
-                $dados['janeiro'] = $dados_novembrorica->janeiro;
-                $dados['fevereiro'] = $dados_novembrorica->fevereiro;
-                $dados['marco'] = $dados_novembrorica->marco;
-                $dados['abril'] = $dados_novembrorica->abril;
-                $dados['maio'] = $dados_novembrorica->maio;
-                $dados['junho'] = $dados_novembrorica->junho;
-                $dados['julho'] = $dados_novembrorica->julho;
-                $dados['agosto'] = $dados_novembrorica->agosto;
-                $dados['setembro'] = $dados_novembrorica->setembro;
-                $dados['outubro'] = $dados_novembrorica->outubro;
-                $dados['novembro'] = $dados_novembrorica->novembro;
-                $dados['dezembro'] = $dados_novembrorica->dezembro;
-                $dados['status'] = $dados_novembrorica->status;
-                unset($dados_novembrorica);
+                $dados_lot = $sislo_model->find($this->request->getGet('id'));
+                $dados['id_sislo_meta_jogos'] = $dados_lot->id_sislo_meta_jogos;
+                $dados['id_sislo_jogos_cef'] = $dados_lot->id_sislo_jogos_cef;
+                $dados['ano'] = $dados_lot->ano;
+                $dados['janeiro'] = $dados_lot->janeiro;
+                $dados['fevereiro'] = $dados_lot->fevereiro;
+                $dados['marco'] = $dados_lot->marco;
+                $dados['abril'] = $dados_lot->abril;
+                $dados['maio'] = $dados_lot->maio;
+                $dados['junho'] = $dados_lot->junho;
+                $dados['julho'] = $dados_lot->julho;
+                $dados['agosto'] = $dados_lot->agosto;
+                $dados['setembro'] = $dados_lot->setembro;
+                $dados['outubro'] = $dados_lot->outubro;
+                $dados['novembro'] = $dados_lot->novembro;
+                $dados['dezembro'] = $dados_lot->dezembro;
+                $dados['status'] = $dados_lot->status;
+                unset($dados_lot);
             }
             $data = array(
                 "scripts" => array(
-                    "sislo_meta_nao_jogos_crud.js",
+                    "sislo_meta_jogos_crud.js",
                     "sweetalert2.all.min.js",
                     "jquery.validate.js",
                     "jquery.mask.min.js",
@@ -123,7 +128,9 @@ class Sislo_MetaNaoJogos extends BaseController {
                 "user_name" => $dadosuser->sislo_nome,
                 "cod_loterico" => $this->session->get('cod_lot'),
                 "incluir" => $incluir,
-                "id_sislo_meta_nao_jogos" => $dados['id_sislo_meta_nao_jogos'],
+                "jogos" => $jogos,
+                "id_sislo_meta_jogos" => $dados['id_sislo_meta_jogos'],
+                "id_sislo_jogos_cef" => $dados['id_sislo_jogos_cef'],
                 "ano" => $dados['ano'],
                 "janeiro" => $dados['janeiro'],
                 "fevereiro" => $dados['fevereiro'],
@@ -142,7 +149,7 @@ class Sislo_MetaNaoJogos extends BaseController {
             echo view('template/header', $data);
             echo view('template/menu');
             echo view('template/content');
-            echo view('sislo_meta_nao_jogos_crud', $data);
+            echo view('sislo_meta_jogos_crud', $data);
             echo view('template/footer', $data);
             echo view('template/scripts', $data);
         } else {
@@ -153,9 +160,10 @@ class Sislo_MetaNaoJogos extends BaseController {
     public function ajax_save_form() {
 
         if ($this->request->isAJAX()) {
-            $sislo_model = new \App\Models\Sislo_MetaNaoJogosModel;
+            $sislo_model = new \App\Models\Sislo_MetaJogosModel;
             $sislo_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
             $sislo_model->set('ano', $this->request->getPost('ano'));
+            $sislo_model->set('id_sislo_jogos_cef', $this->request->getPost('id_sislo_jogos_cef'));
             $sislo_model->set('janeiro', $this->limparValoresMonetarios($this->request->getPost('janeiro')));
             $sislo_model->set('fevereiro', $this->limparValoresMonetarios($this->request->getPost('fevereiro')));
             $sislo_model->set('marco', $this->limparValoresMonetarios($this->request->getPost('marco')));
@@ -167,13 +175,24 @@ class Sislo_MetaNaoJogos extends BaseController {
             $sislo_model->set('outubro', $this->limparValoresMonetarios($this->request->getPost('outubro')));
             $sislo_model->set('novembro', $this->limparValoresMonetarios($this->request->getPost('novembro')));
             $sislo_model->set('dezembro', $this->limparValoresMonetarios($this->request->getPost('dezembro')));
+            $sislo_model->set('janeiro_bolao', $this->limparValoresMonetarios($this->request->getPost('janeiro_bolao')));
+            $sislo_model->set('fevereiro_bolao', $this->limparValoresMonetarios($this->request->getPost('fevereiro_bolao')));
+            $sislo_model->set('marco_bolao', $this->limparValoresMonetarios($this->request->getPost('marco_bolao')));
+            $sislo_model->set('abril_bolao', $this->limparValoresMonetarios($this->request->getPost('abril_bolao')));
+            $sislo_model->set('maio_bolao', $this->limparValoresMonetarios($this->request->getPost('maio_bolao')));
+            $sislo_model->set('junho_bolao', $this->limparValoresMonetarios($this->request->getPost('junho_bolao')));
+            $sislo_model->set('agosto_bolao', $this->limparValoresMonetarios($this->request->getPost('agosto_bolao')));
+            $sislo_model->set('setembro_bolao', $this->limparValoresMonetarios($this->request->getPost('setembro_bolao')));
+            $sislo_model->set('outubro_bolao', $this->limparValoresMonetarios($this->request->getPost('outubro_bolao')));
+            $sislo_model->set('novembro_bolao', $this->limparValoresMonetarios($this->request->getPost('novembro_bolao')));
+            $sislo_model->set('dezembro_bolao', $this->limparValoresMonetarios($this->request->getPost('dezembro_bolao')));
             $sislo_model->set('status', $this->request->getPost('status'));
             $sislo_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
 
             if ($this->request->getPost('incluir') == '1') {
                 echo $sislo_model->insert() == true ? 1 : 0;
             } else {
-                $sislo_model->where('id_sislo_meta_nao_jogos', $this->request->getPost('id_sislo_meta_nao_jogos'));
+                $sislo_model->where('id_sislo_meta_jogos', $this->request->getPost('id_sislo_meta_jogos'));
                 echo $sislo_model->update() == true ? 1 : 0;
             }
         } else {
