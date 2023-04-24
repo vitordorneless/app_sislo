@@ -81,6 +81,12 @@ $routes->add('redireciona_loteria_federal', 'Sislo_LoteriaFederal::redireciona_l
 $routes->add('salva_sislo_loteria_federal', 'Sislo_LoteriaFederal::ajax_save_form');
 //fim base crud ajax
 //inicio base crud megasemana
+$routes->add('sislo_metas_nao_jogos', 'Sislo_MetaNaoJogos::index');
+$routes->add('ajax_list_meta_nao_jogos', 'Sislo_MetaNaoJogos::ajax_list_meta_nao_jogos');
+$routes->add('redireciona_meta_nao_jogos', 'Sislo_MetaNaoJogos::redireciona_meta_nao_jogos');
+$routes->add('salva_meta_nao_jogos', 'Sislo_MetaNaoJogos::ajax_save_form');
+//fim base crud ajax
+//inicio base crud megasemana
 $routes->add('sislo_decendio', 'Sislo_Decendio::index');
 $routes->add('ajax_list_decendio', 'Sislo_Decendio::ajax_list_decendio');
 $routes->add('redireciona_decendio', 'Sislo_Decendio::redireciona_decendio');
