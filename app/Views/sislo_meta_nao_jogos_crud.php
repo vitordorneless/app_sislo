@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Loteria Federal!</h3>
+        <h3 class="card-title">Metas Não Jogos!</h3>
     </div>
     <div class="card-body">
         <form class="form-group" id="sislo_meta_nao_jogos" name="sislo_meta_nao_jogos" method="POST">

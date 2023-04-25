@@ -25,11 +25,23 @@ class Sislo_MetaJogos extends BaseController {
             echo view('login');
         }
     }
+    
+    public function carrega_jogos() {
+        $db = \Config\Database::connect();
+        $builder = $db->table('sislo_meta_jogos as mj');
+        $query = $builder->select("mj.id_sislo_meta_jogos as id_sislo_meta_jogos,sts.nome as nome, mj.ano as ano, "
+                . "mj.janeiro,mj.fevereiro,mj.marco,mj.abril,mj.maio,mj.junho,"
+                . "mj.julho,mj.agosto,mj.setembro,mj.outubro,mj.novembro,mj.dezembro")
+                        ->join("sislo_jogos_cef as sts", "mj.id_sislo_jogos_cef = sts.idsislo_jogos_cef", "inner")                        
+                        ->where("mj.cod_loterico", $this->session->get('cod_lot'))
+                        ->where('mj.status', 1)
+                        ->orderBy('mj.data_ultima_alteracao', 'asc')->get();
+        return $query;
+    }
 
     public function ajax_list_meta_jogos() {
-        if ($this->request->isAJAX()) {
-            $sislo_jogos_cef_model = new \App\Models\Sislo_MetaJogosModel;
-            $sislo = $sislo_jogos_cef_model->orderBy('ano', 'desc')->findAll();
+        if ($this->request->isAJAX()) {            
+            $sislo = $this->carrega_jogos()->getResult();
             $data = array();
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
@@ -38,7 +50,7 @@ class Sislo_MetaJogos extends BaseController {
                 $row = array();
                 $row[] = $tt;
                 $row[] = $value->ano;
-                $row[] = $value->jogo;
+                $row[] = $value->nome;
                 $row[] = $this->formataValoresMonetarios($value->janeiro);
                 $row[] = $this->formataValoresMonetarios($value->fevereiro);
                 $row[] = $this->formataValoresMonetarios($value->marco);
@@ -94,6 +106,18 @@ class Sislo_MetaJogos extends BaseController {
                 $dados['outubro'] = '';
                 $dados['novembro'] = '';
                 $dados['dezembro'] = '';
+                $dados['janeiro_bolao'] = '';
+                $dados['fevereiro_bolao'] = '';
+                $dados['marco_bolao'] = '';
+                $dados['abril_bolao'] = '';
+                $dados['maio_bolao'] = '';
+                $dados['junho_bolao'] = '';
+                $dados['julho_bolao'] = '';
+                $dados['agosto_bolao'] = '';
+                $dados['setembro_bolao'] = '';
+                $dados['outubro_bolao'] = '';
+                $dados['novembro_bolao'] = '';
+                $dados['dezembro_bolao'] = '';
                 $dados['status'] = '';
             } else {
                 $incluir = 2;
@@ -113,6 +137,18 @@ class Sislo_MetaJogos extends BaseController {
                 $dados['outubro'] = $dados_lot->outubro;
                 $dados['novembro'] = $dados_lot->novembro;
                 $dados['dezembro'] = $dados_lot->dezembro;
+                $dados['janeiro_bolao'] = $dados_lot->janeiro_bolao;
+                $dados['fevereiro_bolao'] = $dados_lot->fevereiro_bolao;
+                $dados['marco_bolao'] = $dados_lot->marco_bolao;
+                $dados['abril_bolao'] = $dados_lot->abril_bolao;
+                $dados['maio_bolao'] = $dados_lot->maio_bolao;
+                $dados['junho_bolao'] = $dados_lot->junho_bolao;
+                $dados['julho_bolao'] = $dados_lot->julho_bolao;
+                $dados['agosto_bolao'] = $dados_lot->agosto_bolao;
+                $dados['setembro_bolao'] = $dados_lot->setembro_bolao;
+                $dados['outubro_bolao'] = $dados_lot->outubro_bolao;
+                $dados['novembro_bolao'] = $dados_lot->novembro_bolao;
+                $dados['dezembro_bolao'] = $dados_lot->dezembro_bolao;
                 $dados['status'] = $dados_lot->status;
                 unset($dados_lot);
             }
@@ -144,6 +180,18 @@ class Sislo_MetaJogos extends BaseController {
                 "outubro" => $dados['outubro'],
                 "novembro" => $dados['novembro'],
                 "dezembro" => $dados['dezembro'],
+                "janeiro_bolao" => $dados['janeiro_bolao'],
+                "fevereiro_bolao" => $dados['fevereiro_bolao'],
+                "marco_bolao" => $dados['marco_bolao'],
+                "abril_bolao" => $dados['abril_bolao'],
+                "maio_bolao" => $dados['maio_bolao'],
+                "junho_bolao" => $dados['junho_bolao'],
+                "julho_bolao" => $dados['julho_bolao'],
+                "agosto_bolao" => $dados['agosto_bolao'],
+                "setembro_bolao" => $dados['setembro_bolao'],
+                "outubro_bolao" => $dados['outubro_bolao'],
+                "novembro_bolao" => $dados['novembro_bolao'],
+                "dezembro_bolao" => $dados['dezembro_bolao'],
                 "status" => $dados['status']
             );
             echo view('template/header', $data);
@@ -170,6 +218,7 @@ class Sislo_MetaJogos extends BaseController {
             $sislo_model->set('abril', $this->limparValoresMonetarios($this->request->getPost('abril')));
             $sislo_model->set('maio', $this->limparValoresMonetarios($this->request->getPost('maio')));
             $sislo_model->set('junho', $this->limparValoresMonetarios($this->request->getPost('junho')));
+            $sislo_model->set('julho', $this->limparValoresMonetarios($this->request->getPost('julho')));
             $sislo_model->set('agosto', $this->limparValoresMonetarios($this->request->getPost('agosto')));
             $sislo_model->set('setembro', $this->limparValoresMonetarios($this->request->getPost('setembro')));
             $sislo_model->set('outubro', $this->limparValoresMonetarios($this->request->getPost('outubro')));
@@ -181,6 +230,7 @@ class Sislo_MetaJogos extends BaseController {
             $sislo_model->set('abril_bolao', $this->limparValoresMonetarios($this->request->getPost('abril_bolao')));
             $sislo_model->set('maio_bolao', $this->limparValoresMonetarios($this->request->getPost('maio_bolao')));
             $sislo_model->set('junho_bolao', $this->limparValoresMonetarios($this->request->getPost('junho_bolao')));
+            $sislo_model->set('julho_bolao', $this->limparValoresMonetarios($this->request->getPost('julho_bolao')));
             $sislo_model->set('agosto_bolao', $this->limparValoresMonetarios($this->request->getPost('agosto_bolao')));
             $sislo_model->set('setembro_bolao', $this->limparValoresMonetarios($this->request->getPost('setembro_bolao')));
             $sislo_model->set('outubro_bolao', $this->limparValoresMonetarios($this->request->getPost('outubro_bolao')));

@@ -1,6 +1,14 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
- */
+$(function () {
 
+    $("#table_meta_jogos").DataTable({
+        "oLanguage": DATATABLE_PTBR,
+        "autoWidth": true,
+        "searching": true,
+        "ordering": true,
+        "ajax": {
+            "url": BASE_URL + "ajax_list_meta_jogos",
+            "type": "POST"
+        }
+    });
 
+});

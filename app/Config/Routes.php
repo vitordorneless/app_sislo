@@ -87,6 +87,12 @@ $routes->add('redireciona_meta_nao_jogos', 'Sislo_MetaNaoJogos::redireciona_meta
 $routes->add('salva_meta_nao_jogos', 'Sislo_MetaNaoJogos::ajax_save_form');
 //fim base crud ajax
 //inicio base crud megasemana
+$routes->add('sislo_metas_jogos', 'Sislo_MetaJogos::index');
+$routes->add('ajax_list_meta_jogos', 'Sislo_MetaJogos::ajax_list_meta_jogos');
+$routes->add('redireciona_meta_jogos', 'Sislo_MetaJogos::redireciona_meta_jogos');
+$routes->add('salva_meta_jogos', 'Sislo_MetaJogos::ajax_save_form');
+//fim base crud ajax
+//inicio base crud megasemana
 $routes->add('sislo_decendio', 'Sislo_Decendio::index');
 $routes->add('ajax_list_decendio', 'Sislo_Decendio::ajax_list_decendio');
 $routes->add('redireciona_decendio', 'Sislo_Decendio::redireciona_decendio');
