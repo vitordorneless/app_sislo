@@ -43,6 +43,11 @@ $(document).ready(function () {
                     $("#total_todos_deveres").html(datas.total_todos_deveres);
                     $("#total_todos_situacao").html(datas.total_todos_situacao);                    
                     
+                    $("#total_meta_nao_jogos").html(datas.total_todos_situacao);                    
+                    $("#total_meta_jogos").html(datas.total_todos_situacao);                    
+                    $("#total_todas_metas").html(datas.total_todos_situacao);                    
+                    $("#total_metas_atingido").html(datas.total_todos_situacao);                    
+                    
                     //$('html,body').animate({scrollTop: document.body.scrollHeight}, "fast");
                     
                     $("#table_sislo_situacao_jogos_geral").DataTable({

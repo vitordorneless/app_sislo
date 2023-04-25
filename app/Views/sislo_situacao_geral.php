@@ -108,6 +108,60 @@
         <div class="row">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
+                <div class="small-box bg-gradient-green">
+                    <div class="inner">
+                        <h3 id="total_meta_nao_jogos"></h3>
+                        <p>Meta Não Jogos</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>                    
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-green">
+                    <div class="inner">
+                        <h3 id="total_meta_jogos"></h3>
+                        <p>Meta Jogos</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>                    
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-green">
+                    <div class="inner">
+                        <h3 id="total_todas_metas"></h3>
+                        <p>Total de Metas</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>                    
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-green">
+                    <div class="inner">
+                        <h5 id="total_metas_atingido"></h5>
+                        <p>% Atingido</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>                    
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
                 <div class="small-box bg-gradient-blue">
                     <div class="inner">
                         <h3 id="nao_jogos"></h3>
