@@ -43,10 +43,10 @@ $(document).ready(function () {
                     $("#total_todos_deveres").html(datas.total_todos_deveres);
                     $("#total_todos_situacao").html(datas.total_todos_situacao);                    
                     
-                    $("#total_meta_nao_jogos").html(datas.total_todos_situacao);                    
-                    $("#total_meta_jogos").html(datas.total_todos_situacao);                    
-                    $("#total_todas_metas").html(datas.total_todos_situacao);                    
-                    $("#total_metas_atingido").html(datas.total_todos_situacao);                    
+                    $("#total_meta_nao_jogos").html(datas.total_meta_nao_jogos);                    
+                    $("#total_meta_jogos").html(datas.total_meta_jogos);                    
+                    $("#total_todas_metas").html(datas.total_todas_metas);                    
+                    $("#total_metas_atingido").html(datas.total_metas_atingido);                    
                     
                     //$('html,body').animate({scrollTop: document.body.scrollHeight}, "fast");
                     

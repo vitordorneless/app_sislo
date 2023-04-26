@@ -204,6 +204,56 @@ class Sislo_Situacao_Geral extends BaseController {
                         ->orderBy('sf.nome', 'asc')->get();
         return $query;
     }
+    
+    public function carrega_metas_nao_jogos() {          
+        switch ($this->request->getPost('mes')){
+            case '01':
+                $mes = 'janeiro as mes';
+                break;
+            case '02':
+                $mes = 'fevereiro as mes';
+                break;
+            case '03':
+                $mes = 'marco as mes';
+                break;
+            case "04":
+                $mes = 'abril as mes';
+                break;
+            case '05':
+                $mes = 'maio as mes';
+                break;
+            case '06':
+                $mes = 'junho as mes';
+                break;
+            case '07':
+                $mes = 'julho as mes';
+                break;
+            case '08':
+                $mes = 'agosto as mes';
+                break;
+            case '09':
+                $mes = 'setembro as mes';
+                break;
+            case '10':
+                $mes = 'outubro as mes';
+                break;
+            case '11':
+                $mes = 'novembro as mes';
+                break;
+            case '12':
+                $mes = 'dezembro as mes';
+                break;
+            default :
+                $mes = 'janeiro as mes';
+        }
+        $sislo_jogos_cef_model = new \App\Models\Sislo_MetaNaoJogosModel;
+        $query = $sislo_jogos_cef_model
+                ->select($mes)
+                ->where("ano", $this->request->getPost('ano'))
+                ->where("cod_loterico", $this->session->get('cod_lot'))
+                ->getRow();
+        return $query;
+    }
 
     public function ajax_sislo_situacao_geral() {
 
@@ -218,10 +268,14 @@ class Sislo_Situacao_Geral extends BaseController {
             $sislo_contas_pagar = $this->carrega_contas_pagar()->getResult();
             $sislo_salarios = $this->carrega_salarios()->getResult();
             $sislo_caixas = $this->carrega_caixas()->getResult();
-            $data = $data_silce = $data_ibc = $data_bilhete_federal = $data_bolao = $data_premios_pagos = $data_nao_jogos = $data_contas_pagar = $data_salarios = $data_caixas = array();
+            $total_meta_nao_jogos = $this->carrega_metas_nao_jogos();
+            print_r($total_meta_nao_jogos->mes);
+            $data = $data_silce = $data_ibc = $data_bilhete_federal = $data_bolao = $data_premios_pagos = $data_nao_jogos = $data_contas_pagar = $data_salarios = $data_caixas = array();            
+            $comissao_jogos = $comissao_jogos_silce = $comissao_jogos_ibc = $comissao_bilhete_federal = $comissao_jogos_bolao = $premios_pagos = $nao_jogos = $contas_pagar = $salarios = $caixas = 0;
+            
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
-            $comissao_jogos = $comissao_jogos_silce = $comissao_jogos_ibc = $comissao_bilhete_federal = $comissao_jogos_bolao = $premios_pagos = $nao_jogos = $contas_pagar = $salarios = $caixas = 0;
+            
             foreach ($sislo_comissao as $value) {
                 $row = array();
                 $row[] = $tt;
@@ -378,6 +432,9 @@ class Sislo_Situacao_Geral extends BaseController {
                 "data_salarios" => $data_salarios,
                 "data_caixas" => $data_caixas,
                 "data_ibc" => $data_ibc,
+                
+                "total_meta_nao_jogos" => 'R$ ' . $this->formataValoresMonetarios($total_meta_nao_jogos),
+                
                 "total_todos_jogos" => 'R$ ' . $this->formataValoresMonetarios($total_todos_jogos),
                 "total_todos_nao_jogos" => 'R$ ' . $this->formataValoresMonetarios($nao_jogos),
                 "total_todos_deveres" => 'R$ ' . $this->formataValoresMonetarios($total_todos_deveres),
