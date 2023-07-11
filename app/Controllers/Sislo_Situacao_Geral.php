@@ -214,6 +214,27 @@ class Sislo_Situacao_Geral extends BaseController {
         return $query;
     }
 
+    public function carrega_metas_jogos() {
+        $sislo_jogos_cef_model = new \App\Models\Sislo_MetaJogosModel;
+        $query = $sislo_jogos_cef_model
+                ->select('SUM(janeiro) AS janeiro ,
+                        SUM(fevereiro) AS fevereiro ,
+                        SUM(marco) AS marco ,
+                        SUM(abril) AS abril ,
+                        SUM(maio) AS maio ,
+                        SUM(junho) AS junho ,
+                        SUM(julho) AS julho ,
+                        SUM(agosto) AS agosto ,
+                        SUM(setembro) AS setembro ,
+                        SUM(outubro) AS outubro ,
+                        SUM(novembro) AS novembro ,
+                        SUM(dezembro) AS dezembro')
+                ->where("ano", $this->request->getPost('ano'))
+                ->where("cod_loterico", $this->session->get('cod_lot'))
+                ->get();
+        return $query;
+    }
+
     public function ajax_sislo_situacao_geral() {
 
         if ($this->request->isAJAX()) {
@@ -228,7 +249,8 @@ class Sislo_Situacao_Geral extends BaseController {
             $sislo_salarios = $this->carrega_salarios()->getResult();
             $sislo_caixas = $this->carrega_caixas()->getResult();
             $total_meta_nao_jogos = $this->carrega_metas_nao_jogos()->getResult();
-            
+            $total_meta_jogos = $this->carrega_metas_jogos()->getResult();
+
             switch ($this->request->getPost('mes')) {
                 case '01':
                     $mes = $total_meta_nao_jogos[0]->janeiro;
@@ -268,7 +290,48 @@ class Sislo_Situacao_Geral extends BaseController {
                     break;
                 default :
                     $mes = $total_meta_nao_jogos[0]->janeiro;
-            }            
+            }
+
+            switch ($this->request->getPost('mes')) {
+                case '01':
+                    $mes_jogos = $total_meta_jogos[0]->janeiro;
+                    break;
+                case '02':
+                    $mes_jogos = $total_meta_jogos[0]->fevereiro;
+                    break;
+                case '03':
+                    $mes_jogos = $total_meta_jogos[0]->marco;
+                    break;
+                case "04":
+                    $mes_jogos = $total_meta_jogos[0]->abril;
+                    break;
+                case '05':
+                    $mes_jogos = $total_meta_jogos[0]->maio;
+                    break;
+                case '06':
+                    $mes_jogos = $total_meta_jogos[0]->junho;
+                    break;
+                case '07':
+                    $mes_jogos = $total_meta_jogos[0]->julho;
+                    break;
+                case '08':
+                    $mes_jogos = $total_meta_jogos[0]->agosto;
+                    break;
+                case '09':
+                    $mes_jogos = $total_meta_jogos[0]->setembro;
+                    break;
+                case '10':
+                    $mes_jogos = $total_meta_jogos[0]->outubro;
+                    break;
+                case '11':
+                    $mes_jogos = $total_meta_jogos[0]->novembro;
+                    break;
+                case '12':
+                    $mes_jogos = $total_meta_jogos[0]->dezembro;
+                    break;
+                default :
+                    $mes_jogos = $total_meta_jogos[0]->janeiro;
+            }
             $data = $data_silce = $data_ibc = $data_bilhete_federal = $data_bolao = $data_premios_pagos = $data_nao_jogos = $data_contas_pagar = $data_salarios = $data_caixas = array();
             $comissao_jogos = $comissao_jogos_silce = $comissao_jogos_ibc = $comissao_bilhete_federal = $comissao_jogos_bolao = $premios_pagos = $nao_jogos = $contas_pagar = $salarios = $caixas = 0;
 
@@ -406,6 +469,10 @@ class Sislo_Situacao_Geral extends BaseController {
             $todos_recebiveis = bcadd($nao_jogos, $total_todos_jogos, 2);
             $total_todos_situacao = bcsub($todos_recebiveis, $total_todos_deveres, 2);
 
+            $meta_multiplicacao_1 = bcadd($mes, $mes_jogos, 2);
+            $meta_multiplicacao_2 = bcdiv($total_todos_situacao, $meta_multiplicacao_1, 2);
+            $meta_multiplicacao = bcmul($meta_multiplicacao_2, 100, 2);
+
             $json = array(
                 "recordsTotal" => $tb,
                 "recordsFiltered" => $tb,
@@ -432,6 +499,9 @@ class Sislo_Situacao_Geral extends BaseController {
                 "data_caixas" => $data_caixas,
                 "data_ibc" => $data_ibc,
                 "total_meta_nao_jogos" => 'R$ ' . $this->formataValoresMonetarios($mes),
+                "total_meta_jogos" => 'R$ ' . $this->formataValoresMonetarios($mes_jogos),
+                "total_todas_metas" => 'R$ ' . $this->formataValoresMonetarios(bcadd($mes, $mes_jogos, 2)),
+                "total_metas_atingido" => $meta_multiplicacao < 0 ? $this->formataValoresMonetarios(0) . ' %' : $this->formataValoresMonetarios($meta_multiplicacao) . ' %',
                 "total_todos_jogos" => 'R$ ' . $this->formataValoresMonetarios($total_todos_jogos),
                 "total_todos_nao_jogos" => 'R$ ' . $this->formataValoresMonetarios($nao_jogos),
                 "total_todos_deveres" => 'R$ ' . $this->formataValoresMonetarios($total_todos_deveres),
@@ -442,5 +512,4 @@ class Sislo_Situacao_Geral extends BaseController {
             echo view('login');
         }
     }
-
 }

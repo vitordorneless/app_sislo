@@ -149,7 +149,7 @@
                 <!-- small box -->
                 <div class="small-box bg-gradient-green">
                     <div class="inner">
-                        <h5 id="total_metas_atingido"></h5>
+                        <h3 id="total_metas_atingido"></h3>
                         <p>% Atingido</p>
                     </div>
                     <div class="icon">
