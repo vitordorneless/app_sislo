@@ -162,6 +162,7 @@ class Sislo_MetaNaoJogos extends BaseController {
             $sislo_model->set('abril', $this->limparValoresMonetarios($this->request->getPost('abril')));
             $sislo_model->set('maio', $this->limparValoresMonetarios($this->request->getPost('maio')));
             $sislo_model->set('junho', $this->limparValoresMonetarios($this->request->getPost('junho')));
+            $sislo_model->set('julho', $this->limparValoresMonetarios($this->request->getPost('julho')));
             $sislo_model->set('agosto', $this->limparValoresMonetarios($this->request->getPost('agosto')));
             $sislo_model->set('setembro', $this->limparValoresMonetarios($this->request->getPost('setembro')));
             $sislo_model->set('outubro', $this->limparValoresMonetarios($this->request->getPost('outubro')));
