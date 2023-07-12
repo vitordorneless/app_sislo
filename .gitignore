@@ -7,5 +7,6 @@ nbproject
 nbproject/private
 .vscode/
 .vs/
+.env
 
-writable
+/writable
