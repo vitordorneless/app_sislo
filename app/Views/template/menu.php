@@ -380,7 +380,7 @@
                         <i class="far fa-circle nav-icon"></i>
                         <p>Prêmios Pagos</p>
                     </a>
-                </li>
+                </li>                
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-ambulance"></i>
@@ -400,6 +400,35 @@
                             <a href="<?= base_url('protege_senha'); ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>PROTEGE - Senha</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-exclamation-circle"></i>
+                        <p>
+                            Estoque
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('sislo_item_estoque'); ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ítens</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('sislo_estoque'); ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Entrada</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('sislo_movimentacao_estoque'); ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Movimentação</p>
                             </a>
                         </li>
                     </ul>
