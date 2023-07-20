@@ -29,11 +29,11 @@ class Sislo_Estoque extends BaseController {
     public function carrega() {
         $db = \Config\Database::connect();
         $builder = $db->table('sislo_estoque as mj');
-        $query = $builder->select("mj.id_sislo_estoque as id_sislo_estoque,mj.quantidade as quantidade,sts.item as item, mj.data_entrada as data_entrada")
-                        ->join("sislo_item_estoque as sts", "mj.id_sislo_item_estoque = sts.id_sislo_item_estoque", "inner")
+        $query = $builder->select("mj.id_sislo_estoque as id_sislo_estoque,mj.quantidade as quantidade,sts.item as item, mj.data_entrada as data_entrada, mj.status as status")
+                        ->join("sislo_item_estoque as sts", "mj.id_sislo_item_estoque = sts.id_sislo_item_estoque", "inner")                        
                         ->where("mj.cod_loterico", $this->session->get('cod_lot'))
                         ->where('mj.status', 1)
-                        ->orderBy('mj.data_ultima_alteracao', 'asc')->get();
+                        ->orderBy('mj.data_ultima_alteracao', 'DESC')->get();
         return $query;
     }
 
@@ -47,6 +47,7 @@ class Sislo_Estoque extends BaseController {
                 $row = array();
                 $row[] = $tt;
                 $row[] = $value->item;
+                $row[] = $value->quantidade;
                 $row[] = date("d/m/Y", strtotime($value->data_entrada));
                 $row[] = $value->status == 1 ? "Ativo" : "Inativo";
                 $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_estoque/?id=' . $value->id_sislo_estoque) . '">Editar</a>';
