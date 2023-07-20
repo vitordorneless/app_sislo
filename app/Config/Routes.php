@@ -181,6 +181,12 @@ $routes->add('ajax_list_estoque', 'Sislo_Estoque::ajax_list_estoque');
 $routes->add('redireciona_estoque', 'Sislo_Estoque::redireciona_estoque');
 $routes->add('salva_estoque', 'Sislo_Estoque::ajax_save_form');
 //fim tfl
+//inicio tfl
+$routes->add('sislo_movimentacao_estoque', 'Sislo_MovimentacaoEstoque::index');
+$routes->add('ajax_list_movimentacao_estoque', 'Sislo_MovimentacaoEstoque::ajax_list_movimentacao_estoque');
+$routes->add('redireciona_movimentacao_estoque', 'Sislo_MovimentacaoEstoque::redireciona_movimentacao_estoque');
+$routes->add('salva_movimentacao_estoque', 'Sislo_MovimentacaoEstoque::ajax_save_form');
+//fim tfl
 //inicio carro forte
 $routes->add('protege', 'Sislo_CarroForteProtege::index');
 $routes->add('ajax_list_protege', 'Sislo_CarroForteProtege::ajax_list_protege');

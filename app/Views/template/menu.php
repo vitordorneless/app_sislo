@@ -380,6 +380,24 @@
                         <i class="far fa-circle nav-icon"></i>
                         <p>Prêmios Pagos</p>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('sislo_metas_nao_jogos'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Meta Não Jogos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('sislo_metas_jogos'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Meta Jogos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('sislo_pec'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>PEC</p>
+                    </a>
                 </li>                
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -432,25 +450,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('sislo_metas_nao_jogos'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Meta Não Jogos</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('sislo_metas_jogos'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Meta Jogos</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('sislo_pec'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>PEC</p>
-                    </a>
-                </li>
+                </li>                
             </ul>
         </li>
         <li class="nav-item has-treeview">
