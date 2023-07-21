@@ -17,6 +17,7 @@
                         <label class="text text-sm">Data Entrada</label>
                         <input type="hidden" id="incluir" name="incluir" class="form-control" value="<?= $incluir; ?>">
                         <input type="hidden" id="cod_loterico" name="cod_loterico" class="form-control" value="<?= $cod_loterico; ?>">
+                        <input type="hidden" id="id_sislo_estoque" name="id_sislo_estoque" class="form-control" value="<?= $id_sislo_estoque; ?>">
                         <input type="date" id="data_entrada" name="data_entrada" autofocus="autofocus" required="required" class="form-control" value="<?= $data_fech->format('Y-m-d'); ?>">
                     </div>
                 </div>
