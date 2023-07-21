@@ -115,7 +115,7 @@ class Sislo_MovimentacaoEstoque extends BaseController {
             $sislo_model->set('quantidade_saida', $this->request->getPost('quantidade_saida'));
             $sislo_model->set('id_sislo_tfl', $this->request->getPost('id_sislo_tfl'));
             $sislo_model->set('externo', $this->request->getPost('externo'));
-            $sislo_model->set('status', $this->request->getPost('status'));
+            $sislo_model->set('status', 1);
             $sislo_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
 
             if ($this->request->getPost('incluir') == '1') {
