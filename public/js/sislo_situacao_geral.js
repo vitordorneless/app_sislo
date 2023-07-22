@@ -34,6 +34,7 @@ $(document).ready(function () {
                     $("#total_jogos").html(datas.total_jogos);
                     $("#total_silce").html(datas.total_silce);
                     $("#premios_pagos").html(datas.premios_pagos);
+                    $("#bobinas").html(datas.bobinas);
                     $("#nao_jogos").html(datas.nao_jogos);
                     $("#contas_pagar").html(datas.contas_pagar);
                     $("#salarios").html(datas.salarios);

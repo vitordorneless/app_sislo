@@ -316,6 +316,18 @@
                     </div>                    
                 </div>
             </div>
+            <div class="col-lg-6 col-4">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3 id="bobinas"></h3>
+                        <p>Bobinas em Estoque</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>                    
+                </div>
+            </div>
         </div>
         <div class="row">
             <table id="table_sislo_situacao_jogos_geral" class="table table-striped table-bordered table-responsive text text-sm text-center">

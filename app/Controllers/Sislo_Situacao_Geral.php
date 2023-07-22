@@ -235,6 +235,20 @@ class Sislo_Situacao_Geral extends BaseController {
         return $query;
     }
 
+    public function carrega_bobinas() {
+        $db = \Config\Database::connect();
+        $builder = $db->table('sislo_estoque as mj');
+        $query = $builder->select("((IFNULL(SUM(mj.quantidade),0))-(IFNULL(SUM(stsm.quantidade_saida),0))) as saldo")
+                        ->join("sislo_item_estoque as sts", "mj.id_sislo_item_estoque = sts.id_sislo_item_estoque", "inner")
+                        ->join("sislo_estoque_movimentacao as stsm", "mj.id_sislo_item_estoque = stsm.id_sislo_item_estoque", "left")
+                        ->where("mj.cod_loterico", $this->session->get('cod_lot'))
+                        ->like('sts.item', 'bobina')
+                        ->where('mj.status', 1)
+                        ->groupBy('mj.quantidade,stsm.quantidade_saida')
+                        ->orderBy('mj.quantidade', 'DESC')->get();
+        return $query;
+    }
+
     public function ajax_sislo_situacao_geral() {
 
         if ($this->request->isAJAX()) {
@@ -250,6 +264,7 @@ class Sislo_Situacao_Geral extends BaseController {
             $sislo_caixas = $this->carrega_caixas()->getResult();
             $total_meta_nao_jogos = $this->carrega_metas_nao_jogos()->getResult();
             $total_meta_jogos = $this->carrega_metas_jogos()->getResult();
+            $bobinas = $this->carrega_bobinas()->getResult();
 
             switch ($this->request->getPost('mes')) {
                 case '01':
@@ -498,6 +513,7 @@ class Sislo_Situacao_Geral extends BaseController {
                 "data_salarios" => $data_salarios,
                 "data_caixas" => $data_caixas,
                 "data_ibc" => $data_ibc,
+                "bobinas" => $bobinas[0]->saldo < 20 ? $bobinas[0]->saldo . ' ESTOQUE BAIXO ' : $bobinas[0]->saldo . ' ESTOQUE ESTÁVEL ',
                 "total_meta_nao_jogos" => 'R$ ' . $this->formataValoresMonetarios($mes),
                 "total_meta_jogos" => 'R$ ' . $this->formataValoresMonetarios($mes_jogos),
                 "total_todas_metas" => 'R$ ' . $this->formataValoresMonetarios(bcadd($mes, $mes_jogos, 2)),
