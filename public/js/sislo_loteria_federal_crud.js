@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     function resumo() {
 
-        var modalidade = $("#modalidade").val() === 1 ? 4 : 10;
+        var modalidade = $("#modalidade").val() === '1' ? 4 : 10;
         let total_bilhetes_recibo = $("#total_bilhetes_recibo").val();
         let total_bilhetes = total_bilhetes_recibo * 10;
         var valor_bruto = total_bilhetes * modalidade;
