@@ -28,8 +28,9 @@ class Sislo_LoteriaFederal extends BaseController {
 
     public function ajax_list_loteria_federal() {
         if ($this->request->isAJAX()) {
+            $cod_lot = $this->session->get('cod_lot');
             $sislo_jogos_cef_model = new \App\Models\Sislo_LoteriaFederalModel;
-            $sislo = $sislo_jogos_cef_model->orderBy('extracao', 'desc')->findAll();
+            $sislo = $sislo_jogos_cef_model->where("cod_lot", $cod_lot)->orderBy('extracao', 'desc')->findAll();
             $data = array();
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
@@ -149,7 +150,7 @@ class Sislo_LoteriaFederal extends BaseController {
 
         if ($this->request->isAJAX()) {
             $sislo_model = new \App\Models\Sislo_LoteriaFederalModel;
-            $sislo_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
+            $sislo_model->set('cod_lot', $this->request->getPost('cod_loterico'));
             $sislo_model->set('modalidade', $this->request->getPost('modalidade'));
             $sislo_model->set('total_bilhetes_recibo', $this->request->getPost('total_bilhetes_recibo'));
             $sislo_model->set('total_bilhetes_liquido', $this->request->getPost('total_bilhetes_liquido'));
@@ -157,6 +158,7 @@ class Sislo_LoteriaFederal extends BaseController {
             $sislo_model->set('data_extracao', $this->request->getPost('data_extracao'));
             $sislo_model->set('preco_plano', $this->limparValoresMonetarios($this->request->getPost('preco_plano')));
             $sislo_model->set('valor_bruto_recibo', $this->limparValoresMonetarios($this->request->getPost('valor_bruto_recibo')));
+            $sislo_model->set('valor_bruto_liquido', $this->limparValoresMonetarios($this->request->getPost('valor_bruto_liquido')));
             $sislo_model->set('comissao_recibo', $this->limparValoresMonetarios($this->request->getPost('comissao_recibo')));
             $sislo_model->set('valor_liquido_recibo', $this->limparValoresMonetarios($this->request->getPost('valor_liquido_recibo')));
             $sislo_model->set('valor_liquido_real', $this->limparValoresMonetarios($this->request->getPost('valor_liquido_real')));
