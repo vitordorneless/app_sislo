@@ -64,7 +64,7 @@ class Sislo_Situacao_Geral extends BaseController {
         $db = \Config\Database::connect();
         $cod_lot = $this->session->get('cod_lot');
         $builder = $db->table('sislo_loteria_federal');
-        $query = $builder->select("extracao, valor_bruto_recibo, ((total_bilhetes_liquido *if(modalidade = 1,10,4))-valor_bruto_recibo) AS comissao")
+        $query = $builder->select("extracao, valor_bruto_recibo, (valor_bruto_liquido - valor_liquido_recibo) AS comissao")
                 ->where('MONTH(data_extracao)', $this->request->getPost('mes'))
                 ->where('YEAR(data_extracao)', $this->request->getPost('ano'))
                 ->where("cod_lot", $cod_lot)
