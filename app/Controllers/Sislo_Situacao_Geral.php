@@ -165,6 +165,19 @@ class Sislo_Situacao_Geral extends BaseController {
         return $query;
     }
 
+    public function carrega_caucao() {
+        $db = \Config\Database::connect();
+        $cod_lot = $this->session->get('cod_lot');
+        $referencia = $this->request->getPost('mes') . '/' . $this->request->getPost('ano');
+        $builder = $db->table('sislo_caucao as scs');
+        $query = $builder->select("scs.valor_caucao as valor_caucao")
+                ->where("scs.referencia", $referencia)
+                ->where("scs.cod_loterico", $cod_lot)
+                ->where('scs.status', 1)
+                ->get();
+        return $query;
+    }
+
     public function carrega_salarios() {
         $db = \Config\Database::connect();
         $cod_lot = $this->session->get('cod_lot');
@@ -259,6 +272,7 @@ class Sislo_Situacao_Geral extends BaseController {
             $sislo_comissao_ibc = $this->carrega_comissoes_ibc()->getResult();
             $sislo_premios_pagos = $this->carrega_premios_pagos()->getResult();
             $sislo_nao_jogos = $this->carrega_não_jogos()->getResult();
+            $sislo_caucao = $this->carrega_caucao()->getResult();
             $sislo_contas_pagar = $this->carrega_contas_pagar()->getResult();
             $sislo_salarios = $this->carrega_salarios()->getResult();
             $sislo_caixas = $this->carrega_caixas()->getResult();
@@ -348,7 +362,7 @@ class Sislo_Situacao_Geral extends BaseController {
                     $mes_jogos = $total_meta_jogos[0]->janeiro;
             }
             $data = $data_silce = $data_ibc = $data_bilhete_federal = $data_bolao = $data_premios_pagos = $data_nao_jogos = $data_contas_pagar = $data_salarios = $data_caixas = array();
-            $comissao_jogos = $comissao_jogos_silce = $comissao_jogos_ibc = $comissao_bilhete_federal = $comissao_jogos_bolao = $premios_pagos = $nao_jogos = $contas_pagar = $salarios = $caixas = 0;
+            $comissao_jogos = $comissao_jogos_silce = $comissao_jogos_ibc = $comissao_bilhete_federal = $comissao_jogos_bolao = $premios_pagos = $caucao = $nao_jogos = $contas_pagar = $salarios = $caixas = 0;
 
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
@@ -425,6 +439,13 @@ class Sislo_Situacao_Geral extends BaseController {
                 $data_nao_jogos[] = $row;
             }
 
+            foreach ($sislo_caucao as $value) {
+                $row = array();
+                $row[] = $tt;
+                $row[] = $value->valor_caucao;
+                $caucao = bcadd($caucao, $value->valor_caucao, 2);
+            }
+
             foreach ($sislo_premios_pagos as $value) {
                 $row = array();
                 $row[] = $tt;
@@ -481,7 +502,7 @@ class Sislo_Situacao_Geral extends BaseController {
 
             $total_todos_deveres = bcadd($salarios, $contas_pagar, 2);
 
-            $todos_recebiveis = bcadd($nao_jogos, $total_todos_jogos, 2);
+            $todos_recebiveis = bcadd(bcsub($nao_jogos, $caucao, 2), $total_todos_jogos, 2);
             $total_todos_situacao = bcsub($todos_recebiveis, $total_todos_deveres, 2);
 
             $meta_multiplicacao_1 = bcadd($mes, $mes_jogos, 2);
@@ -497,7 +518,7 @@ class Sislo_Situacao_Geral extends BaseController {
                 "total_jogos" => 'R$ ' . $this->formataValoresMonetarios(bcadd($comissao_jogos_bolao, $comissao_jogos, 2)),
                 "comissao_jogos_silce" => 'R$ ' . $this->formataValoresMonetarios($comissao_jogos_silce),
                 "premios_pagos" => 'R$ ' . $this->formataValoresMonetarios($premios_pagos),
-                "nao_jogos" => 'R$ ' . $this->formataValoresMonetarios($nao_jogos),
+                "nao_jogos" => 'R$ ' . $this->formataValoresMonetarios(bcsub($nao_jogos, $caucao, 2)),
                 "contas_pagar" => 'R$ ' . $this->formataValoresMonetarios($contas_pagar),
                 "salarios" => 'R$ ' . $this->formataValoresMonetarios($salarios),
                 "caixas" => 'R$ ' . $this->formataValoresMonetarios($caixas),
@@ -519,7 +540,7 @@ class Sislo_Situacao_Geral extends BaseController {
                 "total_todas_metas" => 'R$ ' . $this->formataValoresMonetarios(bcadd($mes, $mes_jogos, 2)),
                 "total_metas_atingido" => $meta_multiplicacao < 0 ? $this->formataValoresMonetarios(0) . ' %' : $this->formataValoresMonetarios($meta_multiplicacao) . ' %',
                 "total_todos_jogos" => 'R$ ' . $this->formataValoresMonetarios($total_todos_jogos),
-                "total_todos_nao_jogos" => 'R$ ' . $this->formataValoresMonetarios($nao_jogos),
+                "total_todos_nao_jogos" => 'R$ ' . $this->formataValoresMonetarios(bcsub($nao_jogos, $caucao, 2)),
                 "total_todos_deveres" => 'R$ ' . $this->formataValoresMonetarios($total_todos_deveres),
                 "total_todos_situacao" => $total_todos_situacao < 0 ? 'PREJUÍZO<br>' . $this->formataValoresMonetarios($total_todos_situacao) : 'LUCRO<br>' . $this->formataValoresMonetarios($total_todos_situacao)
             );
