@@ -6,7 +6,7 @@
         <div class="row">
             <div class="form-inline">
                 <div class="form-group">
-                    <a class="btn btn-primary" href="<?= base_url('redireciona_cob_servicos/?id=0'); ?>">Incluir Fechamento de Caixa Diário</a><br><br>
+                    <a class="btn btn-primary" href="<?= base_url('redireciona_cob_servicos/?id=0'); ?>">Incluir Relatório</a><br><br>
                 </div>
             </div>
         </div>

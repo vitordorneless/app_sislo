@@ -161,8 +161,7 @@ class Sislo_ComissaoBolao extends BaseController {
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
             foreach ($sislo_comissao as $value) {
-                $row = array();
-                $row[] = $this->formataDataParaDatatable($value->dia_inicial);
+                $row = array();                
                 $row[] = $value->nome;
                 $row[] = trim($value->cotas);
                 $row[] = $this->formataValoresMonetarios($value->valor_bolao);
