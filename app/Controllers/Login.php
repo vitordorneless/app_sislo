@@ -18,7 +18,7 @@ class Login extends BaseController {
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
         $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;        
-        $result = $sislo_usuarios_model->where('sislo_id_loterica',$cod_lot)->where('sislo_login',$username)->where('sislo_pass',$password)->first();
+        $result = $sislo_usuarios_model->where('sislo_id_loterica',$cod_lot)->where('sislo_login',$username)->where('sislo_pass',sha1($password, false))->first();
         
         if (!empty($result->sislo_usuarios_id)) {
             $newdata = ['user_id'  => $result->sislo_usuarios_id];
