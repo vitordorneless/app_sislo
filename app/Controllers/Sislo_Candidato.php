@@ -22,8 +22,26 @@ class Sislo_Candidato extends BaseController {
         echo view('area_candidato');
     }
 
-    public function area_candidato_logado() {
-        echo view('area_candidato_logado');
+    public function area_candidato_logado() {        
+
+        $sislo_usuarios_model = new \App\Models\Sislo_CandidatoModel;
+        $result = $sislo_usuarios_model->where('cpf', $this->session->get('candidato_cpf'))->first();
+
+        $data = array(
+            "scripts" => array(
+                "area_candidato_logado.js",
+                "slick.js",
+                "util.js"
+            ),
+            "user_name" => $result->nome,
+            "candidato" => $result
+        );
+        echo view('template/candidato_header', $data);
+        echo view('template/candidato_menu');
+        echo view('template/candidato_content');
+        echo view('area_candidato_logado', $data);
+        echo view('template/candidato_footer', $data);
+        echo view('template/candidato_scripts', $data);
     }
 
     public function ajax_login_candidato() {
@@ -34,11 +52,15 @@ class Sislo_Candidato extends BaseController {
         $cpf = $this->request->getPost('cpf');
         $password = $this->request->getPost('password');
         $sislo_usuarios_model = new \App\Models\Sislo_CandidatoLoginModel;
+        $sislo_candidato = new \App\Models\Sislo_CandidatoModel;
         $result = $sislo_usuarios_model->where('cpf_sislo_candidato', $cpf)->where('pass', sha1($password, false))->first();
 
         if (!empty($result->id_sislo_candidato_login)) {
+            $dadoscandidato = $sislo_candidato->where('cpf', $cpf)->first();
             $candidato_cpf = ['candidato_cpf' => $cpf];
+            $candidato_nome = ['candidato_nome' => $dadoscandidato->nome];
             $this->session->set($candidato_cpf);
+            $this->session->set($candidato_nome);
             $json['status'] = 1;
         } else {
             $json['status'] = 0;
