@@ -40,7 +40,8 @@
                                 <i class="icon-wallet m-auto text-primary"></i>
                             </div>
                             <h3>Quer trabalhar em uma Lotérica no Brasil?</h3>
-                            <p class="lead mb-0">Cadastre-se aqui!!</p>
+                            <p class="lead mb-0"><a href="candidato_cadastro">Cadastre-se aqui!!</a></p>
+                            <p class="lead mb-0"><a href="area_candidato">Área Candidato</a></p>
                         </div>
                     </div>
                     <div class="col-lg-4">

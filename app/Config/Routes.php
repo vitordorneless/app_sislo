@@ -20,6 +20,11 @@ $routes->add('sislo_teste', 'SisloTesteController::index');
 $routes->add('sair', 'Sislo::sair');
 $routes->add('ajax_login', 'Login::ajax_login');
 $routes->add('sislo', 'Sislo::index');
+$routes->get('candidato_cadastro', 'Sislo_Candidato::include_candidate');
+$routes->get('area_candidato', 'Sislo_Candidato::area_candidato');
+$routes->get('area_candidato_logado', 'Sislo_Candidato::area_candidato_logado');
+$routes->post('salva_candidato', 'Sislo_Candidato::ajax_save_form');
+$routes->post('ajax_login_candidato', 'Sislo_Candidato::ajax_login_candidato');
 //inicio base crud ajax
 $routes->add('sislo_usuarios', 'Sislo_Usuarios::index');
 $routes->add('ajax_list_user', 'Sislo_Usuarios::ajax_list_user');
