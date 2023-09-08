@@ -64,7 +64,7 @@ class Sislo_Usuarios extends BaseController {
             $sislo_usuarios_model->set('sislo_id_loterica', $this->request->getPost('sislo_id_loterica'));
             $sislo_usuarios_model->set('sislo_login', $this->request->getPost('sislo_login'));
             $sislo_usuarios_model->set('sislo_nome', $this->request->getPost('sislo_nome'));
-            $sislo_usuarios_model->set('sislo_pass', $this->request->getPost('sislo_pass'));
+            $sislo_usuarios_model->set('sislo_pass', sha1($this->request->getPost('sislo_pass'), false));
             $sislo_usuarios_model->set('sislo_email', $this->request->getPost('sislo_email'));
             $sislo_usuarios_model->set('sislo_status', $this->request->getPost('sislo_status'));
             $sislo_usuarios_model->set('sislo_data_ultima_alteracao', date('Y-m-d H:i:s'));
