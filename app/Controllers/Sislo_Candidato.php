@@ -18,11 +18,57 @@ class Sislo_Candidato extends BaseController {
         echo view('cadastro_candidato', $data);
     }
 
+    public function candidato_perfil() {
+        $sislo_escolaridade_model = new \App\Models\Sislo_EscolaridadeModel;
+        $candidato = new \App\Models\Sislo_CandidatoModel;
+        $dados_escolaridade = $sislo_escolaridade_model->where('status', 1)
+                ->orderBy('escolaridade', 'asc')
+                ->findAll();
+        $dados_candidato = $candidato->where('cpf', $this->session->get('candidato_cpf'))->first();
+        $data = array(
+            "scripts" => array(
+                "candidato_perfil.js", "slick.js", "util.js"
+            ),
+            "user_name" => $dados_candidato->nome,
+            'id_escolaridade_list' => $dados_escolaridade,
+            'dados_candidato' => $dados_candidato
+        );
+        echo view('template/candidato_header', $data);
+        echo view('template/candidato_menu');
+        echo view('template/candidato_content');
+        echo view('candidato_perfil', $data);
+        echo view('template/candidato_footer', $data);
+        echo view('template/candidato_scripts', $data);
+    }
+
+    public function candidato_editar_perfil() {
+        $sislo_escolaridade_model = new \App\Models\Sislo_EscolaridadeModel;
+        $candidato = new \App\Models\Sislo_CandidatoModel;
+        $dados_escolaridade = $sislo_escolaridade_model->where('status', 1)
+                ->orderBy('escolaridade', 'asc')
+                ->findAll();
+        $dados_candidato = $candidato->where('cpf', $this->session->get('candidato_cpf'))->first();
+        $data = array(
+            "scripts" => array(
+                "candidato_editar_perfil.js", "slick.js", "util.js", "sweetalert2.all.min.js", "jquery.validate.js", "jquery.mask.min.js", "jquery.maskMoney.min.js",
+            ),
+            "user_name" => $dados_candidato->nome,
+            'id_escolaridade_list' => $dados_escolaridade,
+            'dados_candidato' => $dados_candidato
+        );
+        echo view('template/candidato_header', $data);
+        echo view('template/candidato_menu');
+        echo view('template/candidato_content');
+        echo view('candidato_editar_perfil', $data);
+        echo view('template/candidato_footer', $data);
+        echo view('template/candidato_scripts', $data);
+    }
+
     public function area_candidato() {
         echo view('area_candidato');
     }
 
-    public function area_candidato_logado() {        
+    public function area_candidato_logado() {
 
         $sislo_usuarios_model = new \App\Models\Sislo_CandidatoModel;
         $result = $sislo_usuarios_model->where('cpf', $this->session->get('candidato_cpf'))->first();
@@ -42,6 +88,34 @@ class Sislo_Candidato extends BaseController {
         echo view('area_candidato_logado', $data);
         echo view('template/candidato_footer', $data);
         echo view('template/candidato_scripts', $data);
+    }
+
+    public function ajax_list_experiencia() {
+        if ($this->request->isAJAX()) {
+            $sislo_model = new \App\Models\Sislo_CandidatoExperienciaModel;
+            $sislo = $sislo_model->where('cpf_sislo_candidato', $this->session->get('candidato_cpf'))->orderBy('data_inicial', 'desc')->findAll();
+            $data = array();
+            $tt = 1; //mostra contagem na datatable
+            $tb = 0; //carrega campos de footer do datatable
+            foreach ($sislo as $value) {
+                $row = array();
+                $row[] = $tt;
+                $row[] = $value->nome_empresa;
+                $row[] = $value->cargo;
+                $row[] = $value->funcoes;
+                ++$tt;
+                ++$tb;
+                $data[] = $row;
+            }
+            $json = array(
+                "recordsTotal" => $tb,
+                "recordsFiltered" => $tb,
+                "data" => $data
+            );
+            echo json_encode($json);
+        } else {
+            echo view('sislo');
+        }
     }
 
     public function ajax_login_candidato() {
@@ -102,9 +176,9 @@ class Sislo_Candidato extends BaseController {
                 $candidato_login->set('status', 1);
                 $candidato_login->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
                 echo $candidato_login->insert() == true ? 1 : 0;
-            } else {//este else trabalhar emcima do editar que vai ser criado
-                //$sislo_contaspagar_model->where('idsislo_contas_pagar', $this->request->getPost('idsislo_contas_pagar'));
-                echo $entrou = 0;
+            } else {
+                $candidato->where('id_sislo_candidato', $this->request->getPost('id_sislo_candidato'));
+                echo $candidato->update() == true ? 1 : 0;
             }
         } else {
             echo view('sislo');

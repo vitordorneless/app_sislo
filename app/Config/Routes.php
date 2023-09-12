@@ -23,13 +23,21 @@ $routes->add('sislo', 'Sislo::index');
 $routes->get('candidato_cadastro', 'Sislo_Candidato::include_candidate');
 $routes->get('area_candidato', 'Sislo_Candidato::area_candidato');
 $routes->get('area_candidato_logado', 'Sislo_Candidato::area_candidato_logado');
+$routes->get('candidato_perfil', 'Sislo_Candidato::candidato_perfil');
+$routes->get('candidato_editar_perfil', 'Sislo_Candidato::candidato_editar_perfil');
 $routes->post('salva_candidato', 'Sislo_Candidato::ajax_save_form');
+$routes->post('ajax_list_experiencia', 'Sislo_Candidato::ajax_list_experiencia');
 $routes->post('ajax_login_candidato', 'Sislo_Candidato::ajax_login_candidato');
 //inicio base crud ajax
 $routes->add('sislo_usuarios', 'Sislo_Usuarios::index');
 $routes->add('ajax_list_user', 'Sislo_Usuarios::ajax_list_user');
 $routes->add('redireciona_usuario', 'Sislo_Usuarios::redireciona_usuario');
 $routes->add('salva_usuarios', 'Sislo_Usuarios::ajax_save_form');
+//inicio base crud ajax
+$routes->get('candidato_experiencia', 'Sislo_CandidatoExperiencia::index');
+$routes->post('ajax_list_candidato_experiencia', 'Sislo_CandidatoExperiencia::ajax_list_candidato_experiencia');
+$routes->get('redireciona_experiencia', 'Sislo_CandidatoExperiencia::redireciona_experiencia');
+$routes->post('salva_experiencia', 'Sislo_CandidatoExperiencia::ajax_save_form');
 //fim base crud ajax
 //inicio base crud ajax
 $routes->add('tipos_convenio', 'Sislo_TiposConvenio::index');
