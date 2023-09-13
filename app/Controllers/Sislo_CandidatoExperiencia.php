@@ -23,7 +23,7 @@ class Sislo_CandidatoExperiencia extends BaseController {
             echo view('template/candidato_footer', $data);
             echo view('template/candidato_scripts', $data);
         } else {
-            echo view('login');
+            echo view('sislo');
         }
     }
 
@@ -67,7 +67,7 @@ class Sislo_CandidatoExperiencia extends BaseController {
             if ($this->request->getGet('id') == '0') {
                 $incluir = 1;
                 $dados['id_sislo_candidato_experiencia'] = '';
-                $dados['cpf_sislo_candidato'] = '';
+                $dados['cpf_sislo_candidato'] = $this->session->get('candidato_cpf');
                 $dados['nome_empresa'] = '';
                 $dados['data_inicial'] = '';
                 $dados['data_final'] = '';
@@ -91,7 +91,7 @@ class Sislo_CandidatoExperiencia extends BaseController {
             }
             $data = array(
                 "scripts" => array(
-                    "sislo_experiencia_crud.js",
+                    "candidato_experiencia_crud.js",
                     "sweetalert2.all.min.js",
                     "jquery.validate.js",
                     "util.js"
@@ -108,25 +108,25 @@ class Sislo_CandidatoExperiencia extends BaseController {
                 "funcoes" => $dados['funcoes'],
                 "status" => $dados['status']
             );
-            echo view('template/header', $data);
-            echo view('template/menu');
-            echo view('template/content');
-            echo view('sislo_experiencia_crud', $data);
-            echo view('template/footer', $data);
-            echo view('template/scripts', $data);
+            echo view('template/candidato_header', $data);
+            echo view('template/candidato_menu');
+            echo view('template/candidato_content');
+            echo view('candidato_experiencia_crud', $data);
+            echo view('template/candidato_footer', $data);
+            echo view('template/candidato_scripts', $data);
         } else {
-            echo view('login');
+            echo view('sislo');
         }
     }
 
     public function ajax_save_form() {
 
-        if ($this->request->isAJAX()) {
+        if ($this->request->isAJAX()) {                        
             $sislo_model = new \App\Models\Sislo_CandidatoExperienciaModel();            
             $sislo_model->set('cpf_sislo_candidato', $this->request->getPost('cpf_sislo_candidato'));
             $sislo_model->set('nome_empresa', $this->request->getPost('nome_empresa'));
             $sislo_model->set('data_inicial', $this->request->getPost('data_inicial'));
-            $sislo_model->set('data_final', $this->request->getPost('data_final'));
+            $sislo_model->set('data_final', $this->request->getPost('emprego_atual') == 1 ? null : $this->request->getPost('data_final'));
             $sislo_model->set('emprego_atual', $this->request->getPost('emprego_atual'));
             $sislo_model->set('cargo', $this->request->getPost('cargo'));
             $sislo_model->set('funcoes', $this->request->getPost('funcoes'));
@@ -141,7 +141,7 @@ class Sislo_CandidatoExperiencia extends BaseController {
                 echo $sislo_model->update() == true ? 1 : 0;
             }
         } else {
-            echo view('login');
+            echo view('sislo');
         }
     }
 }
