@@ -58,8 +58,9 @@
                             <div class="features-icons-icon d-flex">
                                 <i class="icon-briefcase m-auto text-primary"></i>
                             </div>
-                            <h3>Lotérico, quer contratar pessoas?</h3>
-                            <p class="lead mb-0">Saiba aqui nossa forma de recrutamento!</p>
+                            <h3>Lotérico, quer contratar colaboradores?</h3>
+                            <p class="lead mb-0"><a href="empresa_cadastro">Cadastre-se aqui!!</a></p>
+                            <p class="lead mb-0"><a href="empresa_area">Área Lotérica</a></p>
                         </div>
                     </div>
                     <div class="col-lg-4">
