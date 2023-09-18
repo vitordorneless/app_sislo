@@ -271,6 +271,12 @@ $routes->add('ajax_list_cargo', 'Sislo_Cargo::ajax_list_cargo');
 $routes->add('redireciona_cargo', 'Sislo_Cargo::redireciona_cargo');
 $routes->add('salva_cargo', 'Sislo_Cargo::ajax_save_form');
 //fim cargo
+//inicio status das vagas
+$routes->get('statusvaga', 'Sislo_StatusVagas::index');
+$routes->post('ajax_list_vagas', 'Sislo_StatusVagas::ajax_list_vagas');
+$routes->get('redireciona_vagas', 'Sislo_StatusVagas::redireciona_vagas');
+$routes->post('salva_vaga', 'Sislo_StatusVagas::ajax_save_form');
+//fim cargo
 //inicio tipo servico
 $routes->add('sislo_tipo_servico', 'Sislo_Tipo_Servico::index');
 $routes->add('ajax_list_servico', 'Sislo_Tipo_Servico::ajax_list_servico');
@@ -355,21 +361,18 @@ $routes->add('ajax_list_op', 'Sislo_OPEntrada::ajax_list');
 $routes->add('redireciona_op', 'Sislo_OPEntrada::redireciona');
 $routes->add('salva_op', 'Sislo_OPEntrada::ajax_save_form');
 //fim tipo pec
-
 //inicio tipo op pec
 $routes->add('des_pec', 'Sislo_PECDestinacao::index');
 $routes->add('ajax_list_des', 'Sislo_PECDestinacao::ajax_list');
 $routes->add('redireciona_des', 'Sislo_PECDestinacao::redireciona');
 $routes->add('salva_des', 'Sislo_PECDestinacao::ajax_save_form');
 //fim tipo pec
-
 //inicio identificador pec
 $routes->add('ide_pec', 'Sislo_PECIdentificador::index');
 $routes->add('ajax_list_ide', 'Sislo_PECIdentificador::ajax_list');
 $routes->add('redireciona_ide', 'Sislo_PECIdentificador::redireciona');
 $routes->add('salva_ide', 'Sislo_PECIdentificador::ajax_save_form');
 //fim tipo pec
-
 //inicio pec
 $routes->add('sislo_pec', 'Sislo_PEC::index');
 $routes->add('ajax_list_pec', 'Sislo_PEC::ajax_list');

@@ -61,6 +61,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?= base_url('statusvaga'); ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Status Vagas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?= base_url('sislo_timemania_time_coracao'); ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Time do Coração</p>
