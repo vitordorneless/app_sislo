@@ -41,6 +41,82 @@ class Sislo_Candidato extends BaseController {
         echo view('template/candidato_scripts', $data);
     }
 
+    public function candidato_vagas() {
+        $candidato = new \App\Models\Sislo_CandidatoModel;
+        $dados_candidato = $candidato->where('cpf', $this->session->get('candidato_cpf'))->first();
+        $data = array(
+            "scripts" => array(
+                "candidato_vagas.js", "slick.js", "util.js"
+            ),
+            "user_name" => $dados_candidato->nome,
+            'dados_candidato' => $dados_candidato
+        );
+        echo view('template/candidato_header', $data);
+        echo view('template/candidato_menu');
+        echo view('template/candidato_content');
+        echo view('candidato_vagas', $data);
+        echo view('template/candidato_footer', $data);
+        echo view('template/candidato_scripts', $data);
+    }
+
+    public function carrega_vagas() {
+        $db = \Config\Database::connect();
+        $builder = $db->table('sislo_vagas as sv');
+        $query = $builder->select("sv.cod_loterico as cod_loterico, 
+            sv.id_sislo_vagas as id_sislo_vagas,
+            sv.data_publicacao as data_publicacao,
+            sv.data_limite as data_limite,
+            sv.cargo as cargo,
+            ssv.nome_status as nome_status, sle.cidade as cidade, 
+            sle.nome_fantasia as nome_fantasia")
+                        ->join("sislo_status_vaga as ssv",
+                                "sv.id_sislo_status_vaga = "
+                                . "ssv.id_sislo_status_vaga")
+                        ->join("sislo_loterica_empresa as sle",
+                                "sv.cod_loterico = "
+                                . "sle.cod_loterico")
+                        ->orderBy('sv.data_publicacao', 'desc')->get();
+        return $query;
+    }
+
+    public function ajax_list_candidato_vaga() {
+        if ($this->request->isAJAX()) {
+            $sislo_fech = $this->carrega_vagas()->getResult();
+            $data = array();
+            $tt = 1; //mostra contagem na datatable
+            $tb = 0; //carrega campos de footer do datatable
+            foreach ($sislo_fech as $value) {
+                $data_inicio = new \DateTime($value->data_publicacao);
+                $data_fim = new \DateTime($value->data_limite);
+                $dateInterval = $data_inicio->diff($data_fim);
+                $row = array();
+                $row[] = $tt;
+                $row[] = $value->nome_fantasia;
+                $row[] = $value->cidade;
+                $row[] = date("d/m/Y", strtotime($value->data_publicacao));
+                $row[] = date("d/m/Y", strtotime($value->data_limite));
+                $row[] = $dateInterval->days;
+                $row[] = $value->cargo;
+                $row[] = $value->nome_status;
+                $row[] = '<a class="btn btn-primary" href="' .
+                        base_url('ver_vaga/?id=' .
+                                $value->id_sislo_vagas) . '">Ver Vaga</a>';
+
+                ++$tt;
+                ++$tb;
+                $data[] = $row;
+            }
+            $json = array(
+                "recordsTotal" => $tb,
+                "recordsFiltered" => $tb,
+                "data" => $data
+            );
+            echo json_encode($json);
+        } else {
+            echo view('sislo');
+        }
+    }
+
     public function candidato_editar_perfil() {
         $sislo_escolaridade_model = new \App\Models\Sislo_EscolaridadeModel;
         $candidato = new \App\Models\Sislo_CandidatoModel;

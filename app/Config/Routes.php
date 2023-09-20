@@ -27,6 +27,8 @@ $routes->get('empresa_area', 'Sislo_LotericaEmpresa::empresa_area');
 $routes->get('area_candidato_logado', 'Sislo_Candidato::area_candidato_logado');
 $routes->get('area_empresa_logado', 'Sislo_LotericaEmpresa::area_empresa_logado');
 $routes->get('candidato_perfil', 'Sislo_Candidato::candidato_perfil');
+$routes->get('candidato_vagas', 'Sislo_Candidato::candidato_vagas');
+$routes->post('ajax_list_candidato_vaga', 'Sislo_Candidato::ajax_list_candidato_vaga');
 $routes->get('candidato_editar_perfil', 'Sislo_Candidato::candidato_editar_perfil');
 $routes->post('salva_candidato', 'Sislo_Candidato::ajax_save_form');
 $routes->post('salva_empresa', 'Sislo_LotericaEmpresa::ajax_save_form');
@@ -276,6 +278,12 @@ $routes->get('statusvaga', 'Sislo_StatusVagas::index');
 $routes->post('ajax_list_vagas', 'Sislo_StatusVagas::ajax_list_vagas');
 $routes->get('redireciona_vagas', 'Sislo_StatusVagas::redireciona_vagas');
 $routes->post('salva_vaga', 'Sislo_StatusVagas::ajax_save_form');
+//fim cargo
+//inicio status das vagas
+$routes->get('empresa_vagas', 'Sislo_Vagas::index');
+$routes->post('ajax_list_vaga', 'Sislo_Vagas::ajax_list_vaga');
+$routes->get('redireciona_vaga', 'Sislo_Vagas::redireciona_vaga');
+$routes->post('salva_vaga_empresa', 'Sislo_Vagas::ajax_save_form');
 //fim cargo
 //inicio tipo servico
 $routes->add('sislo_tipo_servico', 'Sislo_Tipo_Servico::index');
