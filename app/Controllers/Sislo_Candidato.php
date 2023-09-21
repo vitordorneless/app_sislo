@@ -67,7 +67,7 @@ class Sislo_Candidato extends BaseController {
             sv.data_publicacao as data_publicacao,
             sv.data_limite as data_limite,
             sv.cargo as cargo,
-            ssv.nome_status as nome_status, sle.cidade as cidade, 
+            ssv.nome_status as nome_status, sle.cidade as cidade,sle.uf as uf, 
             sle.nome_fantasia as nome_fantasia")
                         ->join("sislo_status_vaga as ssv",
                                 "sv.id_sislo_status_vaga = "
@@ -91,12 +91,12 @@ class Sislo_Candidato extends BaseController {
                 $dateInterval = $data_inicio->diff($data_fim);
                 $row = array();
                 $row[] = $tt;
-                $row[] = $value->nome_fantasia;
-                $row[] = $value->cidade;
+                $row[] = strtoupper($value->nome_fantasia);
+                $row[] = strtoupper($value->cidade) . '/' . strtoupper($value->uf);
                 $row[] = date("d/m/Y", strtotime($value->data_publicacao));
                 $row[] = date("d/m/Y", strtotime($value->data_limite));
                 $row[] = $dateInterval->days;
-                $row[] = $value->cargo;
+                $row[] = strtoupper($value->cargo);
                 $row[] = $value->nome_status;
                 $row[] = '<a class="btn btn-primary" href="' .
                         base_url('ver_vaga/?id=' .

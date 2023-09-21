@@ -279,6 +279,12 @@ $routes->post('ajax_list_vagas', 'Sislo_StatusVagas::ajax_list_vagas');
 $routes->get('redireciona_vagas', 'Sislo_StatusVagas::redireciona_vagas');
 $routes->post('salva_vaga', 'Sislo_StatusVagas::ajax_save_form');
 //fim cargo
+//inicio status das vagas candidatos
+$routes->get('statusvagacandidato', 'Sislo_StatusVagasCandidato::index');
+$routes->post('ajax_list_vagas_candidato', 'Sislo_StatusVagasCandidato::ajax_list_vagas_candidato');
+$routes->get('redireciona_vagas_candidato', 'Sislo_StatusVagasCandidato::redireciona_vagas_candidato');
+$routes->post('salva_status_vaga_candidato', 'Sislo_StatusVagasCandidato::ajax_save_form');
+//fim cargo
 //inicio status das vagas
 $routes->get('empresa_vagas', 'Sislo_Vagas::index');
 $routes->post('ajax_list_vaga', 'Sislo_Vagas::ajax_list_vaga');

@@ -8,7 +8,7 @@
                 <tr>
                     <th>#</th>                    
                     <th>Empresa</th>
-                    <th>Cidade</th>
+                    <th>Localidade</th>
                     <th>Publicação</th>
                     <th>Data Limite</th>
                     <th>Dias para Fechamento</th>                    
