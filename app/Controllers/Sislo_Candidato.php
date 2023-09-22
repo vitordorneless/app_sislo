@@ -62,12 +62,12 @@ class Sislo_Candidato extends BaseController {
     public function carrega_vagas() {
         $db = \Config\Database::connect();
         $builder = $db->table('sislo_vagas as sv');
-        $query = $builder->select("sv.cod_loterico as cod_loterico, 
+        $query = $builder->select("sv.cod_loterico as cod_loterico,
             sv.id_sislo_vagas as id_sislo_vagas,
             sv.data_publicacao as data_publicacao,
             sv.data_limite as data_limite,
             sv.cargo as cargo,
-            ssv.nome_status as nome_status, sle.cidade as cidade,sle.uf as uf, 
+            ssv.nome_status as nome_status, sle.cidade as cidade,sle.uf as uf,
             sle.nome_fantasia as nome_fantasia")
                         ->join("sislo_status_vaga as ssv",
                                 "sv.id_sislo_status_vaga = "
@@ -114,6 +114,91 @@ class Sislo_Candidato extends BaseController {
             echo json_encode($json);
         } else {
             echo view('sislo');
+        }
+    }
+
+    public function carrega_ver_vagas($id) {
+        $db = \Config\Database::connect();
+        $builder = $db->table('sislo_vagas as sv');
+        $query = $builder->select("sv.cod_loterico as cod_loterico,
+            sv.id_sislo_vagas as id_sislo_vagas,
+            sv.data_publicacao as data_publicacao,
+            sv.data_limite as data_limite,
+            sv.salario as salario,
+            sv.salario as salario,
+            sv.carga_horaria as carga_horaria,
+            sv.forma_contratacao as forma_contratacao,
+            sv.responsabilidades as responsabilidades,
+            sv.requisitos as requisitos,
+            sv.beneficios as beneficios,
+            sv.diferenciais as diferenciais,
+            sv.cargo as cargo,sv.id_sislo_status_vaga as id_sislo_status_vaga,
+            ssv.nome_status as nome_status, sle.cidade as cidade,sle.uf as uf,
+            sle.nome_fantasia as nome_fantasia")
+                        ->join("sislo_status_vaga as ssv",
+                                "sv.id_sislo_status_vaga = "
+                                . "ssv.id_sislo_status_vaga")
+                        ->join("sislo_loterica_empresa as sle",
+                                "sv.cod_loterico = "
+                                . "sle.cod_loterico")
+                        ->where('sv.id_sislo_vagas', $id)
+                        ->orderBy('sv.data_publicacao', 'desc')->get();
+        return $query;
+    }
+
+    public function ver_vaga() {
+        if ($this->session->get('candidato_cpf')) {
+            $candidato = new \App\Models\Sislo_CandidatoModel;
+            $dados_candidato = $candidato->where('cpf', $this->session->get('candidato_cpf'))->first();
+            $dados = $this->carrega_ver_vagas($this->request->getGet('id'))->getResult();
+            $sislo_status = new \App\Models\Sislo_StatusVagaModel;            
+            $status = $sislo_status->where('status', 1)->orderBy('nome_status', 'asc')->findAll();  
+            $sislo_vagas_aplicadas = new \App\Models\Sislo_VagasAplicadasModel;
+            $aplicou = $sislo_vagas_aplicadas
+                    ->where('id_sislo_vagas',$dados[0]->id_sislo_vagas)
+                    ->where('id_sislo_candidato',$dados_candidato->id_sislo_candidato)
+                    ->first();
+
+            $data = array(
+                "scripts" => array(
+                    "ver_vaga.js",
+                    "sweetalert2.all.min.js",
+                    "jquery.validate.js",
+                    "jquery.mask.min.js",
+                    "jquery.maskMoney.min.js",
+                    "util.js"
+                ),
+                "user_name" => $dados_candidato->nome,
+                "incluir" => 1,
+                "aplicou" => !empty($aplicou->id_sislo_vagas_aplicadas) ? 1 : 0,
+                "id_sislo_candidato" => $dados_candidato->id_sislo_candidato,
+                "candidato_cpf" => $this->session->get('candidato_cpf'),
+                "nome_fantasia" => $dados[0]->nome_fantasia,
+                "uf" => $dados[0]->uf,
+                "cidade" => $dados[0]->cidade,
+                "responsabilidades" => $dados[0]->responsabilidades,
+                "requisitos" => $dados[0]->requisitos,
+                "beneficios" => $dados[0]->beneficios,
+                "diferenciais" => $dados[0]->diferenciais,
+                "nome_status" => $dados[0]->nome_status,
+                "cargo" => $dados[0]->cargo,
+                "salario" => $dados[0]->salario,
+                "carga_horaria" => $dados[0]->carga_horaria,
+                "forma_contratacao" => $dados[0]->forma_contratacao,
+                "id_sislo_status_vaga" => $dados[0]->id_sislo_status_vaga,
+                "data_limite" => $dados[0]->data_limite,
+                "data_publicacao" => $dados[0]->data_publicacao,
+                "status" => $status,
+                "id_sislo_vagas" => $dados[0]->id_sislo_vagas
+            );
+            echo view('template/candidato_header', $data);
+            echo view('template/candidato_menu');
+            echo view('template/candidato_content');
+            echo view('ver_vaga', $data);
+            echo view('template/candidato_footer', $data);
+            echo view('template/candidato_scripts', $data);
+        } else {
+            echo view('login');
         }
     }
 

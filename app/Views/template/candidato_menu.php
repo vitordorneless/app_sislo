@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('chamados'); ?>" class="nav-link">
+                    <a href="<?= base_url('candidato_vagas_aplicadas'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Vagas Aplicadas</p>
                     </a>
