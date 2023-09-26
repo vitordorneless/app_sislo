@@ -51,6 +51,7 @@
                             </div>
                             <h3>Vagas</h3>
                             <p class="lead mb-0">Veja as oportunidades que temos em aberto!</p>
+                            <p class="lead mb-0"><a href="vagas_aberto">Clique aqui!!</a></p>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -147,35 +148,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="testimonials text-center bg-light">
-            <div class="container">
-                <h2 class="mb-5">Quem é a Sislô???</h2>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="<?= base_url('startbootstrap/img/vitor.jpeg'); ?>" alt="">
-                            <h5>Vítor Dorneles</h5>
-                            <p class="font-weight-light mb-0">Empresário Lotérico desde 2018, com mais de 10 anos de experiência em Desenvolvimento WEB</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="<?= base_url('startbootstrap/img/marja.jpeg'); ?>" alt="">
-                            <h5>Marja Gonçalves</h5>
-                            <p class="font-weight-light mb-0">Empresária Lotérica desde 2018, Contadora com mais de 10 anos de experiência em auditoria</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="<?= base_url('startbootstrap/img/jairo.jpeg'); ?>" alt="">
-                            <h5>Jairo Machado</h5>
-                            <p class="font-weight-light mb-0">Empresário Lotérico desde 2018, Contador e Professor com mais de 30 anos de experiência em auditoria e tributos, colaborando nas maiores fábricas de elevadores do mundo!! (em memória)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </section>        
         <!-- Footer -->
         <footer class="footer bg-light">
             <div class="container">

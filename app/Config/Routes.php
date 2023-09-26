@@ -24,6 +24,8 @@ $routes->get('candidato_cadastro', 'Sislo_Candidato::include_candidate');
 $routes->get('ver_vaga', 'Sislo_Candidato::ver_vaga');
 $routes->get('empresa_cadastro', 'Sislo_LotericaEmpresa::include_empresa');
 $routes->get('area_candidato', 'Sislo_Candidato::area_candidato');
+$routes->get('vagas_aberto', 'Home::vagas_aberto');
+$routes->post('ajax_list_site_vaga', 'Home::ajax_list_site_vaga');
 $routes->get('empresa_area', 'Sislo_LotericaEmpresa::empresa_area');
 $routes->get('area_candidato_logado', 'Sislo_Candidato::area_candidato_logado');
 $routes->get('area_empresa_logado', 'Sislo_LotericaEmpresa::area_empresa_logado');
