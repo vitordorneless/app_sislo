@@ -20,27 +20,32 @@ $routes->add('sislo_teste', 'SisloTesteController::index');
 $routes->add('sair', 'Sislo::sair');
 $routes->add('ajax_login', 'Login::ajax_login');
 $routes->add('sislo', 'Sislo::index');
-$routes->get('candidato_cadastro', 'Sislo_Candidato::include_candidate');
-$routes->get('ver_vaga', 'Sislo_Candidato::ver_vaga');
-$routes->get('empresa_cadastro', 'Sislo_LotericaEmpresa::include_empresa');
-$routes->get('area_candidato', 'Sislo_Candidato::area_candidato');
+
 $routes->get('vagas_aberto', 'Home::vagas_aberto');
 $routes->post('ajax_list_site_vaga', 'Home::ajax_list_site_vaga');
-$routes->get('empresa_area', 'Sislo_LotericaEmpresa::empresa_area');
+
+$routes->get('candidato_cadastro', 'Sislo_Candidato::include_candidate');
+$routes->get('ver_vaga', 'Sislo_Candidato::ver_vaga');
+$routes->get('area_candidato', 'Sislo_Candidato::area_candidato');
 $routes->get('area_candidato_logado', 'Sislo_Candidato::area_candidato_logado');
-$routes->get('area_empresa_logado', 'Sislo_LotericaEmpresa::area_empresa_logado');
 $routes->get('candidato_perfil', 'Sislo_Candidato::candidato_perfil');
 $routes->get('candidato_vagas', 'Sislo_Candidato::candidato_vagas');
 $routes->post('ajax_list_candidato_vaga', 'Sislo_Candidato::ajax_list_candidato_vaga');
-$routes->post('ajax_list_vaga_aplicada', 'Sislo_VagasAplicadas::ajax_list_vaga_aplicada');
 $routes->get('candidato_editar_perfil', 'Sislo_Candidato::candidato_editar_perfil');
 $routes->post('salva_candidato', 'Sislo_Candidato::ajax_save_form');
-$routes->get('candidato_vagas_aplicadas', 'Sislo_VagasAplicadas::index');
-$routes->post('salva_empresa', 'Sislo_LotericaEmpresa::ajax_save_form');
-$routes->post('aplicarvaga', 'Sislo_VagasAplicadas::ajax_save_form');
 $routes->post('ajax_list_experiencia', 'Sislo_Candidato::ajax_list_experiencia');
 $routes->post('ajax_login_candidato', 'Sislo_Candidato::ajax_login_candidato');
+
+$routes->get('empresa_cadastro', 'Sislo_LotericaEmpresa::include_empresa');
+$routes->get('empresa_area', 'Sislo_LotericaEmpresa::empresa_area');
+$routes->get('area_empresa_logado', 'Sislo_LotericaEmpresa::area_empresa_logado');
+$routes->post('salva_empresa', 'Sislo_LotericaEmpresa::ajax_save_form');
 $routes->post('ajax_login_empresa', 'Sislo_LotericaEmpresa::ajax_login_empresa');
+
+$routes->post('ajax_list_vaga_aplicada', 'Sislo_VagasAplicadas::ajax_list_vaga_aplicada');
+$routes->get('candidato_vagas_aplicadas', 'Sislo_VagasAplicadas::index');
+$routes->post('aplicarvaga', 'Sislo_VagasAplicadas::ajax_save_form');
+
 //inicio base crud ajax
 $routes->add('sislo_usuarios', 'Sislo_Usuarios::index');
 $routes->add('ajax_list_user', 'Sislo_Usuarios::ajax_list_user');
