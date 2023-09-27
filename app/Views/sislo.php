@@ -123,22 +123,31 @@
                 <h3 class="card-title">Atalhos</h3>
             </div>
             <div class="card-body">
-                <a class="btn btn-app bg-blue" href="<?= base_url('redireciona_fechamento_caixa/?id=0'); ?>">
+                <a class="btn btn-app bg-blue" 
+                   href="<?= base_url('redireciona_fechamento_caixa/?id=0');
+                                ?>">
                     <i class="fas fa-barcode"></i> Fechamento de Caixa
                 </a>
-                <a class="btn btn-app bg-blue" href="<?= base_url('redireciona_comissao_jogosbolao/?id=0'); ?>">
+                <a class="btn btn-app bg-blue" 
+                   href="<?=
+                   base_url('redireciona_comissao_jogosbolao/?id=0');
+                   ?>">
                     <i class="fas fa-ticket-alt"></i> Comissão Bolão
                 </a>
-                <a class="btn btn-app bg-blue" href="<?= base_url('redireciona_comissao_jogos/?id=0'); ?>">
+                <a class="btn btn-app bg-blue" 
+                   href="<?= base_url('redireciona_comissao_jogos/?id=0'); ?>">
                     <i class="fas fa-coins"></i> Comissão Jogos
                 </a>
-                <a class="btn btn-app bg-blue" href="<?= base_url('protege_senha'); ?>">
+                <a class="btn btn-app bg-blue" 
+                   href="<?= base_url('protege_senha'); ?>">
                     <i class="fas fa-car"></i> Senha Protege
                 </a>
-                <a class="btn btn-app bg-blue" href="<?= base_url('redireciona_cob_servicos/?id=0'); ?>">
+                <a class="btn btn-app bg-blue" 
+                   href="<?= base_url('redireciona_cob_servicos/?id=0'); ?>">
                     <i class="fas fa-money-bill"></i> Cobrança Diária
                 </a>
-                <a class="btn btn-app bg-blue" href="<?= base_url('redireciona_decendio/?id=0'); ?>">
+                <a class="btn btn-app bg-blue" 
+                   href="<?= base_url('redireciona_decendio/?id=0'); ?>">
                     <i class="fas fa-money-check"></i> Decêndio
                 </a>
             </div>

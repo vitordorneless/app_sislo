@@ -38,6 +38,7 @@ $routes->post('ajax_login_candidato', 'Sislo_Candidato::ajax_login_candidato');
 
 $routes->get('empresa_cadastro', 'Sislo_LotericaEmpresa::include_empresa');
 $routes->get('empresa_area', 'Sislo_LotericaEmpresa::empresa_area');
+$routes->get('empresa_perfil', 'Sislo_LotericaEmpresa::empresa_perfil');
 $routes->get('area_empresa_logado', 'Sislo_LotericaEmpresa::area_empresa_logado');
 $routes->post('salva_empresa', 'Sislo_LotericaEmpresa::ajax_save_form');
 $routes->post('ajax_login_empresa', 'Sislo_LotericaEmpresa::ajax_login_empresa');

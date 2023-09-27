@@ -7,6 +7,24 @@ class Sislo_LotericaEmpresa extends BaseController {
     public function empresa_area() {
         echo view('empresa_area');
     }
+    
+    public function empresa_perfil() {        
+        $candidato = new \App\Models\Sislo_LotericaEmpresaModel;        
+        $dados = $candidato->where('cod_loterico', $this->session->get('codigo_loterico'))->first();
+        $data = array(
+            "scripts" => array(
+                "empresa_perfil.js", "slick.js", "util.js"
+            ),
+            "user_name" => $dados->nome_fantasia,            
+            'dados' => $dados
+        );
+        echo view('template/empresa_header', $data);
+        echo view('template/empresa_menu');
+        echo view('template/empresa_content');
+        echo view('empresa_perfil', $data);
+        echo view('template/empresa_footer', $data);
+        echo view('template/empresa_scripts', $data);
+    }
 
     public function ajax_login_empresa() {
         $json = array();
