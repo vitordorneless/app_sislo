@@ -121,16 +121,16 @@
                 </div>
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label class="text text-sm">Outros / Cartão (R$)</label>
-                        <input type="text" id="total_outros" name="total_outros" class="form-control convert_money" value="<?= $total_outros; ?>">
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="form-group">
                         <label class="text text-sm">Total PIX (R$)</label>
                         <input type="text" id="total_pix" name="total_pix" class="form-control convert_money" value="<?= $total_pix; ?>">
                     </div>
                 </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="text text-sm">Outros / Cartão (R$)</label>
+                        <input type="text" id="total_outros" name="total_outros" class="form-control convert_money" value="<?= $total_outros; ?>">
+                    </div>
+                </div>                
             </div>
             <div class="row">
                 <div class="col-sm-6">

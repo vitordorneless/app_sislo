@@ -62,7 +62,8 @@
         <div class="row">
             <table id="table_sislo_comissao_bolao_list" class="table table-striped table-bordered table-responsive text text-sm text-center">
                 <thead>
-                    <tr>                                                
+                    <tr>    
+                        <th>Data</th> 
                         <th>Jogo</th>
                         <th>Cotas</th>                        
                         <th>Valor Bolão</th>                        
