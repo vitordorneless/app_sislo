@@ -100,8 +100,8 @@ $(document).ready(function () {
                     var conteudo = response === '1' ? success_note('Candidato, \n\
 clique em Área do Candidato para cadastrar suas experiências!!<br>Sua senha inicial \n\
 é 102030')
-                            + buttonBack('sislo') : error_note('Candidato')
-                            + buttonBack('sislo');
+                            + buttonBack('area_candidato_logado') : error_note('Candidato')
+                            + buttonBack('area_candidato_logado');
                     $('#sislo_candidato')[0].reset();
                     $("#conteudo").empty();
                     if (response === '1') {
