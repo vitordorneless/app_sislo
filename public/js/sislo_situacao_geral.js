@@ -56,6 +56,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[4,'desc']],
                         data: datas.data_jogos
                     });
                     
@@ -72,6 +73,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[3,'desc']],
                         data: datas.data_salarios
                     });
                     
@@ -80,6 +82,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[2,'desc']],
                         data: datas.data_caixas
                     });
                     
@@ -88,6 +91,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[3,'desc']],
                         data: datas.data_nao_jogos
                     });
                     
@@ -96,6 +100,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[4,'desc']],
                         data: datas.data_bolao
                     });
                     
@@ -104,6 +109,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[3,'desc']],
                         data: datas.data_silce
                     });
 
@@ -112,6 +118,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[3,'desc']],
                         data: datas.data_ibc
                     });
                     
@@ -120,6 +127,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[3,'desc']],
                         data: datas.data_bilhete_federal
                     });
                     
@@ -128,6 +136,7 @@ $(document).ready(function () {
                         destroy: true,
                         searching: false,
                         ordering: false,
+                        order: [[3,'desc']],
                         data: datas.data_premios_pagos
                     });
                 }
