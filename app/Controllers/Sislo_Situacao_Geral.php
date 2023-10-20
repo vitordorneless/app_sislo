@@ -505,9 +505,10 @@ class Sislo_Situacao_Geral extends BaseController {
             $todos_recebiveis = bcadd(bcsub($nao_jogos, $caucao, 2), $total_todos_jogos, 2);
             $total_todos_situacao = bcsub($todos_recebiveis, $total_todos_deveres, 2);
 
-            $meta_multiplicacao_1 = bcadd($mes, $mes_jogos, 2);
-            $meta_multiplicacao_2 = bcdiv($total_todos_situacao, $meta_multiplicacao_1, 2);
-            $meta_multiplicacao = bcmul($meta_multiplicacao_2, 100, 2);
+            $meta_multiplicacao_1 = bcadd($total_todos_jogos, bcsub($nao_jogos, $caucao, 2), 2);
+            $meta_multiplicacao_2 = bcadd($mes, $mes_jogos, 2);
+            $meta_multiplicacao_3 = bcdiv($meta_multiplicacao_1, $meta_multiplicacao_2, 2);
+            $meta_multiplicacao = bcmul($meta_multiplicacao_3, 100, 2);
 
             $json = array(
                 "recordsTotal" => $tb,
