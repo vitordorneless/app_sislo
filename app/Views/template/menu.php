@@ -563,6 +563,23 @@
                         <p>Férias *</p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-person-booth"></i>
+                        <p>
+                            Sislo RH
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('sislo_rh_vagas'); ?>" class="nav-link">
+                                <i class="far fa-building nav-icon"></i>
+                                <p>Vagas</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </li>
     </ul>
