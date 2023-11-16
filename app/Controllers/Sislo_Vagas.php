@@ -27,6 +27,28 @@ class Sislo_Vagas extends BaseController {
         }
     }
 
+    public function index_sislo() {
+        if ($this->session->get('user_id')) {
+            $sislo_model = new \App\Models\Sislo_UsuariosModel;
+            $result = $sislo_model->find($this->session->get('user_id'));
+            $data = array(
+                "scripts" => array(
+                    "sislo_rh_vagas.js",
+                    "util.js"
+                ),
+                "user_name" => $result->sislo_nome
+            );
+            echo view('template/header', $data);
+            echo view('template/menu');
+            echo view('template/content');
+            echo view('sislo_rh_vagas', $data);
+            echo view('template/footer', $data);
+            echo view('template/scripts', $data);
+        } else {
+            echo view('login');
+        }
+    }
+
     public function carrega_vagas() {
         $db = \Config\Database::connect();
         $builder = $db->table('sislo_vagas as sv');
@@ -41,6 +63,22 @@ class Sislo_Vagas extends BaseController {
                                 . "ssv.id_sislo_status_vaga")
                         ->where("sv.cod_loterico", $this->session
                                 ->get('codigo_loterico'))
+                        ->orderBy('sv.data_publicacao', 'desc')->get();
+        return $query;
+    }
+
+    public function carrega_vagas_sislo() {
+        $db = \Config\Database::connect();
+        $builder = $db->table('sislo_vagas as sv');
+        $query = $builder->select("sv.cod_loterico as cod_loterico, 
+            sv.id_sislo_vagas as id_sislo_vagas,
+            sv.data_publicacao as data_publicacao,
+            sv.data_limite as data_limite,
+            sv.cargo as cargo,
+            ssv.nome_status as nome_status")
+                        ->join("sislo_status_vaga as ssv",
+                                "sv.id_sislo_status_vaga = "
+                                . "ssv.id_sislo_status_vaga")
                         ->orderBy('sv.data_publicacao', 'desc')->get();
         return $query;
     }
@@ -62,6 +100,38 @@ class Sislo_Vagas extends BaseController {
                 $row[] = '<a class="btn btn-primary" href="' .
                         base_url('redireciona_vaga/?id=' .
                                 $value->id_sislo_vagas) . '">Editar</a>';
+                ++$tt;
+                ++$tb;
+                $data[] = $row;
+            }
+            $json = array(
+                "recordsTotal" => $tb,
+                "recordsFiltered" => $tb,
+                "data" => $data
+            );
+            echo json_encode($json);
+        } else {
+            echo view('sislo');
+        }
+    }
+
+    public function ajax_list_vaga_sislo() {
+        if ($this->request->isAJAX()) {
+            $sislo_fech = $this->carrega_vagas_sislo()->getResult();
+            $data = array();
+            $tt = 1; //mostra contagem na datatable
+            $tb = 0; //carrega campos de footer do datatable
+            foreach ($sislo_fech as $value) {
+                $row = array();
+                $row[] = $tt;
+                $row[] = $value->cod_loterico;
+                $row[] = date("d/m/Y", strtotime($value->data_publicacao));
+                $row[] = date("d/m/Y", strtotime($value->data_limite));
+                $row[] = $value->cargo;
+                $row[] = $value->nome_status;
+                $row[] = '<a class="btn btn-primary" href="' .
+                        base_url('redireciona_vaga/?id=' .
+                                $value->id_sislo_vagas) . '">Candidatos</a>';
                 ++$tt;
                 ++$tb;
                 $data[] = $row;

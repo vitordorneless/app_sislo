@@ -545,24 +545,24 @@
                         <p>Ajuste de Ponto</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('sislo_funcionarios'); ?>" class="nav-link">
+                <!--<li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Contracheque *</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('sislo_funcionarios'); ?>" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Benefícios *</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('sislo_funcionarios'); ?>" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Férias *</p>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-person-booth"></i>
