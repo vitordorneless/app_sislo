@@ -129,7 +129,10 @@
                             echo '<td>';
                             echo '<a class="btn btn-primary" href="' .
                                     base_url('redireciona_entrevista/?id=' .
-                                            $value->id_sislo_vagas . '&id_sislo_candidato=' . $value->id_sislo_candidato) . '">Entrevistar</a>';
+                                            $value->id_sislo_vagas . 
+                                            '&id_sislo_candidato=' . 
+                                            $value->id_sislo_candidato) . 
+                                    '">Entrevistar</a>';
                             echo '</td>';
                             echo '</tr>';
                         }

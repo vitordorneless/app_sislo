@@ -48,10 +48,14 @@ $routes->get('candidato_vagas_aplicadas', 'Sislo_VagasAplicadas::index');
 $routes->post('aplicarvaga', 'Sislo_VagasAplicadas::ajax_save_form');
 
 //inicio base crud ajax
-$routes->add('sislo_usuarios', 'Sislo_Usuarios::index');
-$routes->add('ajax_list_user', 'Sislo_Usuarios::ajax_list_user');
-$routes->add('redireciona_usuario', 'Sislo_Usuarios::redireciona_usuario');
-$routes->add('salva_usuarios', 'Sislo_Usuarios::ajax_save_form');
+$routes->get('sislo_usuarios', 'Sislo_Usuarios::index');
+$routes->post('ajax_list_user', 'Sislo_Usuarios::ajax_list_user');
+$routes->get('redireciona_usuario', 'Sislo_Usuarios::redireciona_usuario');
+$routes->post('salva_usuarios', 'Sislo_Usuarios::ajax_save_form');
+//inicio base crud ajax
+//inicio base entrevista
+$routes->get('redireciona_entrevista', 'Sislo_CandidatoEntrevista::redireciona_entrevista');
+$routes->post('salva_entrevista', 'Sislo_CandidatoEntrevista::ajax_save_form');
 //inicio base crud ajax
 $routes->get('candidato_experiencia', 'Sislo_CandidatoExperiencia::index');
 $routes->post('ajax_list_candidato_experiencia', 'Sislo_CandidatoExperiencia::ajax_list_candidato_experiencia');
