@@ -285,6 +285,12 @@ $routes->add('ajax_list_cargo', 'Sislo_Cargo::ajax_list_cargo');
 $routes->add('redireciona_cargo', 'Sislo_Cargo::redireciona_cargo');
 $routes->add('salva_cargo', 'Sislo_Cargo::ajax_save_form');
 //fim cargo
+//inicio metodo star
+$routes->add('sislo_star', 'Sislo_StarMetodo::index');
+$routes->add('ajax_list_star_metodo', 'Sislo_StarMetodo::ajax_list_star_metodo');
+$routes->add('redireciona_star_metodo', 'Sislo_StarMetodo::redireciona_star_metodo');
+$routes->add('salva_star_metodo', 'Sislo_StarMetodo::ajax_save_form');
+//fim cargo
 //inicio status das vagas
 $routes->get('statusvaga', 'Sislo_StatusVagas::index');
 $routes->post('ajax_list_vagas', 'Sislo_StatusVagas::ajax_list_vagas');

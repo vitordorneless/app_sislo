@@ -578,6 +578,12 @@
                                 <p>Vagas</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('sislo_star'); ?>" class="nav-link">
+                                <i class="far fa-star nav-icon"></i>
+                                <p>Método Star</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
