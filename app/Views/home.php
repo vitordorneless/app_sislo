@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Lotérica Mel</title>
+        <title>Sislo</title>
         <link href="<?php echo base_url('startbootstrap/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
         <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('AdminLTE/dist/img/favicon.ico'); ?>">
         <link href="<?= base_url('startbootstrap/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet">

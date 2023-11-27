@@ -49,9 +49,9 @@ class Sislo_PEC extends BaseController {
             foreach ($sislo as $value) {
                 $row = array();
                 $row[] = $tt;
-                $row[] = $value->tipo_de_pec;                
+                $row[] = $value->tipo_de_pec;
                 $row[] = $value->nome_convenio;
-                $row[] = $value->convenio;                
+                $row[] = $value->convenio;
                 $row[] = $value->identificador;
                 $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_pec/?id=' . $value->idsislo_pec) . '">Editar</a>';
                 ++$tt;
@@ -69,7 +69,7 @@ class Sislo_PEC extends BaseController {
         }
     }
 
-    public function redireciona() {//arrumar fazer as views e routes
+    public function redireciona() {
         if ($this->session->get('user_id')) {
             $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;
             $sislo_model = new \App\Models\Sislo_PECModel;
@@ -168,5 +168,4 @@ class Sislo_PEC extends BaseController {
             echo view('login');
         }
     }
-
 }
