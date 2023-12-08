@@ -38,6 +38,8 @@ class Sislo_CandidatoEntrevista extends BaseController {
                     "sislo_entrevista.js",
                     "sweetalert2.all.min.js",
                     "jquery.validate.js",
+                    "jquery.mask.min.js",
+                    "jquery.maskMoney.min.js",
                     "util.js"
                 ),
                 "user_name" => $dadosuser->sislo_nome,
@@ -59,7 +61,6 @@ class Sislo_CandidatoEntrevista extends BaseController {
                 "forma_contratacao" => $dados['forma_contratacao'],
                 "id_sislo_status_vaga" => $dados['id_sislo_status_vaga'],
                 "status" => $status,
-                "id_sislo_candidato" => $this->request->getGet('id_sislo_candidato'),
                 "candidato" => $candidato
             );
             echo view('template/header', $data);
@@ -77,8 +78,8 @@ class Sislo_CandidatoEntrevista extends BaseController {
 
         if ($this->request->isAJAX()) {
             $sislo_model = new \App\Models\Sislo_CandidatoEntrevistaModel();
-            $pontuacao_1=$pontuacao_2=$pontuacao_3=$pontuacao_4=$pontuacao_5 = 0;
-            
+            $pontuacao_1 = $pontuacao_2 = $pontuacao_3 = $pontuacao_4 = $pontuacao_5 = 0;
+
             if ($this->request->getPost('resposta1_1') == 1) {
                 $pontuacao_1 = $this->request->getPost('pontuacao1_1');
             }
@@ -91,10 +92,7 @@ class Sislo_CandidatoEntrevista extends BaseController {
             if ($this->request->getPost('resposta4_1') == 1) {
                 $pontuacao_1 = $this->request->getPost('pontuacao4_1');
             }
-            if ($this->request->getPost('resposta5_1') == 1) {
-                $pontuacao_1 = $this->request->getPost('pontuacao5_1');
-            }
-            
+
             if ($this->request->getPost('resposta1_2') == 1) {
                 $pontuacao_2 = $this->request->getPost('pontuacao1_2');
             }
@@ -107,10 +105,7 @@ class Sislo_CandidatoEntrevista extends BaseController {
             if ($this->request->getPost('resposta4_2') == 1) {
                 $pontuacao_2 = $this->request->getPost('pontuacao4_2');
             }
-            if ($this->request->getPost('resposta5_2') == 1) {
-                $pontuacao_2 = $this->request->getPost('pontuacao5_2');
-            }
-            
+
             if ($this->request->getPost('resposta1_3') == 1) {
                 $pontuacao_3 = $this->request->getPost('pontuacao1_3');
             }
@@ -123,10 +118,7 @@ class Sislo_CandidatoEntrevista extends BaseController {
             if ($this->request->getPost('resposta4_3') == 1) {
                 $pontuacao_3 = $this->request->getPost('pontuacao4_3');
             }
-            if ($this->request->getPost('resposta5_3') == 1) {
-                $pontuacao_3 = $this->request->getPost('pontuacao5_3');
-            }
-            
+
             if ($this->request->getPost('resposta1_4') == 1) {
                 $pontuacao_4 = $this->request->getPost('pontuacao1_4');
             }
@@ -139,10 +131,7 @@ class Sislo_CandidatoEntrevista extends BaseController {
             if ($this->request->getPost('resposta4_4') == 1) {
                 $pontuacao_4 = $this->request->getPost('pontuacao4_4');
             }
-            if ($this->request->getPost('resposta5_4') == 1) {
-                $pontuacao_4 = $this->request->getPost('pontuacao5_4');
-            }
-            
+
             if ($this->request->getPost('resposta1_5') == 1) {
                 $pontuacao_5 = $this->request->getPost('pontuacao1_5');
             }
@@ -154,9 +143,6 @@ class Sislo_CandidatoEntrevista extends BaseController {
             }
             if ($this->request->getPost('resposta4_5') == 1) {
                 $pontuacao_5 = $this->request->getPost('pontuacao4_5');
-            }
-            if ($this->request->getPost('resposta5_5') == 1) {
-                $pontuacao_5 = $this->request->getPost('pontuacao5_5');
             }
 
             $sislo_model->set('id_sislo_candidato', $this->request->getPost('id_sislo_candidato'));
@@ -174,16 +160,17 @@ class Sislo_CandidatoEntrevista extends BaseController {
             $sislo_model->set('pontuacao_4', $pontuacao_4);
             $sislo_model->set('id_sislo_star_metodo_5', $this->request->getPost('id_sislo_star_metodo_5'));
             $sislo_model->set('pontuacao_5', $pontuacao_5);
-            $sislo_model->set('parecer_rh', $this->request->getPost('parecer_rh'));
+            $sislo_model->set('parecer_rh', trim($this->request->getPost('parecer_rh')));
             $sislo_model->set('status', 1);
             $sislo_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
+            echo $sislo_model->insert() == true ? 1 : 0;
 
-            if ($this->request->getPost('incluir') == '1') {
-                echo $sislo_model->insert() == true ? 1 : 0;
-            } else {
-                $sislo_model->where('id_sislo_candidato_entrevista', $this->request->getPost('id_sislo_candidato_entrevista'));
-                echo $sislo_model->update() == true ? 1 : 0;
-            }
+            /* if ($this->request->getPost('incluir') == '1') {
+              echo $sislo_model->insert() == true ? 1 : 0;
+              } else {
+              $sislo_model->where('id_sislo_candidato_entrevista', $this->request->getPost('id_sislo_candidato_entrevista'));
+              echo $sislo_model->update() == true ? 1 : 0;
+              } */
         } else {
             echo view('login');
         }

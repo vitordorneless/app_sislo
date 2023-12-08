@@ -153,7 +153,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>Compareceu?</label>
-                        <input type="checkbox" class="form-control form-check-input" id="compareceu">
+                        <input type="checkbox" class="form-control form-check-input" name="compareceu" id="compareceu">
                     </div>
                 </div>
             </div>
@@ -161,8 +161,8 @@
                 <?php
                 $conta_pergunta = 1;
                 foreach ($perguntas as $value) {
-                    echo '<div class="col-sm-12">'; //1
-                    echo '<div class="form-group">'; //2
+                    echo '<div class="col-sm-12">';
+                    echo '<div class="form-group">';
                     echo '<label class="text text-sm">Pergunta Nº ' . $conta_pergunta . '</label>';
                     echo '<input type="hidden" id="id_sislo_star_metodo_' . $conta_pergunta . '" name="id_sislo_star_metodo_' . $conta_pergunta . '" class="form-control" value="' . $value->id_sislo_star_metodo . '">';
                     echo '<input type="text" id="pergunta" name="pergunta" '
