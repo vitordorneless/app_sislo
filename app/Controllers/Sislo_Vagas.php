@@ -131,7 +131,12 @@ class Sislo_Vagas extends BaseController {
                 $row[] = $value->nome_status;
                 $row[] = '<a class="btn btn-primary" href="' .
                         base_url('redireciona_candidato/?id=' .
-                                $value->id_sislo_vagas) . '">Candidatos</a>';
+                                $value->id_sislo_vagas) . '">Candidatos</a>' .
+                        '<a class="btn btn-info" href="' . PHP_EOL .
+                        base_url('redireciona_status_vaga/?id=' .
+                                $value->id_sislo_vagas) . '">Vaga</a>'
+
+                ;
                 ++$tt;
                 ++$tb;
                 $data[] = $row;
@@ -160,7 +165,7 @@ class Sislo_Vagas extends BaseController {
                         ->orderBy('sva.data_ultima_alteracao', 'desc')->get();
         return $query;
     }
-    
+
     public function ajax_list_candidatos_sislo() {
         if ($this->request->isAJAX()) {
             $sislo_candidatos = $this->carrega_candidatos_vagas_sislo($this->request->getGet('id'))->getResult();
@@ -168,7 +173,7 @@ class Sislo_Vagas extends BaseController {
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
             foreach ($sislo_candidatos as $value) {
-                $row = array();                
+                $row = array();
                 $row[] = $value->nome_candidato;
                 $row[] = '<a class="btn btn-primary" href="' .
                         base_url('redireciona_entrevista/?id=' .
@@ -260,7 +265,7 @@ class Sislo_Vagas extends BaseController {
             $sislo_status = new \App\Models\Sislo_StatusVagaModel;
             $status = $sislo_status->where('status', 1)->orderBy('nome_status', 'asc')->findAll();
             $dados = array();
-
+            $incluir = 1;
             $dados_loterica = $sislo_model->find($this->request->getGet('id'));
             $dados['id_sislo_vagas'] = $dados_loterica->id_sislo_vagas;
             $dados['cod_loterico'] = $dados_loterica->cod_loterico;
@@ -288,8 +293,8 @@ class Sislo_Vagas extends BaseController {
                     "util.js"
                 ),
                 "user_name" => $dadosuser->nome_fantasia,
-                "incluir" => $incluir,
                 "id_sislo_vagas" => $dados['id_sislo_vagas'],
+                "incluir" => $incluir,
                 "cod_loterico" => $dados['cod_loterico'],
                 "data_publicacao" => $dados['data_publicacao'],
                 "data_limite" => $dados['data_limite'],
@@ -311,6 +316,71 @@ class Sislo_Vagas extends BaseController {
             echo view('sislo_vagas_crud', $data);
             echo view('template/empresa_footer', $data);
             echo view('template/empresa_scripts', $data);
+        } else {
+            echo view('sislo');
+        }
+    }
+
+    public function redireciona_status_vaga() {
+
+        if ($this->session->get('user_id')) {
+            $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;
+            $sislo_model = new \App\Models\Sislo_VagasModel;
+            $dadosuser = $sislo_usuarios_model->find($this->session->get('user_id'));
+            $sislo_status = new \App\Models\Sislo_StatusVagaModel;
+            $status = $sislo_status->where('status', 1)->orderBy('nome_status', 'asc')->findAll();
+            $dados = array();
+            $incluir = 2;
+            $dados_loterica = $sislo_model->find($this->request->getGet('id'));
+            $dados['id_sislo_vagas'] = $dados_loterica->id_sislo_vagas;
+            $dados['cod_loterico'] = $dados_loterica->cod_loterico;
+            $dados['data_publicacao'] = $dados_loterica->data_publicacao;
+            $dados['data_limite'] = $dados_loterica->data_limite;
+            $dados['cargo'] = $dados_loterica->cargo;
+            $dados['responsabilidades'] = $dados_loterica->responsabilidades;
+            $dados['requisitos'] = $dados_loterica->requisitos;
+            $dados['beneficios'] = $dados_loterica->beneficios;
+            $dados['salario'] = $dados_loterica->salario;
+            $dados['diferenciais'] = $dados_loterica->diferenciais;
+            $dados['vaga_promovida'] = $dados_loterica->vaga_promovida;
+            $dados['carga_horaria'] = $dados_loterica->carga_horaria;
+            $dados['forma_contratacao'] = $dados_loterica->forma_contratacao;
+            $dados['id_sislo_status_vaga'] = $dados_loterica->id_sislo_status_vaga;
+            unset($dados_loterica);
+
+            $data = array(
+                "scripts" => array(
+                    "sislo_vagas_crud.js",
+                    "sweetalert2.all.min.js",
+                    "jquery.validate.js",
+                    "jquery.mask.min.js",
+                    "jquery.maskMoney.min.js",
+                    "util.js"
+                ),
+                "user_name" => $dadosuser->sislo_nome,
+                "incluir" => $incluir,
+                "id_sislo_vagas" => $dados['id_sislo_vagas'],
+                "cod_loterico" => $dados['cod_loterico'],
+                "data_publicacao" => $dados['data_publicacao'],
+                "data_limite" => $dados['data_limite'],
+                "cargo" => $dados['cargo'],
+                "responsabilidades" => $dados['responsabilidades'],
+                "requisitos" => $dados['requisitos'],
+                "beneficios" => $dados['beneficios'],
+                "salario" => $dados['salario'],
+                "diferenciais" => $dados['diferenciais'],
+                "vaga_promovida" => $dados['vaga_promovida'],
+                "carga_horaria" => $dados['carga_horaria'],
+                "forma_contratacao" => $dados['forma_contratacao'],
+                "id_sislo_status_vaga" => $dados['id_sislo_status_vaga'],
+                "status" => $status
+            );
+            echo view('template/header', $data);
+            echo view('template/menu');
+            echo view('template/content');
+            echo view('sislo_vagas_crud', $data);
+            echo view('template/footer', $data);
+            echo view('template/scripts', $data);
         } else {
             echo view('sislo');
         }

@@ -70,8 +70,15 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>Vaga Promovida?</label>
-                        <input type="checkbox" class="form-control form-check-input" id="vaga_promovida">
-
+                        <?php
+                        $checked_vaga_promovida = $vaga_promovida == 1 ?
+                                'checked="checked"' : '';
+                        ?>
+                        <input type="checkbox" 
+                               class="form-control form-check-input"
+                               <?= $checked_vaga_promovida; ?>
+                               id="vaga_promovida"
+                               >
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -119,7 +126,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         <button class="btn btn-danger" type="submit">
-                            <i class="fas fa-archive"></i>  Publicar Vaga
+                            <i class="fas fa-archive"></i>  <?= $incluir == 1 ? 'Publicar' : 'Editar'; ?>&nbsp;Vaga
                         </button>
                     </div>
                 </div>

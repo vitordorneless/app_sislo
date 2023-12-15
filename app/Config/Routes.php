@@ -315,6 +315,7 @@ $routes->post('ajax_list_vaga_sislo', 'Sislo_Vagas::ajax_list_vaga_sislo');
 $routes->post('ajax_list_candidatos_sislo', 'Sislo_Vagas::ajax_list_candidatos_sislo');
 $routes->get('redireciona_vaga', 'Sislo_Vagas::redireciona_vaga');
 $routes->get('redireciona_candidato', 'Sislo_Vagas::redireciona_candidato');
+$routes->get('redireciona_status_vaga', 'Sislo_Vagas::redireciona_status_vaga');
 $routes->post('salva_vaga_empresa', 'Sislo_Vagas::ajax_save_form');
 //fim cargo
 //inicio tipo servico
