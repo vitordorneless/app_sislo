@@ -129,14 +129,23 @@ class Sislo_Vagas extends BaseController {
                 $row[] = date("d/m/Y", strtotime($value->data_limite));
                 $row[] = $value->cargo;
                 $row[] = $value->nome_status;
+                if ($value->nome_status == 'Fechada' or 
+                        $value->nome_status == 'Processo de Contratação') {
+                    $parecer = '<a class="btn btn-danger" href="' .
+                            base_url('redireciona_fechamento_vaga/?id=' .
+                                    $value->id_sislo_vagas) . '">Parecer</a>';
+                } else {
+                    $parecer = '';
+                }
                 $row[] = '<a class="btn btn-primary" href="' .
                         base_url('redireciona_candidato/?id=' .
-                                $value->id_sislo_vagas) . '">Candidatos</a>' .
-                        '<a class="btn btn-info" href="' . PHP_EOL .
+                                $value->id_sislo_vagas) .
+                        '">Candidatos</a>' . PHP_EOL .
+                        '<a class="btn btn-info" href="' .
                         base_url('redireciona_status_vaga/?id=' .
-                                $value->id_sislo_vagas) . '">Vaga</a>'
-
-                ;
+                                $value->id_sislo_vagas) .
+                        '">Vaga</a>' . PHP_EOL .
+                        $parecer;
                 ++$tt;
                 ++$tb;
                 $data[] = $row;
