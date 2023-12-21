@@ -7,7 +7,7 @@
         <meta name="author" content="">
         <title>Sislo</title>
         <link href="<?php echo base_url('startbootstrap/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-        <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('AdminLTE/dist/img/favicon.ico'); ?>">
+        <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('startbootstrap/img/favicon.ico'); ?>">
         <link href="<?= base_url('startbootstrap/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet">
         <link href="<?= base_url('startbootstrap/vendor/simple-line-icons/css/simple-line-icons.css'); ?>" rel="stylesheet" type="text/css">
         <link href="<?= base_url('startbootstrap/vendor/fontawesome-free/css/all.css'); ?>" rel="stylesheet" type="text/css">
@@ -162,13 +162,28 @@
                     <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item mr-3">
-                                <a href="#">
+                                <a href="https://www.facebook.com/profile.php?id=61554854580661" target="_blank">
                                     <i class="fab fa-facebook fa-2x fa-fw"></i>
                                 </a>
                             </li>                            
                             <li class="list-inline-item">
-                                <a href="#">
+                                <a href="#" target="_blank">
                                     <i class="fab fa-instagram fa-2x fa-fw"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="tel:+5551994336363">
+                                    <i class="fab fa-whatsapp fa-2x fa-fw"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/company/sislo-recrutamento-e-seleção" target="_blank">
+                                    <i class="fab fa-linkedin fa-2x fa-fw"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:vitor.dorneles@sislo.com.br">
+                                    <i class="fa fa-envelope fa-2x fa-fw"></i>
                                 </a>
                             </li>
                         </ul>
