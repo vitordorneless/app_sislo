@@ -121,34 +121,34 @@
                 </div>
             </div>
         </section>
-        <section class="testimonials text-center bg-light">
+        <!--<section class="testimonials text-center bg-light">
             <div class="container">
                 <h2 class="mb-5">O que Empresários Lotéricos andam falando...</h2>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="<?= base_url('startbootstrap/img/testimonials-1.jpg'); ?>" alt="">
+                            <img class="img-fluid rounded-circle mb-3" src="base_url('startbootstrap/img/testimonials-1.jpg'); ?>" alt="">
                             <h5>Margaret E.</h5>
                             <p class="font-weight-light mb-0">"Sistema Incrível, faz eu ter controle total de minha lotérica, não precisando mais usar planilhas e papel!"</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="<?= base_url('startbootstrap/img/testimonials-1.jpg'); ?>" alt="">
+                            <img class="img-fluid rounded-circle mb-3" src="base_url('startbootstrap/img/testimonials-1.jpg'); ?>" alt="">
                             <h5>Margaret E.</h5>
                             <p class="font-weight-light mb-0">"Sistema Incrível, faz eu ter controle total de minha lotérica, não precisando mais usar planilhas e papel!"</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="<?= base_url('startbootstrap/img/testimonials-1.jpg'); ?>" alt="">
+                            <img class="img-fluid rounded-circle mb-3" src="base_url('startbootstrap/img/testimonials-1.jpg'); ?>" alt="">
                             <h5>Margaret E.</h5>
                             <p class="font-weight-light mb-0">"Sistema Incrível, faz eu ter controle total de minha lotérica, não precisando mais usar planilhas e papel!"</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>        
+        </section>        -->
         <!-- Footer -->
         <footer class="footer bg-light">
             <div class="container">
@@ -157,7 +157,7 @@
                         <?php
                         $hj = new DateTime('now');
                         ?>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; sislo.com.br <?= $hj->format('Y'); ?>. All Rights Reserved.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Sislo CNPJ: 52.688.425/0001-39 <?= $hj->format('Y'); ?>. Todos os Diretos Reservados.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
                         <ul class="list-inline mb-0">
@@ -165,12 +165,7 @@
                                 <a href="#">
                                     <i class="fab fa-facebook fa-2x fa-fw"></i>
                                 </a>
-                            </li>
-                            <li class="list-inline-item mr-3">
-                                <a href="#">
-                                    <i class="fab fa-twitter-square fa-2x fa-fw"></i>
-                                </a>
-                            </li>
+                            </li>                            
                             <li class="list-inline-item">
                                 <a href="#">
                                     <i class="fab fa-instagram fa-2x fa-fw"></i>

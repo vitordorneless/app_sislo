@@ -116,6 +116,8 @@
                         </tr>
                         <tr>
                             <th>Nome</th>
+                            <th>Tel</th>
+                            <th>E-mail</th>
                             <th>Pontuação Método STAR</th>
                             <th>Parecer</th>                            
                         </tr>
@@ -132,6 +134,12 @@
                             echo '<tr>';
                             echo '<td>';
                             echo $value->nome_candidato;
+                            echo '</td>';
+                            echo '<td>';
+                            echo $value->telefone;
+                            echo '</td>';
+                            echo '<td>';
+                            echo $value->email;
                             echo '</td>';
                             echo '<td><strong>';
                             echo $pontuacao;

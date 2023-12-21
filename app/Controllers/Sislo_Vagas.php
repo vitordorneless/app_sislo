@@ -183,7 +183,8 @@ class Sislo_Vagas extends BaseController {
             sc.nome as nome_candidato, sce.pontuacao_1 as pontuacao_1,
             sce.pontuacao_2 as pontuacao_2,sce.pontuacao_3 as pontuacao_3,
             sce.pontuacao_4 as pontuacao_4,
-            sce.pontuacao_5 as pontuacao_5, parecer_rh")
+            sce.pontuacao_5 as pontuacao_5, sce.parecer_rh, 
+            sc.email as email, sc.telefone as telefone")
                         ->join("sislo_candidato as sc",
                                 "sva.id_sislo_candidato = "
                                 . "sc.id_sislo_candidato")
