@@ -8,7 +8,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Dia Inicial</label>
-                        <input type="date" id="dia_inicial" name="dia_inicial" class="form-control">
+                        <input type="date" id="dia_inicial" name="dia_inicial" required="required" class="form-control">
                         <input type="hidden" id="incluir" name="incluir" class="form-control" value="<?= $incluir; ?>">
                         <input type="hidden" id="cod_loterico" name="cod_loterico" class="form-control" value="<?= $cod_loterico; ?>">
                     </div>
