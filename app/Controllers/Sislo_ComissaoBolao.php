@@ -132,6 +132,7 @@ class Sislo_ComissaoBolao extends BaseController {
             $data = array();
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
+            $soma = array();
             foreach ($sislo_comissao as $value) {
                 $row = array();
                 $row[] = $tt;
@@ -139,6 +140,7 @@ class Sislo_ComissaoBolao extends BaseController {
                 $row[] = $value->nome;
                 $row[] = trim($value->cotas);
                 $row[] = $this->formataValoresMonetarios($value->valor_tarifa);
+                $soma[] = $value->valor_tarifa;
                 ++$tt;
                 ++$tb;
                 $data[] = $row;
@@ -146,6 +148,7 @@ class Sislo_ComissaoBolao extends BaseController {
             $json = array(
                 "recordsTotal" => $tb,
                 "recordsFiltered" => $tb,
+                "sominha" => number_format(array_sum($soma), 2, ',', '.'),
                 "data" => $data
             );
             echo json_encode($json);

@@ -25,6 +25,7 @@ $(document).ready(function () {
                 success: function (datas) {
                     clearErrors();
                     $("#antes").empty();
+                    $("#sominha").val(datas.sominha);
                     $('html,body').animate({scrollTop: document.body.scrollHeight}, "fast");
                     $("#table_sislo_situacao_boloes").DataTable({
                         oLanguage: DATATABLE_PTBR,
