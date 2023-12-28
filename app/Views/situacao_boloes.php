@@ -2,7 +2,7 @@
     <div class="card-header">
         <h3 class="card-title">Situação Bolões</h3>
     </div>
-    <div class="card-body">        
+    <div class="card-body">
         <div class="row">
             <form class="form-inline" id="sislo_situacao_boloes" method="POST">
                 <?php
@@ -26,7 +26,7 @@
                         <option value="11" <?= $mes == '11' ? 'selected' : ''; ?>>Novembro</option>
                         <option value="12" <?= $mes == '12' ? 'selected' : ''; ?>>Dezembro</option>
                     </select>
-                </div>           
+                </div>
                 <div class="form-group">
                     <label class="text text-sm">&nbsp;&nbsp;&nbsp;Ano: &nbsp;&nbsp;&nbsp;</label>
                     <select id="ano" name="ano" class="form-control">
@@ -41,13 +41,13 @@
                     </select>
                 </div>
                 &nbsp;&nbsp;&nbsp;
-                <div class="form-group">                        
+                <div class="form-group">
                     <button class="btn btn-danger" id="btnform" type="submit">
                         <i class="fas fa-asterisk"></i>  Visualizar
                     </button>
-                </div>                    
+                </div>
             </form>
-        </div>        
+        </div>
     </div>
     <div class="card-footer" id="conteudo">
         <div class="row" id="antes"></div>
@@ -55,11 +55,10 @@
             <table id="table_sislo_situacao_boloes" class="table table-striped table-bordered table-responsive text text-sm text-center">
                 <thead>
                     <tr>
-                        <th>#</th>                                                
-                        <th>Data Inicial</th>                                                
+                        <th>#</th>
                         <th>Jogo</th>
                         <th>Cotas</th>
-                        <th>Valor Comissão</th>                        
+                        <th>Valor Comissão</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

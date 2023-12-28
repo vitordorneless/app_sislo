@@ -114,7 +114,7 @@ class Sislo_ComissaoBolao extends BaseController {
         $db = \Config\Database::connect();
         $cod_lot = $this->session->get('cod_lot');
         $builder = $db->table('sislo_comissao_bolao as scs');
-        $query = $builder->select("scs.dia_inicial as dia_inicial, sts.nome as nome, SUM(scs.cotas) as cotas, SUM(scs.valor_tarifa) as valor_tarifa ")
+        $query = $builder->select("sts.nome as nome, SUM(scs.cotas) as cotas, SUM(scs.valor_tarifa) as valor_tarifa ")
                 ->join("sislo_jogos_cef as sts", "scs.id_sislo_jogos_cef = sts.idsislo_jogos_cef ", "inner ")
                 ->where('MONTH(scs.dia_inicial)', $this->request->getPost('mes'))
                 ->where('YEAR(scs.dia_inicial)', $this->request->getPost('ano'))
