@@ -263,6 +263,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= base_url('sislo_jogos_cef'); ?>" class="nav-link">
+                        <i class="far fa-gamepad nav-icon"></i>
+                        <p>Valor dos Jogos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= base_url('sislo_mega_semana'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mega-Semana</p>
