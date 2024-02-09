@@ -376,6 +376,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= base_url('sislo_calculadora_boloes'); ?>" class="nav-link">
+                        <i class="far fa-calculator nav-icon"></i>
+                        <p>Calculadora de BOLÃO</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= base_url('sislo_comissao_silce'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Comissão SILCE</p>
