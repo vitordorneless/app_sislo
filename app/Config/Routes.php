@@ -372,6 +372,8 @@ $routes->add('redireciona_comissao_jogosbolao', 'Sislo_ComissaoBolao::redirecion
 $routes->add('ajax_save_formbolao', 'Sislo_ComissaoBolao::ajax_save_form');
 $routes->add('situacao_boloes', 'Sislo_ComissaoBolao::situacao_boloes');
 $routes->add('ajax_table_sislo_situacao_boloes', 'Sislo_ComissaoBolao::ajax_table_sislo_situacao_boloes');
+$routes->add('sislo_calculadora_boloes', 'Sislo_ComissaoBolao::sislo_calculadora_boloes');
+$routes->add('ajax_list_calculadora_bolao', 'Sislo_ComissaoBolao::ajax_list_calculadora_bolao');
 //fim 
 //inicio premios pagos com busca
 $routes->add('sislo_premios_pagos', 'Sislo_Premios_Pagos::index');

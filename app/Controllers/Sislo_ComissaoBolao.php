@@ -28,6 +28,33 @@ class Sislo_ComissaoBolao extends BaseController {
         }
     }
 
+    public function sislo_calculadora_boloes() {
+        if ($this->session->get('user_id')) {
+            $sislo_fechamento = new \App\Models\Sislo_UsuariosModel;
+            $result = $sislo_fechamento->find($this->session->get('user_id'));
+            $data = array(
+                "scripts" => array(
+                    "sislo_calculadora_bolao.js",
+                    "jquery.validate.js",
+                    "jquery.validate.js",
+                    "jquery.mask.min.js",
+                    "jquery.maskMoney.min.js",
+                    "sweetalert2.all.min.js",
+                    "util.js"
+                ),
+                "user_name" => $result->sislo_nome
+            );
+            echo view('template/header', $data);
+            echo view('template/menu');
+            echo view('template/content');
+            echo view('sislo_calculadora_bolao', $data);
+            echo view('template/footer', $data);
+            echo view('template/scripts', $data);
+        } else {
+            echo view('login');
+        }
+    }
+
     public function situacao_boloes() {
         if ($this->session->get('user_id')) {
             $sislo_fechamento = new \App\Models\Sislo_UsuariosModel;
@@ -156,6 +183,37 @@ class Sislo_ComissaoBolao extends BaseController {
             echo view('login');
         }
     }
+    
+    public function ajax_list_calculadora_bolao() {//aqui começa a calculadora
+        if ($this->request->isAJAX()) {
+            $sislo_comissao = $this->carrega_ajax_table_sislo_situacao_boloes()->getResult();
+            $data = array();
+            $tt = 1; //mostra contagem na datatable
+            $tb = 0; //carrega campos de footer do datatable
+            $soma = array();
+            foreach ($sislo_comissao as $value) {
+                $row = array();
+                $row[] = $tt;
+                $row[] = $this->formataDataParaDatatable($value->dia_inicial);
+                $row[] = $value->nome;
+                $row[] = trim($value->cotas);
+                $row[] = $this->formataValoresMonetarios($value->valor_tarifa);
+                $soma[] = $value->valor_tarifa;
+                ++$tt;
+                ++$tb;
+                $data[] = $row;
+            }
+            $json = array(
+                "recordsTotal" => $tb,
+                "recordsFiltered" => $tb,
+                "sominha" => number_format(array_sum($soma), 2, ',', '.'),
+                "data" => $data
+            );
+            echo json_encode($json);
+        } else {
+            echo view('login');
+        }
+    }
 
     public function ajax_list_comissao_bolao() {//fazer o redireciona FAZER o formulario para incluir, form para editar
         if ($this->request->isAJAX()) {
@@ -164,7 +222,7 @@ class Sislo_ComissaoBolao extends BaseController {
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
             foreach ($sislo_comissao as $value) {
-                $row = array();  
+                $row = array();
                 $row[] = $this->formataDataParaDatatable($value->dia_inicial);
                 $row[] = $value->nome;
                 $row[] = trim($value->cotas);
@@ -230,5 +288,4 @@ class Sislo_ComissaoBolao extends BaseController {
             echo view('login');
         }
     }
-
 }
