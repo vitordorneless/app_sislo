@@ -183,9 +183,25 @@ class Sislo_ComissaoBolao extends BaseController {
             echo view('login');
         }
     }
-    
+
+    public function carrega_tfl() {
+        $cod_lot = $this->session->get('cod_lot');
+        $sislo_tfl = new \App\Models\Sislo_TflModel;
+
+        $tfl = $sislo_tfl->select('COUNT(terminal) AS tfl')
+                ->where("cod_loterico", $cod_lot)
+                ->where('status', 1)
+                ->first();
+        return $tfl->tfl;
+    }
+
     public function ajax_list_calculadora_bolao() {//aqui começa a calculadora
         if ($this->request->isAJAX()) {
+            $cod_lot = $this->session->get('cod_lot');
+            
+            $tfl = $this->carrega_tfl()->getResult();
+            var_dump($tfl);die();
+
             $sislo_comissao = $this->carrega_ajax_table_sislo_situacao_boloes()->getResult();
             $data = array();
             $tt = 1; //mostra contagem na datatable
