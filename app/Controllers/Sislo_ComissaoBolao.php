@@ -195,12 +195,98 @@ class Sislo_ComissaoBolao extends BaseController {
         return $tfl->tfl;
     }
 
+    public function carrega_acumulados() {
+        $sislo_acumulado_mega = new \App\Models\Sislo_MegaSenaModel;
+        $sislo_acumulado_quina = new \App\Models\Sislo_QuinaModel;
+        $sislo_acumulado_lotofacil = new \App\Models\Sislo_LotofacilModel;
+        $sislo_acumulado_dia = new \App\Models\Sislo_DiaDeSorteModel;
+        $sislo_acumulado_dupla = new \App\Models\Sislo_DuplaSenaModel;
+        $acumulados = array();
+
+        $megasena = $sislo_acumulado_mega->select('premio_acumulado')
+                ->orderBy('idsislo_megasena', 'desc')
+                ->first();
+        $acumulados['mega'] = $megasena->premio_acumulado ?? 0;
+
+        $quina = $sislo_acumulado_quina->select('premio_acumulado')
+                ->orderBy('idsislo_quina', 'desc')
+                ->first();
+        $acumulados['quina'] = $quina->premio_acumulado ?? 0;
+
+        $lotofacil = $sislo_acumulado_lotofacil->select('premio_acumulado')
+                ->orderBy('idsislo_lotofacil', 'desc')
+                ->first();
+        $acumulados['lotofacil'] = $lotofacil->premio_acumulado ?? 0;
+
+        $dia = $sislo_acumulado_dia->select('premio_acumulado')
+                ->orderBy('idsislo_diadesorte', 'desc')
+                ->first();
+        $acumulados['dia'] = $dia->premio_acumulado ?? 0;
+
+        $dupla = $sislo_acumulado_dupla->select('premio_acumulado')
+                ->orderBy('idsislo_duplasena', 'desc')
+                ->first();
+        $acumulados['dupla'] = $dupla->premio_acumulado ?? 0;
+
+        return $acumulados;
+    }
+
+    public function carrega_valores_jogos() {
+        $sislo_valor_mega = new \App\Models\Sislo_MegasenaValoresModel;
+        $sislo_valor_quina = new \App\Models\Sislo_QuinaValoresModel;
+        $sislo_valor_lotofacil = new \App\Models\Sislo_LotofacilValoresModel;
+        $sislo_valor_dia = new \App\Models\Sislo_DiaDeSorteValoresModel;
+        $sislo_valor_dupla = new \App\Models\Sislo_DuplasenaValoresModel;
+        $valores = array();
+
+        $megasena = $sislo_valor_mega->select('valor,dezenas')
+                ->where('dezenas > ', 6)
+                ->orderBy('id_sislo_megasena_valores', 'desc')
+                ->findAll();
+        $valores['mega'] = $megasena;
+
+        $quina = $sislo_valor_quina->select('valor,dezenas')
+                ->where('dezenas > ', 5)
+                ->orderBy('id_sislo_quina_valores', 'desc')
+                ->findAll();
+        $valores['quina'] = $quina;
+
+        $lotofacil = $sislo_valor_lotofacil->select('valor,dezenas')
+                ->where('dezenas > ', 15)
+                ->orderBy('id_sislo_lotofacil_valores', 'desc')
+                ->findAll();
+        $valores['lotofacil'] = $lotofacil;
+
+        $dia = $sislo_valor_dia->select('valor,dezenas')
+                ->where('dezenas > ', 7)
+                ->orderBy('id_sislo_diadesorte_valores', 'desc')
+                ->findAll();
+        $valores['dia'] = $dia;
+
+        $dupla = $sislo_valor_dupla->select('valor,dezenas')
+                ->where('dezenas > ', 6)
+                ->orderBy('id_sislo_duplasena_valores', 'desc')
+                ->findAll();
+        $valores['dupla'] = $dupla;
+
+        return $valores;
+    }
+
     public function ajax_list_calculadora_bolao() {//aqui começa a calculadora
         if ($this->request->isAJAX()) {
             $cod_lot = $this->session->get('cod_lot');
+            $data_atual = new \Datetime($this->request->getPost('data_atual'));
+            $cotas = $this->request->getPost('cotas');
+            $comissao_desejada = $this->request->getPost('comissao_desejada');
+
+            $tfl = $this->carrega_tfl();
+            $acumulados = $this->carrega_acumulados();
+            $valores = $this->carrega_valores_jogos();
             
-            $tfl = $this->carrega_tfl()->getResult();
-            var_dump($tfl);die();
+            
+
+            var_dump($valores['mega']);
+            die();
 
             $sislo_comissao = $this->carrega_ajax_table_sislo_situacao_boloes()->getResult();
             $data = array();
@@ -245,7 +331,10 @@ class Sislo_ComissaoBolao extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value->valor_bolao);
                 $row[] = $this->formataValoresMonetarios($value->valor_tarifa);
                 $row[] = $value->tarifa;
-                $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_comissao_jogosbolao/?id=' . $value->idsislo_comissao_bolao) . '">Editar</a>';
+                $row[] = '<a class="btn btn-primary" href="' .
+                        base_url('redireciona_comissao_jogosbolao/?id=' .
+                                $value->idsislo_comissao_bolao) .
+                        '">Editar</a>';
                 ++$tt;
                 ++$tb;
                 $data[] = $row;
