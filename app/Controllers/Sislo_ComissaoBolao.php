@@ -272,6 +272,47 @@ class Sislo_ComissaoBolao extends BaseController {
         return $valores;
     }
 
+    public function calcula_boloes_mega($acumulado, $valores, $cotas,
+            $comissao_desejada) {
+        $desejo_de_comissao = bcmul($this->limparValoresMonetarios(
+                        $comissao_desejada), 0.70, 0);
+        $comissao_soma = 0;
+        switch ($acumulado) {
+            case $acumulado < 5000000:
+                $aviso = "A";
+                //está entrando aqui certinho, agora pegar os valores e começar a calcular
+                //usando a comissão desejada como critério para continuar o calculo
+                //isso será dentro de um loop
+                break;
+            case $acumulado > 5000001 and $acumulado < 10000000:
+                $aviso = "B";
+                break;
+            case $acumulado > 10000001 and $acumulado < 30000000:
+                $aviso = "C";
+                break;
+            case $acumulado > 30000001 and $acumulado < 50000000:
+                $aviso = "C";
+                break;
+            case $acumulado > 50000001 and $acumulado < 60000000:
+                $aviso = "C";
+                break;
+            case $acumulado > 60000001 and $acumulado < 80000000:
+                $aviso = "faixa que eu";
+                break;
+            case $acumulado > 80000001 and $acumulado < 100000000:
+                $aviso = '654';
+                break;
+            case $acumulado > 100000001:
+                $aviso = "faixa acima de 100 milhos" . $desejo_de_comissao;
+                
+                while ($desejo_de_comissao <= $comissao_soma){
+                    //aqui monta o bolão
+                }
+                break;
+        }
+        return $aviso;
+    }
+
     public function ajax_list_calculadora_bolao() {//aqui começa a calculadora
         if ($this->request->isAJAX()) {
             $cod_lot = $this->session->get('cod_lot');
@@ -282,10 +323,10 @@ class Sislo_ComissaoBolao extends BaseController {
             $tfl = $this->carrega_tfl();
             $acumulados = $this->carrega_acumulados();
             $valores = $this->carrega_valores_jogos();
-            
-            
 
-            var_dump($valores['mega']);
+            $mega_boloes = $this->calcula_boloes_mega($acumulados['mega'],
+                    $valores['mega'], $cotas, $comissao_desejada);
+            var_dump($mega_boloes);
             die();
 
             $sislo_comissao = $this->carrega_ajax_table_sislo_situacao_boloes()->getResult();
