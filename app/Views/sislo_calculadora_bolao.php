@@ -41,8 +41,9 @@
                     <tr>
                         <th>Jogo</th>
                         <th>Cotas</th>
+                        <th>Valor Bolão</th>                        
                         <th>%</th>
-                        <th>Valor Cota</th>
+                        <th>Valor Cota (unidade)</th>
                         <th>Valor Comissão</th>
                     </tr>
                 </thead>

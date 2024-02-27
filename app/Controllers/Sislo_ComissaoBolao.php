@@ -241,31 +241,31 @@ class Sislo_ComissaoBolao extends BaseController {
 
         $megasena = $sislo_valor_mega->select('valor,dezenas')
                 ->where('dezenas > ', 6)
-                ->orderBy('id_sislo_megasena_valores', 'desc')
+                ->orderBy('id_sislo_megasena_valores', 'asc')
                 ->findAll();
         $valores['mega'] = $megasena;
 
         $quina = $sislo_valor_quina->select('valor,dezenas')
                 ->where('dezenas > ', 5)
-                ->orderBy('id_sislo_quina_valores', 'desc')
+                ->orderBy('id_sislo_quina_valores', 'asc')
                 ->findAll();
         $valores['quina'] = $quina;
 
         $lotofacil = $sislo_valor_lotofacil->select('valor,dezenas')
                 ->where('dezenas > ', 15)
-                ->orderBy('id_sislo_lotofacil_valores', 'desc')
+                ->orderBy('id_sislo_lotofacil_valores', 'asc')
                 ->findAll();
         $valores['lotofacil'] = $lotofacil;
 
         $dia = $sislo_valor_dia->select('valor,dezenas')
                 ->where('dezenas > ', 7)
-                ->orderBy('id_sislo_diadesorte_valores', 'desc')
+                ->orderBy('id_sislo_diadesorte_valores', 'asc')
                 ->findAll();
         $valores['dia'] = $dia;
 
         $dupla = $sislo_valor_dupla->select('valor,dezenas')
                 ->where('dezenas > ', 6)
-                ->orderBy('id_sislo_duplasena_valores', 'desc')
+                ->orderBy('id_sislo_duplasena_valores', 'asc')
                 ->findAll();
         $valores['dupla'] = $dupla;
 
@@ -275,14 +275,13 @@ class Sislo_ComissaoBolao extends BaseController {
     public function calcula_boloes_mega($acumulado, $valores, $cotas,
             $comissao_desejada) {
         $desejo_de_comissao = bcmul($this->limparValoresMonetarios(
-                        $comissao_desejada), 0.70, 0);
+                        $comissao_desejada), 0.70, 2);
         $comissao_soma = 0;
+        $cotas_metade = $cotas % 2 == 0 ? bcdiv($cotas, 2, 0) : bcdiv(bcadd($cotas, 1, 0), 2, 0);
+        $lista_boloes = array();
         switch ($acumulado) {
             case $acumulado < 5000000:
-                $aviso = "A";
-                //está entrando aqui certinho, agora pegar os valores e começar a calcular
-                //usando a comissão desejada como critério para continuar o calculo
-                //isso será dentro de um loop
+                $aviso = "A";                
                 break;
             case $acumulado > 5000001 and $acumulado < 10000000:
                 $aviso = "B";
@@ -303,14 +302,58 @@ class Sislo_ComissaoBolao extends BaseController {
                 $aviso = '654';
                 break;
             case $acumulado > 100000001:
-                $aviso = "faixa acima de 100 milhos" . $desejo_de_comissao;
-                
-                while ($desejo_de_comissao <= $comissao_soma){
-                    //aqui monta o bolão
+                $aviso = $cotas_metade; //$valores[2]->valor.' '.$valores[2]->dezenas;
+                $cont_bolao = 0;
+                $quantidade_de_jogos = 10;
+                $porcentagem = 0.35;
+                while ($comissao_soma <= $desejo_de_comissao) {                    
+                    //7 dezenas
+                    if ($cont_bolao == 0) {
+                        $bolao = $this->calculodobolao($valores[0]->valor,
+                                $quantidade_de_jogos, $cotas_metade, $porcentagem);
+                        $comissao_soma = bcadd($bolao['valor_comissao'], $comissao_soma, 2);
+                        $lista_boloes[$cont_bolao] = array(
+                            'valor_jogo' => $valores[0]->valor,
+                            'valor_cota' => $bolao['valor_cota'],
+                            'qtd_jogos' => $quantidade_de_jogos,                            
+                            'qtd_cotas' => $cotas_metade);
+                    }
+                    //7 dezenas fim
+                    //8 dezenas
+                    if ($cont_bolao == 1) {
+                        $bolao = $this->calculodobolao($valores[1]->valor,
+                                $quantidade_de_jogos, $cotas, $porcentagem);
+                        $comissao_soma = bcadd($bolao['valor_comissao'], $comissao_soma, 2);
+                        $lista_boloes[$cont_bolao] = array(
+                            'valor_jogo' => $valores[1]->valor,
+                            'valor_cota' => $bolao['valor_cota'],
+                            'qtd_jogos' => $quantidade_de_jogos,                            
+                            'qtd_cotas' => $cotas);
+                    }
+                    //8 dezenas fim
+                    ++$cont_bolao;
+                    //agora aumentar essas condições até 20 numeros
+                    //depois copiar elas para cada case e em cada case atualizar ela para 
+                    //a realidade de cada acumulado
+                    //depois criar function nova, para transformar esse array com indices em um unico
+                    //para poder alimentar a datatable
                 }
                 break;
         }
-        return $aviso;
+        return $lista_boloes;
+    }
+
+    public function calculodobolao($valor_jogo, $quantidade_de_jogos,
+            $quantidade_de_cotas, $porcentagem) {
+        $calculo_bolao = array();
+        $valor_quantidade = bcmul($valor_jogo, $quantidade_de_jogos, 2);
+        $lucroporcentagem = bcadd($valor_quantidade,
+                bcmul($valor_quantidade, $porcentagem, 2), 2);
+        $calculo_bolao['valor_cota'] = bcdiv($lucroporcentagem,
+                $quantidade_de_cotas, 2);
+        $calculo_bolao['valor_comissao'] = bcsub($lucroporcentagem,
+                $valor_quantidade, 2);
+        return $calculo_bolao;
     }
 
     public function ajax_list_calculadora_bolao() {//aqui começa a calculadora
