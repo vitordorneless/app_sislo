@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="<?= base_url('AdminLTE/dist/css/adminlte.min.css'); ?>">
         <link rel="stylesheet" href="<?= base_url('css/slick-theme.css'); ?>">
         <link rel="stylesheet" href="<?= base_url('css/slick.css'); ?>">
-        <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('AdminLTE/dist/img/favicon.ico'); ?>">
+        <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('startbootstrap/img/favicon.ico'); ?>">
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     </head>
