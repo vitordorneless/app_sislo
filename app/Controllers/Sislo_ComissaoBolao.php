@@ -281,7 +281,7 @@ class Sislo_ComissaoBolao extends BaseController {
         $lista_boloes = array();
         switch ($acumulado) {
             case $acumulado < 5000000:
-                $aviso = "A";                
+                $aviso = "A";
                 break;
             case $acumulado > 5000001 and $acumulado < 10000000:
                 $aviso = "B";
@@ -303,34 +303,71 @@ class Sislo_ComissaoBolao extends BaseController {
                 break;
             case $acumulado > 100000001:
                 $aviso = $cotas_metade; //$valores[2]->valor.' '.$valores[2]->dezenas;
-                $cont_bolao = 0;
-                $quantidade_de_jogos = 10;
+                $cont_bolao = 0;                                
                 $porcentagem = 0.35;
-                while ($comissao_soma <= $desejo_de_comissao) {                    
+                while ($comissao_soma <= $desejo_de_comissao) {
                     //7 dezenas
-                    if ($cont_bolao == 0) {
+                    if ($cont_bolao === 0) {
+                        $quantidade_de_jogos = mt_rand(7,10);
                         $bolao = $this->calculodobolao($valores[0]->valor,
-                                $quantidade_de_jogos, $cotas_metade, $porcentagem);
-                        $comissao_soma = bcadd($bolao['valor_comissao'], $comissao_soma, 2);
+                                $quantidade_de_jogos, 
+                                $cotas_metade, 
+                                $porcentagem);
+                        $comissao_soma = bcadd($bolao['valor_comissao'], 
+                                $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
                             'valor_jogo' => $valores[0]->valor,
                             'valor_cota' => $bolao['valor_cota'],
-                            'qtd_jogos' => $quantidade_de_jogos,                            
+                            'qtd_jogos' => $quantidade_de_jogos,
+                            'cont_bolao' => $cont_bolao,
                             'qtd_cotas' => $cotas_metade);
                     }
                     //7 dezenas fim
                     //8 dezenas
-                    if ($cont_bolao == 1) {
+                    if ($cont_bolao === 1) {
+                        $quantidade_de_jogos = mt_rand(3,10);
                         $bolao = $this->calculodobolao($valores[1]->valor,
                                 $quantidade_de_jogos, $cotas, $porcentagem);
-                        $comissao_soma = bcadd($bolao['valor_comissao'], $comissao_soma, 2);
+                        $comissao_soma = bcadd($bolao['valor_comissao'], 
+                                $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
                             'valor_jogo' => $valores[1]->valor,
                             'valor_cota' => $bolao['valor_cota'],
-                            'qtd_jogos' => $quantidade_de_jogos,                            
+                            'qtd_jogos' => $quantidade_de_jogos,
+                            'cont_bolao' => $cont_bolao,
                             'qtd_cotas' => $cotas);
                     }
                     //8 dezenas fim
+                    //9 dezenas
+                    if ($cont_bolao === 2) {
+                        $quantidade_de_jogos = mt_rand(1,5);
+                        $bolao = $this->calculodobolao($valores[2]->valor,
+                                $quantidade_de_jogos, $cotas, $porcentagem);
+                        $comissao_soma = bcadd($bolao['valor_comissao'], 
+                                $comissao_soma, 2);
+                        $lista_boloes[$cont_bolao] = array(
+                            'valor_jogo' => $valores[2]->valor,
+                            'valor_cota' => $bolao['valor_cota'],
+                            'qtd_jogos' => $quantidade_de_jogos,
+                            'cont_bolao' => $cont_bolao,
+                            'qtd_cotas' => $cotas);
+                    }
+                    //9 dezenas fim
+                    //10 dezenas
+                    if ($cont_bolao === 3) {
+                        $quantidade_de_jogos = mt_rand(1,3);
+                        $bolao = $this->calculodobolao($valores[3]->valor,
+                                $quantidade_de_jogos, $cotas, $porcentagem);
+                        $comissao_soma = bcadd($bolao['valor_comissao'], 
+                                $comissao_soma, 2);
+                        $lista_boloes[$cont_bolao] = array(
+                            'valor_jogo' => $valores[3]->valor,
+                            'valor_cota' => $bolao['valor_cota'],
+                            'qtd_jogos' => $quantidade_de_jogos,
+                            'cont_bolao' => $cont_bolao,
+                            'qtd_cotas' => $cotas);
+                    }
+                    //10 dezenas fim
                     ++$cont_bolao;
                     //agora aumentar essas condições até 20 numeros
                     //depois copiar elas para cada case e em cada case atualizar ela para 
@@ -343,7 +380,7 @@ class Sislo_ComissaoBolao extends BaseController {
         return $lista_boloes;
     }
 
-    public function calculodobolao($valor_jogo, $quantidade_de_jogos,
+    private function calculodobolao($valor_jogo, $quantidade_de_jogos,
             $quantidade_de_cotas, $porcentagem) {
         $calculo_bolao = array();
         $valor_quantidade = bcmul($valor_jogo, $quantidade_de_jogos, 2);
