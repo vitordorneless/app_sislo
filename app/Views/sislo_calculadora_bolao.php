@@ -39,6 +39,7 @@
             <table id="table_sislo_calculadora_bolao_list" class="table table-striped table-bordered table-responsive text text-sm text-center">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Jogo</th>
                         <th>Cotas</th>
                         <th>Valor Bolão</th>                        
