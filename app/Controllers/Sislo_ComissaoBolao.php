@@ -2602,6 +2602,9 @@ class Sislo_ComissaoBolao extends BaseController {
             foreach ($mega_boloes as $value) {
                 $row[] = $tt;
                 $row[] = 'Mega-Sena';
+                $row[] = $value['dezenas'];
+                $row[] = $value['valor_jogo'];
+                $row[] = $value['qtd_jogos'];
                 $row[] = $value['qtd_cotas'];
                 $row[] = $this->formataValoresMonetarios(bcmul($value['qtd_cotas'], $value['valor_cota'], 2));
                 $row[] = 35;
@@ -2617,6 +2620,9 @@ class Sislo_ComissaoBolao extends BaseController {
             foreach ($lotofacil_boloes as $value) {
                 $row[] = $tt;
                 $row[] = 'Lotofácil';
+                $row[] = $value['dezenas'];
+                $row[] = $value['valor_jogo'];
+                $row[] = $value['qtd_jogos'];
                 $row[] = $value['qtd_cotas'];
                 $row[] = $this->formataValoresMonetarios(bcmul($value['qtd_cotas'], $value['valor_cota'], 2));
                 $row[] = 35;
@@ -2631,6 +2637,9 @@ class Sislo_ComissaoBolao extends BaseController {
             foreach ($quina_boloes as $value) {
                 $row[] = $tt;
                 $row[] = 'Quina';
+                $row[] = $value['dezenas'];
+                $row[] = $value['valor_jogo'];
+                $row[] = $value['qtd_jogos'];
                 $row[] = $value['qtd_cotas'];
                 $row[] = $this->formataValoresMonetarios(bcmul($value['qtd_cotas'], $value['valor_cota'], 2));
                 $row[] = 35;
@@ -2645,6 +2654,9 @@ class Sislo_ComissaoBolao extends BaseController {
             foreach ($dia_boloes as $value) {
                 $row[] = $tt;
                 $row[] = 'Dia de Sorte';
+                $row[] = $value['dezenas'];
+                $row[] = $value['valor_jogo'];
+                $row[] = $value['qtd_jogos'];
                 $row[] = $value['qtd_cotas'];
                 $row[] = $this->formataValoresMonetarios(bcmul($value['qtd_cotas'], $value['valor_cota'], 2));
                 $row[] = 35;
@@ -2659,6 +2671,9 @@ class Sislo_ComissaoBolao extends BaseController {
             foreach ($dupla_boloes as $value) {
                 $row[] = $tt;
                 $row[] = 'Dupla-Sena';
+                $row[] = $value['dezenas'];
+                $row[] = $value['valor_jogo'];
+                $row[] = $value['qtd_jogos'];
                 $row[] = $value['qtd_cotas'];
                 $row[] = $this->formataValoresMonetarios(bcmul($value['qtd_cotas'], $value['valor_cota'], 2));
                 $row[] = 35;

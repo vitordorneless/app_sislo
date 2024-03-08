@@ -41,6 +41,9 @@
                     <tr>
                         <th>#</th>
                         <th>Jogo</th>
+                        <th>Dezenas</th>
+                        <th>Valor Jogo</th>
+                        <th>Quantidade de Jogos</th>
                         <th>Cotas</th>
                         <th>Valor Bolão</th>                        
                         <th>%</th>
