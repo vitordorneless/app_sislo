@@ -297,7 +297,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -313,7 +313,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -338,7 +338,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -354,7 +354,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -369,7 +369,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -394,7 +394,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -410,7 +410,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -425,7 +425,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -440,7 +440,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -455,7 +455,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -470,7 +470,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -495,7 +495,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -511,7 +511,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -526,7 +526,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -541,7 +541,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -556,7 +556,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -571,7 +571,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -586,7 +586,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -601,7 +601,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -616,7 +616,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -631,7 +631,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -646,7 +646,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -661,7 +661,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -676,7 +676,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -691,7 +691,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -715,7 +715,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -731,7 +731,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -746,7 +746,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -761,7 +761,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -776,7 +776,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -791,7 +791,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -806,7 +806,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -821,7 +821,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -836,7 +836,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -851,7 +851,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -866,7 +866,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -881,7 +881,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -896,7 +896,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -911,7 +911,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -935,7 +935,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -951,7 +951,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -966,7 +966,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -981,7 +981,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -996,7 +996,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1011,7 +1011,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1026,7 +1026,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1041,7 +1041,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1056,7 +1056,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1071,7 +1071,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1086,7 +1086,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1101,7 +1101,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1116,7 +1116,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1131,7 +1131,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1155,7 +1155,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -1171,7 +1171,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1186,7 +1186,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1201,7 +1201,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1216,7 +1216,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1231,7 +1231,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1246,7 +1246,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1261,7 +1261,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1276,7 +1276,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1291,7 +1291,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1306,7 +1306,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1321,7 +1321,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1336,7 +1336,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1351,7 +1351,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1375,7 +1375,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -1391,7 +1391,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1406,7 +1406,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1421,7 +1421,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1436,7 +1436,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1451,7 +1451,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1466,7 +1466,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1481,7 +1481,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1496,7 +1496,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1511,7 +1511,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1526,7 +1526,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1541,7 +1541,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1556,7 +1556,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1571,7 +1571,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1611,7 +1611,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -1627,7 +1627,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1652,7 +1652,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -1668,7 +1668,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1683,7 +1683,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1708,7 +1708,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -1724,7 +1724,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1739,7 +1739,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1754,7 +1754,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1769,7 +1769,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1789,6 +1789,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma, 2);
                 $lista_boloes[$cont_bolao] = array(
                     'valor_jogo' => $valores[2]->valor,
+                    'dezenas' => $valores[2]->dezenas,
                     'valor_cota' => $bolao['valor_cota'],
                     'valor_comissao' => $bolao['valor_comissao'],
                     'qtd_jogos' => $quantidade_de_jogos,
@@ -1823,7 +1824,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -1839,7 +1840,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1863,7 +1864,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -1879,7 +1880,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1894,7 +1895,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1919,7 +1920,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -1935,7 +1936,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1950,7 +1951,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1965,7 +1966,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1980,7 +1981,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -1995,7 +1996,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2010,7 +2011,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2025,7 +2026,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2040,7 +2041,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2055,7 +2056,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2070,7 +2071,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2090,6 +2091,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma, 2);
                 $lista_boloes[$cont_bolao] = array(
                     'valor_jogo' => $valores[2]->valor,
+                    'dezenas' => $valores[2]->dezenas,
                     'valor_cota' => $bolao['valor_cota'],
                     'valor_comissao' => $bolao['valor_comissao'],
                     'qtd_jogos' => $quantidade_de_jogos,
@@ -2124,7 +2126,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -2149,7 +2151,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -2165,7 +2167,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2180,7 +2182,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2205,7 +2207,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -2221,7 +2223,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2236,7 +2238,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2251,7 +2253,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2266,7 +2268,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2286,6 +2288,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma, 2);
                 $lista_boloes[$cont_bolao] = array(
                     'valor_jogo' => $valores[2]->valor,
+                    'dezenas' => $valores[2]->dezenas,
                     'valor_cota' => $bolao['valor_cota'],
                     'valor_comissao' => $bolao['valor_comissao'],
                     'qtd_jogos' => $quantidade_de_jogos,
@@ -2320,7 +2323,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -2345,7 +2348,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -2361,7 +2364,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2376,7 +2379,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2401,7 +2404,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'cont_bolao' => $cont_bolao,
@@ -2417,7 +2420,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2432,7 +2435,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2447,7 +2450,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2462,7 +2465,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2477,7 +2480,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2492,7 +2495,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2507,7 +2510,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2522,7 +2525,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma = bcadd($bolao['valor_comissao'],
                                 $comissao_soma, 2);
                         $lista_boloes[$cont_bolao] = array(
-                            'valor_jogo' => $valores[$cont_bolao]->valor,
+                            'valor_jogo' => $valores[$cont_bolao]->valor, 'dezenas' => $valores[$cont_bolao]->dezenas,
                             'valor_cota' => $bolao['valor_cota'], 'valor_comissao' => $bolao['valor_comissao'],
                             'qtd_jogos' => $quantidade_de_jogos,
                             'qtd_cotas' => $cotas);
@@ -2542,6 +2545,7 @@ class Sislo_ComissaoBolao extends BaseController {
                         $comissao_soma, 2);
                 $lista_boloes[$cont_bolao] = array(
                     'valor_jogo' => $valores[2]->valor,
+                    'dezenas' => $valores[2]->dezenas,
                     'valor_cota' => $bolao['valor_cota'],
                     'valor_comissao' => $bolao['valor_comissao'],
                     'qtd_jogos' => $quantidade_de_jogos,
@@ -2605,6 +2609,7 @@ class Sislo_ComissaoBolao extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value['valor_comissao']);
                 $data[] = $row;
                 $soma[] = $value['valor_comissao'];
+                unset($row);
                 ++$tt;
                 ++$tb;
             }
@@ -2619,6 +2624,7 @@ class Sislo_ComissaoBolao extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value['valor_comissao']);
                 $data[] = $row;
                 $soma[] = $value['valor_comissao'];
+                unset($row);
                 ++$tt;
                 ++$tb;
             }
@@ -2632,11 +2638,13 @@ class Sislo_ComissaoBolao extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value['valor_comissao']);
                 $data[] = $row;
                 $soma[] = $value['valor_comissao'];
+                unset($row);
                 ++$tt;
                 ++$tb;
             }
             foreach ($dia_boloes as $value) {
                 $row[] = $tt;
+                $row[] = 'Dia de Sorte';
                 $row[] = $value['qtd_cotas'];
                 $row[] = $this->formataValoresMonetarios(bcmul($value['qtd_cotas'], $value['valor_cota'], 2));
                 $row[] = 35;
@@ -2644,6 +2652,7 @@ class Sislo_ComissaoBolao extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value['valor_comissao']);
                 $data[] = $row;
                 $soma[] = $value['valor_comissao'];
+                unset($row);
                 ++$tt;
                 ++$tb;
             }
@@ -2657,9 +2666,10 @@ class Sislo_ComissaoBolao extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value['valor_comissao']);
                 $data[] = $row;
                 $soma[] = $value['valor_comissao'];
+                unset($row);
                 ++$tt;
                 ++$tb;
-            }            
+            }
 
             $json = array(
                 "recordsTotal" => $tb,
