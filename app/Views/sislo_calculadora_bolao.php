@@ -36,6 +36,17 @@
     <div class="card-footer" id="conteudo">
         <div class="row" id="antes"></div>
         <div class="row">
+            <div class="col-sm-6">
+                <label>Soma das Comissões</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">R$</span>
+                    </div>
+                    <input type="text" id="sominha" name="sominha" class="form-control" readonly="readonly">
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <table id="table_sislo_calculadora_bolao_list" class="table table-striped table-bordered table-responsive text text-sm text-center">
                 <thead>
                     <tr>

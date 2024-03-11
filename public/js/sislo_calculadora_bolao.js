@@ -36,6 +36,7 @@ $(document).ready(function () {
                 success: function (datas) {
                     clearErrors();
                     $("#antes").empty();
+                    $("#sominha").val(datas.sominha);
                     $('html,body').animate({scrollTop: document.body.scrollHeight}, "fast");
                     $("#table_sislo_calculadora_bolao_list").DataTable({
                         oLanguage: DATATABLE_PTBR,
