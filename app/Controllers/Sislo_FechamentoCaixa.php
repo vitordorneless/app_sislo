@@ -27,11 +27,11 @@ class Sislo_FechamentoCaixa extends BaseController {
         } else {
             echo view('login');
         }
-    }
+    }    
 
     public function carrega_fechamentos() {
         $db = \Config\Database::connect();
-        $mes = $this->request->getPost('mes') < 10 ? '0'.$this->request->getPost('mes') : $this->request->getPost('mes');
+        $mes = $this->request->getPost('mes') < 10 ? '0' . $this->request->getPost('mes') : $this->request->getPost('mes');
         $referencia = $mes . '/' . $this->request->getPost('ano');
         $builder = $db->table('sislo_fechamento_caixa as sfc');
         $query = $builder->select("su.nome as sislo_nome, sfc.data_fechamento as data_fechamento,
@@ -40,13 +40,13 @@ class Sislo_FechamentoCaixa extends BaseController {
                 sfc.resumo_tfl as resumo_tfl,
                 sfc.caixa_inicial as caixa_inicial,
                 sfc.diferenca as diferenca,
-                sfc.idsislo_fechamento_caixa as idsislo_fechamento_caixa")                        
+                sfc.idsislo_fechamento_caixa as idsislo_fechamento_caixa")
                         ->join("sislo_funcionarios as su", "sfc.id_usuario = su.idsislo_funcionarios")
                         ->where("sfc.referencia", $referencia)
                         ->where("sfc.cod_loterico", $this->session->get('cod_lot'))
                         ->orderBy('sfc.data_fechamento', 'asc')->get();
         return $query;
-    }
+    }    
 
     public function ajax_list_fechamento_caixa() {
         if ($this->request->isAJAX()) {
@@ -58,7 +58,7 @@ class Sislo_FechamentoCaixa extends BaseController {
             foreach ($sislo_fech as $value) {
                 $row = array();
                 $row[] = date("d/m/Y", strtotime($value->data_fechamento));
-                $row[] = $value->sislo_nome;                
+                $row[] = $value->sislo_nome;
                 $row[] = number_format($value->total_credito, 2, ',', '.');
                 $row[] = number_format($value->total_debito, 2, ',', '.');
                 $row[] = number_format($value->resumo_tfl, 2, ',', '.');
@@ -278,5 +278,4 @@ class Sislo_FechamentoCaixa extends BaseController {
             echo view('login');
         }
     }
-
 }

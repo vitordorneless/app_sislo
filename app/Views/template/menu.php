@@ -153,7 +153,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item has-treeview">
+        <!--  <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-clock"></i>
                 <p>
@@ -163,25 +163,25 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?= base_url('sislo_agendamento'); ?>" class="nav-link">
+                    <a href="?= base_url('sislo_agendamento'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Marcar Agendamento *</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('sislo_agendamento/exportar'); ?>" class="nav-link">
+                    <a href="?= base_url('sislo_agendamento/exportar'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Exportar Agendamento *</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('sislo_agendamento/senha_externa'); ?>" class="nav-link">
+                    <a href="?= base_url('sislo_agendamento/senha_externa'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Senha Externa *</p>
                     </a>
                 </li>
             </ul>
-        </li>
+        </li>-->
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-barcode"></i>
@@ -361,6 +361,12 @@
                     <a href="<?= base_url('sislo_fechamento_dia'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Fechamento Cofre</p>
+                    </a>
+                </li>                
+                <li class="nav-item">
+                    <a href="<?= base_url('sislo_fechamentos_outros'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Controle Valores Caixas</p>
                     </a>
                 </li>                                
                 <li class="nav-item">

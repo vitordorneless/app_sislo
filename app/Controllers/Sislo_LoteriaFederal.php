@@ -88,7 +88,7 @@ class Sislo_LoteriaFederal extends BaseController {
             } else {
                 $incluir = 2;
                 $dados_loterica = $sislo_model->find($this->request->getGet('id'));
-                $dados['id'] = $dados_loterica->idsislo_loteria_federal;
+                $dados['id'] = $dados_loterica->id;
                 $dados['modalidade'] = $dados_loterica->modalidade;
                 $dados['total_bilhetes_recibo'] = $dados_loterica->total_bilhetes_recibo;
                 $dados['total_bilhetes_liquido'] = $dados_loterica->total_bilhetes_liquido;

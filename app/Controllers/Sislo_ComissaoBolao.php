@@ -35,8 +35,7 @@ class Sislo_ComissaoBolao extends BaseController {
             $data = array(
                 "scripts" => array(
                     "sislo_calculadora_bolao.js",
-                    "jquery.validate.js",
-                    "jquery.validate.js",
+                    "jquery.validate.js",                    
                     "jquery.mask.min.js",
                     "jquery.maskMoney.min.js",
                     "sweetalert2.all.min.js",

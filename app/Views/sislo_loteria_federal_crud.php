@@ -6,6 +6,13 @@
         <form class="form-group" id="sislo_loteria_federal" name="sislo_loteria_federal" method="POST">
             <div class="row">                
                 <div class="col-sm-2">
+                    <?php
+                    if ($incluir == 1) {
+                        $data_fech = new DateTime();
+                    } else {
+                        $data_fech = new DateTime($data_extracao);
+                    }
+                    ?>
                     <div class="form-group">
                         <label class="text text-sm">Modalidade</label>
                         <select id="modalidade" name="modalidade" class="form-control">
@@ -42,7 +49,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label class="text text-sm">Data da Extração</label>
-                        <input type="date" id="data_extracao" name="data_extracao" class="form-control" value="<?= $data_extracao; ?>" required="required">
+                        <input type="date" id="data_extracao" name="data_extracao" class="form-control" value="<?= $data_fech->format('Y-m-d'); ?>" required="required">
                     </div>
                 </div>
             </div>

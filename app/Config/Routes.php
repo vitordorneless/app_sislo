@@ -92,7 +92,6 @@ $routes->add('sislo_ajustahora', 'Sislo_Horas::sislo_ajustahora');
 //inicio base crud ajaxsislo_horas
 $routes->add('sislo_fechamento_dia', 'Sislo_FechamentoCofre::index');
 $routes->add('sislo_fechamento_cofre_execute', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_execute');
-
 $routes->add('sislo_fechamento_cofre', 'Sislo_FechamentoCofre::index');
 $routes->add('sislo_fechamento_cofre_novo_execute', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_novo_execute');
 //fim base crud ajax
@@ -338,11 +337,15 @@ $routes->add('redireciona_estadocivil', 'Sislo_EstadoCivil::redireciona_estadoci
 $routes->add('salva_estadocivil', 'Sislo_EstadoCivil::ajax_save_form');
 //fim estado civil
 //inicio fechamento caixa
-$routes->add('sislo_fechamentos', 'Sislo_FechamentoCaixa::index');
-$routes->add('ajax_list_fechamento_caixa', 'Sislo_FechamentoCaixa::ajax_list_fechamento_caixa');
-$routes->add('redireciona_fechamento_caixa', 'Sislo_FechamentoCaixa::redireciona_fechamento_caixa');
-$routes->add('sislo_fechamento_caixa', 'Sislo_FechamentoCaixa::ajax_save_form');
+$routes->get('sislo_fechamentos', 'Sislo_FechamentoCaixa::index');
+$routes->post('ajax_list_fechamento_caixa', 'Sislo_FechamentoCaixa::ajax_list_fechamento_caixa');
+$routes->get('redireciona_fechamento_caixa', 'Sislo_FechamentoCaixa::redireciona_fechamento_caixa');
+$routes->post('sislo_fechamento_caixa', 'Sislo_FechamentoCaixa::ajax_save_form');
 //fim fechamento caixa
+//inicio fechamento outros valores
+$routes->get('sislo_fechamentos_outros', 'Sislo_FechamentoOutros::index');
+$routes->post('ajax_list_fechamento_caixa_outros', 'Sislo_FechamentoOutros::ajax_list_fechamento_caixa_outros');
+//fim fechamento outros valores
 //inicio cob diaria exemplo com busca
 $routes->add('sislo_cob_diaria_conta_servico', 'Sislo_cob_diaria_conta_servico::index');
 $routes->add('ajax_list_servicos', 'Sislo_cob_diaria_conta_servico::ajax_list_servicos');
