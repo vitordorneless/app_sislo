@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("sislo_fechamento_caixa_outros_list").validate({
+    $("#sislo_fechamento_caixa_outros_list").validate({
         messages: {
             mes: {
                 required: 'Campo Obrigatório!!!'
