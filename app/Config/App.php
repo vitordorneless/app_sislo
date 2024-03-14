@@ -8,7 +8,7 @@ class App extends BaseConfig
 {
     
     public $baseURL = 'http://localhost/Sislo_Enterprise/public/';//desenvolvimento
-    //public $baseURL = 'http://sislo.com.br/Sislo_Enterprise/public/';//produção
+    //public $baseURL = 'https://www.sislo.com.br/Sislo_Enterprise/public/';//produção
 
     public $indexPage = '';
 

@@ -344,7 +344,9 @@ $routes->post('sislo_fechamento_caixa', 'Sislo_FechamentoCaixa::ajax_save_form')
 //fim fechamento caixa
 //inicio fechamento outros valores
 $routes->get('sislo_fechamentos_outros', 'Sislo_FechamentoOutros::index');
+$routes->get('redireciona_fechamento_caixa_outros', 'Sislo_FechamentoOutros::redireciona_fechamento_caixa_outros');
 $routes->post('ajax_list_fechamento_caixa_outros', 'Sislo_FechamentoOutros::ajax_list_fechamento_caixa_outros');
+$routes->post('sislo_fechamento_outros_form', 'Sislo_FechamentoOutros::sislo_fechamento_outros_form');
 //fim fechamento outros valores
 //inicio cob diaria exemplo com busca
 $routes->add('sislo_cob_diaria_conta_servico', 'Sislo_cob_diaria_conta_servico::index');

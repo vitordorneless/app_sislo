@@ -166,11 +166,11 @@
                                     <i class="fab fa-facebook fa-2x fa-fw"></i>
                                 </a>
                             </li>                            
-                            <li class="list-inline-item">
+                            <!--<li class="list-inline-item">
                                 <a href="#" target="_blank">
                                     <i class="fab fa-instagram fa-2x fa-fw"></i>
                                 </a>
-                            </li>
+                            </li>-->
                             <li class="list-inline-item">
                                 <a href="tel:+5551994336363">
                                     <i class="fab fa-whatsapp fa-2x fa-fw"></i>

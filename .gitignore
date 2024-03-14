@@ -10,3 +10,4 @@ nbproject/private
 .env
 
 /writable
+/app/Config/App.php
