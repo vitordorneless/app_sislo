@@ -5,20 +5,16 @@
     <div class="card-body">
         <form class="form-group" id="sislo_fechamento_outros" name="sislo_fechamento_outros" method="POST">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <?php
-                    if ($incluir == 1) {
-                        $data_fech = new DateTime();
-                    } else {
-                        $data_fech = new DateTime($data_fechamento);
-                    }
+                    $data_fech = new DateTime($data_fechamento);
                     ?>
                     <div class="form-group">
                         <label class="text text-sm">Data Fechamento</label>
                         <input type="date" id="data_fechamento" name="data_fechamento" readonly="readonly" class="form-control" value="<?= $data_fech->format('Y-m-d'); ?>">
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="text text-sm">Caixa Operador</label>
                         <select id="caixa_operador" name="caixa_operador" class="form-control">
@@ -32,7 +28,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="text text-sm">Operador</label>
                         <select id="id_usuario" name="id_usuario" class="form-control">
@@ -48,7 +44,7 @@
                 </div>                
             </div>            
             <div class="row">                
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="text text-sm">Brinde (R$)</label>
                         <input type="text" id="total_brinde" name="total_brinde" readonly="readonly" class="form-control convert_money" value="<?= $total_brinde; ?>">
@@ -56,13 +52,13 @@
                         <input type="hidden" id="idsislo_fechamento_caixa" name="idsislo_fechamento_caixa" class="form-control" value="<?= $idsislo_fechamento_caixa; ?>">
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="text text-sm">Total PIX (R$)</label>
                         <input type="text" id="total_pix" name="total_pix" readonly="readonly" class="form-control convert_money" value="<?= $total_pix; ?>">
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="text text-sm">Outros / Cartão (R$)</label>
                         <input type="text" id="total_outros" name="total_outros" readonly="readonly" class="form-control convert_money" value="<?= $total_outros; ?>">
@@ -88,8 +84,8 @@
                     <div class="form-group">
                         <label>Status Liquidação</label>
                         <select id="status_liquidacao" name="status_liquidacao" autofocus="autofocus" class="form-control">                            
-                            <option value="1">Liquidado</option>
                             <option value="0">Devedor</option>
+                            <option value="1">Liquidado</option>                            
                         </select>
                     </div>
                 </div>

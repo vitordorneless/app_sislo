@@ -108,6 +108,7 @@
                         <th>Outros Obs.</th>
                         <th>Brindes (R$)</th>                        
                         <th>Brindes Obs.</th>                        
+                        <th>Ação</th>                        
                     </tr>
                 </thead>
                 <tbody></tbody>

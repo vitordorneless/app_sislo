@@ -38,7 +38,10 @@ class Sislo_FechamentoOutros extends BaseController {
                 sfc.total_pix as total_pix,
                 sfc.obs_brinde as obs_brinde,
                 sfc.obs_outros as obs_outros,
-                sfc.idsislo_fechamento_caixa as idsislo_fechamento_caixa")
+                sfc.idsislo_fechamento_caixa as idsislo_fechamento_caixa,
+                if((SELECT COUNT(svo.status_liquidacao) 
+                    FROM sislo_valores_outros svo 
+                    WHERE svo.id_sislo_fechamento_caixa = sfc.idsislo_fechamento_caixa) > 0,'Liquidado','Devedor') AS devedor")
                         ->join("sislo_funcionarios as su", "sfc.id_usuario = su.idsislo_funcionarios")
                         ->where("sfc.referencia", $referencia)
                         ->where("sfc.cod_loterico", $this->session->get('cod_lot'))
@@ -62,7 +65,11 @@ class Sislo_FechamentoOutros extends BaseController {
                 $row[] = $value->obs_outros;
                 $row[] = number_format($value->total_brinde, 2, ',', '.');
                 $row[] = $value->obs_brinde;
-                $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_fechamento_caixa_outros/?id=' . $value->idsislo_fechamento_caixa) . '">Liquidar</a>';
+                $row[] = $value->devedor == 'Devedor' ? '<a class="btn '
+                        . 'btn-primary" href="' .
+                        base_url('redireciona_fechamento_caixa_outros/?id=' .
+                                $value->idsislo_fechamento_caixa) .
+                        '">Liquidar</a>' : 'Já Liquidado';
                 $sominha_pix[] = $value->total_pix;
                 $sominha_azulzinha[] = $value->total_outros;
                 $sominha_outros[] = $value->total_outros;
@@ -177,7 +184,7 @@ class Sislo_FechamentoOutros extends BaseController {
 
     public function sislo_fechamento_outros_form() {
 
-        if ($this->request->isAJAX()) {            
+        if ($this->request->isAJAX()) {
             $sislo_fechamento_model = new \App\Models\Sislo_ValoresOutrosModel;
             $sislo_fechamento_model->set('status_liquidacao', $this->request->getPost('status_liquidacao'));
             $sislo_fechamento_model->set('id_sislo_fechamento_caixa', $this->request->getPost('idsislo_fechamento_caixa'));
