@@ -63,16 +63,16 @@ $routes->get('redireciona_experiencia', 'Sislo_CandidatoExperiencia::redireciona
 $routes->post('salva_experiencia', 'Sislo_CandidatoExperiencia::ajax_save_form');
 //fim base crud ajax
 //inicio base crud ajax
-$routes->add('tipos_convenio', 'Sislo_TiposConvenio::index');
-$routes->add('ajax_list_tiposconvenio', 'Sislo_TiposConvenio::ajax_list_tiposconvenio');
-$routes->add('redireciona_tiposconvenio', 'Sislo_TiposConvenio::redireciona_tiposconvenio');
-$routes->add('salva_tipos_convenio', 'Sislo_TiposConvenio::ajax_save_form');
+$routes->get('tipos_convenio', 'Sislo_TiposConvenio::index');
+$routes->post('ajax_list_tiposconvenio', 'Sislo_TiposConvenio::ajax_list_tiposconvenio');
+$routes->get('redireciona_tiposconvenio', 'Sislo_TiposConvenio::redireciona_tiposconvenio');
+$routes->post('salva_tipos_convenio', 'Sislo_TiposConvenio::ajax_save_form');
 //fim base crud ajax
 //inicio base crud ajaxsislo_jogos_cef
-$routes->add('sislo_jogos_cef', 'SisloJogosCef::index');
-$routes->add('ajax_list_sislo_jogos_cef', 'SisloJogosCef::ajax_list_jogos_cef');
-$routes->add('redireciona_jogoscef', 'SisloJogosCef::redireciona_jogoscef');
-$routes->add('salva_sislo_jogos_cef', 'SisloJogosCef::ajax_save_form');
+$routes->get('sislo_jogos_cef', 'SisloJogosCef::index');
+$routes->post('ajax_list_sislo_jogos_cef', 'SisloJogosCef::ajax_list_jogos_cef');
+$routes->get('redireciona_jogoscef', 'SisloJogosCef::redireciona_jogoscef');
+$routes->post('salva_sislo_jogos_cef', 'SisloJogosCef::ajax_save_form');
 //fim base crud ajax
 //inicio base crud ajaxsislo_jogos_cef
 $routes->add('chamados', 'Sislo_Chamados::index');
@@ -371,14 +371,14 @@ $routes->add('sislo_comissao_jogos_situacao_geral', 'Sislo_ComissaoJogos::sislo_
 $routes->add('ajax_table_sislo_situacao_jogos_geral', 'Sislo_ComissaoJogos::ajax_table_sislo_situacao_jogos_geral');
 //fim 
 //inicio sislo_comissao_jogosbolao com busca
-$routes->add('sislo_comissao_jogosboloes', 'Sislo_ComissaoBolao::index');
-$routes->add('ajax_list_comissao_bolao', 'Sislo_ComissaoBolao::ajax_list_comissao_bolao');
-$routes->add('redireciona_comissao_jogosbolao', 'Sislo_ComissaoBolao::redireciona_comissao_jogosbolao');
-$routes->add('ajax_save_formbolao', 'Sislo_ComissaoBolao::ajax_save_form');
-$routes->add('situacao_boloes', 'Sislo_ComissaoBolao::situacao_boloes');
-$routes->add('ajax_table_sislo_situacao_boloes', 'Sislo_ComissaoBolao::ajax_table_sislo_situacao_boloes');
-$routes->add('sislo_calculadora_boloes', 'Sislo_ComissaoBolao::sislo_calculadora_boloes');
-$routes->add('ajax_list_calculadora_bolao', 'Sislo_ComissaoBolao::ajax_list_calculadora_bolao');
+$routes->get('sislo_comissao_jogosboloes', 'Sislo_ComissaoBolao::index');
+$routes->post('ajax_list_comissao_bolao', 'Sislo_ComissaoBolao::ajax_list_comissao_bolao');
+$routes->get('redireciona_comissao_jogosbolao', 'Sislo_ComissaoBolao::redireciona_comissao_jogosbolao');
+$routes->post('ajax_save_formbolao', 'Sislo_ComissaoBolao::ajax_save_form');
+$routes->get('situacao_boloes', 'Sislo_ComissaoBolao::situacao_boloes');
+$routes->post('ajax_table_sislo_situacao_boloes', 'Sislo_ComissaoBolao::ajax_table_sislo_situacao_boloes');
+$routes->get('sislo_calculadora_boloes', 'Sislo_ComissaoBolao::sislo_calculadora_boloes');
+$routes->post('ajax_list_calculadora_bolao', 'Sislo_ComissaoBolao::ajax_list_calculadora_bolao');
 //fim 
 //inicio premios pagos com busca
 $routes->add('sislo_premios_pagos', 'Sislo_Premios_Pagos::index');
@@ -417,16 +417,16 @@ $routes->add('redireciona_des', 'Sislo_PECDestinacao::redireciona');
 $routes->add('salva_des', 'Sislo_PECDestinacao::ajax_save_form');
 //fim tipo pec
 //inicio identificador pec
-$routes->add('ide_pec', 'Sislo_PECIdentificador::index');
-$routes->add('ajax_list_ide', 'Sislo_PECIdentificador::ajax_list');
-$routes->add('redireciona_ide', 'Sislo_PECIdentificador::redireciona');
-$routes->add('salva_ide', 'Sislo_PECIdentificador::ajax_save_form');
+$routes->get('ide_pec', 'Sislo_PECIdentificador::index');
+$routes->post('ajax_list_ide', 'Sislo_PECIdentificador::ajax_list');
+$routes->get('redireciona_ide', 'Sislo_PECIdentificador::redireciona');
+$routes->post('salva_ide', 'Sislo_PECIdentificador::ajax_save_form');
 //fim tipo pec
 //inicio pec
-$routes->add('sislo_pec', 'Sislo_PEC::index');
-$routes->add('ajax_list_pec', 'Sislo_PEC::ajax_list');
-$routes->add('redireciona_pec', 'Sislo_PEC::redireciona');
-$routes->add('salva_pec', 'Sislo_PEC::ajax_save_form');
+$routes->get('sislo_pec', 'Sislo_PEC::index');
+$routes->post('ajax_list_pec', 'Sislo_PEC::ajax_list');
+$routes->get('redireciona_pec', 'Sislo_PEC::redireciona');
+$routes->post('salva_pec', 'Sislo_PEC::ajax_save_form');
 //fim pec
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {

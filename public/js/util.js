@@ -1,5 +1,5 @@
-//const BASE_URL = "http://localhost/Sislo_Enterprise/public/";//base de teste
-const BASE_URL = 'https://www.sislo.com.br/Sislo_Enterprise/public/';
+const BASE_URL = "http://localhost/Sislo_Enterprise/public/";//base de teste
+//const BASE_URL = 'https://www.sislo.com.br/Sislo_Enterprise/public/';
 
 const DATATABLE_PTBR = {
     "sEmptyTable": "Nenhum registro encontrado",
