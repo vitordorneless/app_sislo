@@ -155,6 +155,13 @@ class Sislo_ComissaoIBC extends BaseController {
 
             if ($this->request->getPost('incluir') == '1') {
                 $entrou = $cob->insertBatch($insert) == true ? 1 : 0;
+                $sislo_notificacao_model = new \App\Models\Sislo_NotificacaoModel();
+                $sislo_notificacao_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
+                $sislo_notificacao_model->set('notificacao', 'Comissão de Bolão Inserida');
+                $sislo_notificacao_model->set('valor', array_sum($datas['comissao']));
+                $sislo_notificacao_model->set('status', 1);
+                $sislo_notificacao_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
+                $sislo_notificacao_model->insert();
                 echo $entrou;
             } else {//este else trabalhar emcima do editar que vai ser criado
                 //$sislo_contaspagar_model->where('idsislo_contas_pagar', $this->request->getPost('idsislo_contas_pagar'));

@@ -109,7 +109,7 @@ class Sislo_FechamentoCaixa extends BaseController {
             $datas['soma_geral'] = ($datas['dinheiro'] + $datas['excedente']) - $datas['sup_caixa'];
             $datas['diferenca'] = ($datas['soma_geral'] - $datas['resumo_tfl']);
 
-            $sislo_fechamento_model = new \App\Models\Sislo_FechamentoCaixaModel;
+            $sislo_fechamento_model = new \App\Models\Sislo_FechamentoCaixaModel;            
             $sislo_fechamento_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
             $sislo_fechamento_model->set('referencia', $data_fechamento->format('m/Y'));
             $sislo_fechamento_model->set('data_fechamento', $this->request->getPost('data_fechamento'));
@@ -135,6 +135,14 @@ class Sislo_FechamentoCaixa extends BaseController {
             $sislo_fechamento_model->set('resumo_tfl', $datas['resumo_tfl']);
             $sislo_fechamento_model->set('diferenca', $datas['diferenca']);
             $sislo_fechamento_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
+            
+            $sislo_notificacao_model = new \App\Models\Sislo_NotificacaoModel();
+            $sislo_notificacao_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
+            $sislo_notificacao_model->set('notificacao', 'Fechamento de Caixa');
+            $sislo_notificacao_model->set('valor', $this->request->getPost('diferenca'));
+            $sislo_notificacao_model->set('status', 1);
+            $sislo_notificacao_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
+            $sislo_notificacao_model->insert();
 
             if ($this->request->getPost('incluir') == '1') {
                 $entrou = $sislo_fechamento_model->insert() == true ? 1 : 0;
