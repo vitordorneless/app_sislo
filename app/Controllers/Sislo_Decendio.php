@@ -93,7 +93,7 @@ class Sislo_Decendio extends BaseController {
                 $row = array();
                 $row[] = trim($value->servico);
                 $row[] = trim($value->quantidade);
-                $row[] = $this->formataValoresMonetarios(bcdiv($value->valor_total,$value->quantidade,2));
+                $row[] = $this->formataValoresMonetarios(bcdiv($value->valor_total, $value->quantidade, 2));
                 $row[] = $this->formataValoresMonetarios($value->valor_total);
                 $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_decendio/?id=' . $value->idsislo_decendio) . '">Editar</a>';
                 ++$tt;
@@ -126,7 +126,7 @@ class Sislo_Decendio extends BaseController {
             $datas['data_ultima_alteracao'] = date('Y-m-d H:i:s');
             $insert = [];
             $i = 0;
-            foreach ($datas['id_sislo_servicos_decendio'] as $value) {                
+            foreach ($datas['id_sislo_servicos_decendio'] as $value) {
                 $conjunto = [
                     'referencia' => $datas['referencia'],
                     'cod_loterico' => $datas['cod_loterico'],
@@ -154,7 +154,7 @@ class Sislo_Decendio extends BaseController {
                 $entrou = $decendio_servico_model->insertBatch($insert) == true ? 1 : 0;
                 $sislo_notificacao_model = new \App\Models\Sislo_NotificacaoModel();
                 $sislo_notificacao_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
-                $sislo_notificacao_model->set('notificacao', 'Comissão de Bolão Inserida');
+                $sislo_notificacao_model->set('notificacao', 'Comissão de Decêndio Inserida');
                 $sislo_notificacao_model->set('valor', array_sum($datas['valor_total']));
                 $sislo_notificacao_model->set('status', 1);
                 $sislo_notificacao_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
@@ -168,5 +168,4 @@ class Sislo_Decendio extends BaseController {
             echo view('login');
         }
     }
-
 }

@@ -51,7 +51,7 @@ class Sislo extends BaseController {
         $data = array(
             "scripts" => array(
                 "sislo.js",
-                "slick.js",
+                "slick.js",                
                 "util.js"
             ),
             "user_name" => $result->sislo_nome,

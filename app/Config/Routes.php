@@ -21,6 +21,8 @@ $routes->add('sair', 'Sislo::sair');
 $routes->add('ajax_login', 'Login::ajax_login');
 $routes->add('sislo', 'Sislo::index');
 
+$routes->post('ajax_list_notificacao', 'Sislo_Notificacao::ajax_list_notificacao');
+
 $routes->get('vagas_aberto', 'Home::vagas_aberto');
 $routes->post('ajax_list_site_vaga', 'Home::ajax_list_site_vaga');
 

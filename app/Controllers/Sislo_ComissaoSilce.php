@@ -157,7 +157,7 @@ class Sislo_ComissaoSilce extends BaseController {
                 $entrou = $cob->insertBatch($insert) == true ? 1 : 0;
                 $sislo_notificacao_model = new \App\Models\Sislo_NotificacaoModel();
                 $sislo_notificacao_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
-                $sislo_notificacao_model->set('notificacao', 'Comissão de Bolão Inserida');
+                $sislo_notificacao_model->set('notificacao', 'Comissão de SILCE Inserida');
                 $sislo_notificacao_model->set('valor', array_sum($datas['comissao']));
                 $sislo_notificacao_model->set('status', 1);
                 $sislo_notificacao_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
