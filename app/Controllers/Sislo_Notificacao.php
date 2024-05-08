@@ -184,6 +184,7 @@ class Sislo_Notificacao extends BaseController {
                     </li>';
             }
             $sislo_notifications->set('status', 0);
+            
             $sislo_notifications->where('cod_loterico', $cod_loterico)
                     ->where('status', 1);
             $sislo_notifications->update();
