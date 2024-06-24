@@ -388,6 +388,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= base_url('sislo_comissao_jogosboloes_online'); ?>" class="nav-link">
+                        <i class="far fa-building nav-icon"></i>
+                        <p>Comissão BOLÃO ONLINE</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= base_url('sislo_calculadora_boloes'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Calculadora de BOLÃO</p>

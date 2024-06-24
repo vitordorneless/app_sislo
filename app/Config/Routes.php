@@ -372,6 +372,12 @@ $routes->add('ajax_table_sislo_situacao_jogos', 'Sislo_ComissaoJogos::ajax_table
 $routes->add('sislo_comissao_jogos_situacao_geral', 'Sislo_ComissaoJogos::sislo_comissao_jogos_situacao_geral');
 $routes->add('ajax_table_sislo_situacao_jogos_geral', 'Sislo_ComissaoJogos::ajax_table_sislo_situacao_jogos_geral');
 //fim 
+//inicio sislo_comissao_jogosbolaoonline com busca
+$routes->get('sislo_comissao_jogosboloes_online', 'Sislo_ComissaoBolaoOnline::index');
+$routes->post('ajax_list_comissao_bolao_online', 'Sislo_ComissaoBolaoOnline::ajax_list_comissao_bolao_online');
+$routes->get('redireciona_comissao_jogosbolaoOnline', 'Sislo_ComissaoBolaoOnline::redireciona_comissao_jogosbolaoOnline');
+$routes->post('ajax_save_formbolao_online', 'Sislo_ComissaoBolaoOnline::ajax_save_form');
+//fim 
 //inicio sislo_comissao_jogosbolao com busca
 $routes->get('sislo_comissao_jogosboloes', 'Sislo_ComissaoBolao::index');
 $routes->post('ajax_list_comissao_bolao', 'Sislo_ComissaoBolao::ajax_list_comissao_bolao');
