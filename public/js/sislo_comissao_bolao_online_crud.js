@@ -55,7 +55,7 @@ $(document).ready(function () {
         submitHandler: function (form) {
             $.ajax({
                 type: "POST",
-                url: BASE_URL + "ajax_save_formbolao_online",
+                url: BASE_URL + "ajax_save_formbolaoonline",
                 dataType: "html",
                 data: $(form).serialize(),
                 beforeSend: function () {

@@ -6,7 +6,7 @@
         <div class="row">
             <div class="form-inline">
                 <div class="form-group">
-                    <a class="btn btn-primary" href="<?= base_url('redireciona_comissao_jogosbolaoOnline/?id=0'); ?>">Incluir Comissão de Bolão</a><br><br>
+                    <a class="btn btn-primary" href="<?= base_url('redireciona_comissao_jogosbolaoonline/?id=0'); ?>">Incluir Comissão de Bolão</a><br><br>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
     <div class="card-footer" id="conteudo">
         <div class="row" id="antes"></div>
         <div class="row">
-            <table id="#sislo_comissao_bolao_online_tablelist" class="table table-striped table-bordered table-responsive text text-sm text-center">
+            <table id="sislo_comissao_bolao_online_tablelist" class="table table-striped table-bordered table-responsive text text-sm text-center">
                 <thead>
                     <tr>    
                         <th>Data</th> 

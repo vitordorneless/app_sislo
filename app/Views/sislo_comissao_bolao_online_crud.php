@@ -3,7 +3,7 @@
         <h3 class="card-title">Comissão Jogos - BOLÃO ONLINE!</h3>
     </div>
     <div class="card-body">
-        <form class="form-group" id="#sislo_comissao_jogos_bolao_online_loterias" name="#sislo_comissao_jogos_bolao_online_loterias" method="POST">
+        <form class="form-group" id="sislo_comissao_jogos_bolao_online_loterias" name="sislo_comissao_jogos_bolao_online_loterias" method="POST">
             <div class="row">                
                 <div class="col-sm-4">
                     <div class="form-group">

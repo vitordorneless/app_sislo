@@ -28,7 +28,7 @@ class Sislo_ComissaoBolaoOnline extends BaseController {
         }
     }
 
-    public function redireciona_comissao_jogosbolaoOnline() {
+    public function redireciona_comissao_jogosbolaoonline() {
         if ($this->session->get('user_id')) {
             $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;
             $sislo_jogos = new \App\Models\SisloJogosCefModel;
