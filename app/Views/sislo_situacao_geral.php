@@ -292,7 +292,19 @@
                     </div>                    
                 </div>
             </div>
-            <div class="col-lg-6 col-4">
+            <div class="col-lg-3 col-4">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3 id="comissao_bolao_online"></h3>
+                        <p>Total Bolão Online</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-lg-3 col-4">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
@@ -350,6 +362,22 @@
                 <thead>
                     <tr>
                         <th colspan="5">BOLÃO</th>
+                    </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Jogo</th>
+                        <th>Cotas</th>
+                        <th>Valor</th>
+                        <th>Comissão</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            
+            <table id="table_sislo_situacao_bolao_online_geral" class="table table-striped table-bordered table-responsive text text-sm text-center">
+                <thead>
+                    <tr>
+                        <th colspan="5">BOLÃO ONLINE</th>
                     </tr>
                     <tr>
                         <th>#</th>

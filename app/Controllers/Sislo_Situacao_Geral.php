@@ -59,6 +59,22 @@ class Sislo_Situacao_Geral extends BaseController {
                 ->get();
         return $query;
     }
+    
+    public function carrega_ajax_table_sislo_situacao_bolao_online() {
+        $db = \Config\Database::connect();
+        $cod_lot = $this->session->get('cod_lot');
+        $builder = $db->table('sislo_comissao_bolao_online as scs');
+        $query = $builder->select("sts.nome as nome, SUM(scs.cotas) as cotas, SUM(scs.valor_bolao) as valor_bolao, SUM(scs.valor_tarifa) as valor_tarifa")
+                ->join("sislo_jogos_cef as sts", "scs.id_sislo_jogos_cef = sts.idsislo_jogos_cef", "inner")
+                ->where('MONTH(scs.dia_inicial)', $this->request->getPost('mes'))
+                ->where('YEAR(scs.dia_inicial)', $this->request->getPost('ano'))
+                ->where("scs.cod_loterico", $cod_lot)
+                ->where('scs.status', 1)
+                ->groupBy("scs.id_sislo_jogos_cef")
+                ->orderBy('scs.valor_tarifa', 'DESC')
+                ->get();
+        return $query;
+    }
 
     public function carrega_table_sislo_bilhete_federal() {
         $db = \Config\Database::connect();
@@ -268,6 +284,7 @@ class Sislo_Situacao_Geral extends BaseController {
             $sislo_comissao = $this->carrega_ajax_table_sislo_situacao_jogos()->getResult();
             $sislo_comissao_bilhete_federal = $this->carrega_table_sislo_bilhete_federal()->getResult();
             $sislo_comissao_bolao = $this->carrega_ajax_table_sislo_situacao_bolao()->getResult();
+            $sislo_comissao_bolao_online = $this->carrega_ajax_table_sislo_situacao_bolao_online()->getResult();
             $sislo_comissao_silce = $this->carrega_comissoes_silce()->getResult();
             $sislo_comissao_ibc = $this->carrega_comissoes_ibc()->getResult();
             $sislo_premios_pagos = $this->carrega_premios_pagos()->getResult();
@@ -362,7 +379,7 @@ class Sislo_Situacao_Geral extends BaseController {
                     $mes_jogos = $total_meta_jogos[0]->janeiro;
             }
             $data = $data_silce = $data_ibc = $data_bilhete_federal = $data_bolao = $data_premios_pagos = $data_nao_jogos = $data_contas_pagar = $data_salarios = $data_caixas = array();
-            $comissao_jogos = $comissao_jogos_silce = $comissao_jogos_ibc = $comissao_bilhete_federal = $comissao_jogos_bolao = $premios_pagos = $caucao = $nao_jogos = $contas_pagar = $salarios = $caixas = 0;
+            $comissao_jogos = $comissao_jogos_silce = $comissao_jogos_ibc = $comissao_bilhete_federal = $comissao_jogos_bolao = $comissao_jogos_bolao_online = $premios_pagos = $caucao = $nao_jogos = $contas_pagar = $salarios = $caixas = 0;
 
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
@@ -470,6 +487,19 @@ class Sislo_Situacao_Geral extends BaseController {
                 $comissao_jogos_bolao = bcadd($comissao_jogos_bolao, $value->valor_tarifa, 2);
                 $data_bolao[] = $row_bolao;
             }
+            
+            foreach ($sislo_comissao_bolao_online as $value) {
+                $row_bolao_online = array();
+                $row_bolao_online[] = $tt;
+                $row_bolao_online[] = $value->nome;
+                $row_bolao_online[] = trim($value->cotas);
+                $row_bolao_online[] = $this->formataValoresMonetarios($value->valor_bolao);
+                $row_bolao_online[] = $this->formataValoresMonetarios($value->valor_tarifa);
+                ++$tt;
+                ++$tb;
+                $comissao_jogos_bolao_online = bcadd($comissao_jogos_bolao_online, $value->valor_tarifa, 2);
+                $data_bolao_online[] = $row_bolao_online;
+            }
 
             foreach ($sislo_comissao_silce as $value) {
                 $row_silce = array();
@@ -498,7 +528,8 @@ class Sislo_Situacao_Geral extends BaseController {
             $total_todos_jogoss = bcadd($comissao_jogos_bolao, $comissao_jogos, 2);
             $total_todos_jogosss = bcadd($comissao_jogos_ibc, $comissao_jogos_silce, 2);
             $total_todos_jogossss = bcadd($total_todos_jogoss, $total_todos_jogosss, 2);
-            $total_todos_jogos = bcadd($total_todos_jogossss, $comissao_bilhete_federal, 2);
+            $total_todos_jogoso = bcadd($total_todos_jogossss, $comissao_bilhete_federal, 2);
+            $total_todos_jogos = bcadd($total_todos_jogoso, $comissao_jogos_bolao_online, 2);
 
             $total_todos_deveres = bcadd($salarios, $contas_pagar, 2);
 
@@ -516,6 +547,7 @@ class Sislo_Situacao_Geral extends BaseController {
                 "comissao_jogos" => 'R$ ' . $this->formataValoresMonetarios($comissao_jogos),
                 "comissao_bilhete_federal" => 'R$ ' . $this->formataValoresMonetarios($comissao_bilhete_federal),
                 "comissao_bolao" => 'R$ ' . $this->formataValoresMonetarios($comissao_jogos_bolao),
+                "comissao_bolao_online" => 'R$ ' . $this->formataValoresMonetarios($comissao_jogos_bolao_online),
                 "total_jogos" => 'R$ ' . $this->formataValoresMonetarios(bcadd($comissao_jogos_bolao, $comissao_jogos, 2)),
                 "comissao_jogos_silce" => 'R$ ' . $this->formataValoresMonetarios($comissao_jogos_silce),
                 "premios_pagos" => 'R$ ' . $this->formataValoresMonetarios($premios_pagos),
@@ -529,6 +561,7 @@ class Sislo_Situacao_Geral extends BaseController {
                 "data_silce" => $data_silce,
                 "data_bilhete_federal" => $data_bilhete_federal,
                 "data_bolao" => $data_bolao,
+                "data_bolao_online" => $data_bolao_online,
                 "data_premios_pagos" => $data_premios_pagos,
                 "data_nao_jogos" => $data_nao_jogos,
                 "data_contas_pagar" => $data_contas_pagar,

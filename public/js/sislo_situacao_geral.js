@@ -28,6 +28,7 @@ $(document).ready(function () {
 
                     $("#comissao_jogos").html(datas.comissao_jogos);
                     $("#comissao_bolao").html(datas.comissao_bolao);
+                    $("#comissao_bolao_online").html(datas.comissao_bolao_online);
                     $("#comissao_jogos_silce").html(datas.comissao_jogos_silce);
                     $("#comissao_jogos_ibc").html(datas.comissao_jogos_ibc);
                     $("#comissao_bilhete_federal").html(datas.comissao_bilhete_federal);
@@ -101,6 +102,14 @@ $(document).ready(function () {
                         searching: false,
                         order: [[4, 'desc']],
                         data: datas.data_bolao
+                    });
+                    
+                    $("#table_sislo_situacao_bolao_online_geral").DataTable({
+                        oLanguage: DATATABLE_PTBR,
+                        destroy: true,
+                        searching: false,
+                        order: [[4, 'desc']],
+                        data: datas.data_bolao_online
                     });
 
                     $("#table_sislo_situacao_jogos_silce_geral").DataTable({
