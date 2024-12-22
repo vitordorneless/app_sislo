@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use AllowDynamicProperties; 
 
 /**
  * Class BaseController
@@ -36,6 +37,9 @@ class BaseController extends Controller {
      * @var array
      */
     protected $helpers = ['url', 'form'];
+    protected $viewData = [];
+    protected $session = [];
+
 
     /**
      * Constructor.

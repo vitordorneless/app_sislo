@@ -7,7 +7,7 @@ use CodeIgniter\Config\BaseConfig;
 class App extends BaseConfig
 {
     
-    public $baseURL = 'http://localhost/Sislo_Enterprise/public/';//desenvolvimento
+    public $baseURL = 'http://localhost/app_sislo/public/';//desenvolvimento
     //public $baseURL = 'https://www.sislo.com.br/Sislo_Enterprise/public/';//produção
 
     public $indexPage = '';

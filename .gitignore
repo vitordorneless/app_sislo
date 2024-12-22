@@ -12,3 +12,4 @@ nbproject/private
 /writable
 /app/Config/App.php
 /public/js/util.js
+/app/Config/Database.php
