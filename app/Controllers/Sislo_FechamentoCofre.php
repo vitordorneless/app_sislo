@@ -194,6 +194,7 @@ class Sislo_FechamentoCofre extends BaseController {
                     "jquery.validate.js",
                     "jquery.mask.min.js",
                     "jquery.maskMoney.min.js",
+                    "sweetalert2.all.min.js",
                     "util.js"
                 ),
                 "user_name" => $result->sislo_nome,
@@ -262,7 +263,7 @@ class Sislo_FechamentoCofre extends BaseController {
 
             if ($sislo_model->insert() == true) {
 
-                $mostra_tela_remessa = !empty($datas['remessa']) ? $datas['remessa'] : 0;
+                /*$mostra_tela_remessa = !empty($datas['remessa']) ? $datas['remessa'] : 0;
                 $mostra_tela_sobracaixa = !empty($datas['sobra_cx']) ? $datas['sobra_cx'] : 0;
                 $mostra_tela_pag_lot_fed = $this->limparValoresMonetarios(!empty($this->request->getPost('pag_lot_fed')) ? $this->request->getPost('pag_lot_fed') : 0);
                 $mostra_tela_pag_outros = $this->limparValoresMonetarios(!empty($this->request->getPost('pag_outros')) ? $this->request->getPost('pag_outros') : 0);
@@ -290,7 +291,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Senha Protege';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= $this->request->getPost('senha_protege');
+                //$table .= $this->request->getPost('senha_protege');
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '<tr>';
@@ -298,7 +299,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Remessas';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= $this->formataValoresMonetarios($datas['remessa']);
+                //$table .= $this->formataValoresMonetarios($datas['remessa']);
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '<tr>';
@@ -306,7 +307,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Sobras de Caixa';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= $this->formataValoresMonetarios($datas['sobra_cx']);
+                //$table .= $this->formataValoresMonetarios($datas['sobra_cx']);
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '<tr>';
@@ -314,7 +315,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Total Outros';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= $this->formataValoresMonetarios($total_outros);
+                //$table .= $this->formataValoresMonetarios($total_outros);
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '<tr>';
@@ -322,7 +323,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Comissão Jogos';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= $this->formataValoresMonetarios($mostra_tela_comissao);
+                //$table .= $this->formataValoresMonetarios($mostra_tela_comissao);
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '<tr>';
@@ -330,7 +331,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Total Cofre';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= $this->formataValoresMonetarios($total_cofrinho);
+                //$table .= $this->formataValoresMonetarios($total_cofrinho);
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '<tr>';
@@ -338,14 +339,14 @@ class Sislo_FechamentoCofre extends BaseController {
                 $table .= 'Por Extenso';
                 $table .= '</td>';
                 $table .= '<td>';
-                $table .= $porextenso;
+                //$table .= $porextenso;
                 $table .= '</td>';
                 $table .= '</tr>';
                 $table .= '</tbody>';
-                $table .= '</table>';
-                echo $table;
+                $table .= '</table>';*/
+                echo 1;
             } else {
-                echo '<h1 class="text text-danger">Houve um erro ao salvar!!</h1>';
+                echo 0;
             }
         } else {
             echo view('login');

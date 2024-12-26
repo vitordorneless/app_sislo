@@ -43,9 +43,8 @@ $(document).ready(function () {
         submitHandler: function (form) {
             $.ajax({
                 type: "POST",
-                //url: BASE_URL + "sislo_fechamento_cofre_execute",
                 url: BASE_URL + "sislo_fechamento_cofre_novo_execute",
-                dataType: "html",
+                dataType: "json",
                 data: $(form).serialize(),
                 beforeSend: function () {
                     clearErrors();
@@ -57,10 +56,19 @@ $(document).ready(function () {
                 },
                 success: function (response) {
                     clearErrors();
-                    $('html,body').animate({scrollTop: document.body.scrollHeight}, "fast");
+                    var conteudo = response === 1 ? success_note('Fechamento de Cofre') + buttonBack('sislo') : error_note('Fechamento de Cofre') + buttonBack('sislo');
                     $('#sislo_fechamento_cofre')[0].reset();
-                    $("#fechacofre").attr("disabled", true);
-                    $("#conteudo").html(response);
+                    $("#conteudo").empty();
+                    
+                    if (response === 1) {                        
+                        $("#fechacofre").attr("disabled", true);
+                        alerta('success', 'Sucesso', 'Dados Salvos!!');
+                    } else {
+                        console.log('entrei no else');
+                        alerta('error', 'Aconteceu um erro!', 'Tente Novamente!!');
+                    }
+                    
+                    $("#conteudo").html(conteudo);
                 }
             });
             return false;
