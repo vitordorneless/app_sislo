@@ -161,8 +161,7 @@ class Sislo_ComissaoBolao extends BaseController {
             $soma = array();
             foreach ($sislo_comissao as $value) {
                 $row = array();
-                $row[] = $tt;
-                $row[] = $this->formataDataParaDatatable($value->dia_inicial);
+                $row[] = $tt;                
                 $row[] = $value->nome;
                 $row[] = trim($value->cotas);
                 $row[] = $this->formataValoresMonetarios($value->valor_tarifa);
