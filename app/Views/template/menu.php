@@ -364,6 +364,12 @@
                     </a>
                 </li>                
                 <li class="nav-item">
+                    <a href="<?= base_url('sislo_fechamento_dia_atual'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Fechamento Cofre Novo</p>
+                    </a>
+                </li>                
+                <li class="nav-item">
                     <a href="<?= base_url('sislo_fechamentos_outros'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Controle Valores Caixas</p>
