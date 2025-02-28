@@ -566,7 +566,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 $remessa = bcadd($remessa, $this->limparValoresMonetarios($remessas), 2);
             }
             $datas['remessa'] = !empty($remessa) ? $remessa : 0;            
-            
+            //pegar da model de remessas os valores por tipo de nota
             echo 1;            
         } else {
             echo view('login');
