@@ -214,6 +214,208 @@ class Sislo_FechamentoCofre extends BaseController {
         }
     }
 
+    public function fechamento_atual() {
+        if ($this->session->get('user_id')) {
+            $sislo_model = new \App\Models\Sislo_UsuariosModel;
+            $sislo_protege_model = new \App\Models\Sislo_CarroForteProtegeModel;
+            $sislo_fechamento_model = new \App\Models\Sislo_FechamentoCaixaModel;
+            $result = $sislo_model->find($this->session->get('user_id'));
+
+            $data_senha = new \Datetime('now');
+            $sislo_protege = $sislo_protege_model->where('cod_loterico', $this->session->get('cod_lot'))
+                            ->where('validade', $data_senha->format('Y'))->where('status', 1)
+                            ->orderBy('validade', 'desc')->findAll();
+
+            foreach ($sislo_protege as $value) {
+                switch ($data_senha->format('l')) {
+                    case 'Monday':
+                        $selectweek = $value->seg;
+                        break;
+                    case 'Tuesday':
+                        $selectweek = $value->ter;
+                        break;
+                    case 'Wednesday':
+                        $selectweek = $value->qua;
+                        break;
+                    case 'Thursday':
+                        $selectweek = $value->qui;
+                        break;
+                    case 'Friday':
+                        $selectweek = $value->sex;
+                        break;
+                    case 'Saturday':
+                        $selectweek = $value->sab;
+                        break;
+                    case 'Sunday':
+                        $selectweek = $value->dom;
+                        break;
+                }
+                switch ($data_senha->format('m')) {
+                    case '01':
+                        $selectmonth = $value->jan;
+                        break;
+                    case '02':
+                        $selectmonth = $value->fev;
+                        break;
+                    case '03':
+                        $selectmonth = $value->mar;
+                        break;
+                    case '04':
+                        $selectmonth = $value->abr;
+                        break;
+                    case '05':
+                        $selectmonth = $value->mai;
+                        break;
+                    case '06':
+                        $selectmonth = $value->jun;
+                        break;
+                    case '07':
+                        $selectmonth = $value->jul;
+                        break;
+                    case '08':
+                        $selectmonth = $value->ago;
+                        break;
+                    case '09':
+                        $selectmonth = $value->set;
+                        break;
+                    case '10':
+                        $selectmonth = $value->out;
+                        break;
+                    case '11':
+                        $selectmonth = $value->nov;
+                        break;
+                    case '12':
+                        $selectmonth = $value->dez;
+                        break;
+                }
+                switch ($data_senha->format('d')) {
+                    case '01':
+                        $selectday = $value->d01;
+                        break;
+                    case '02':
+                        $selectday = $value->d02;
+                        break;
+                    case '03':
+                        $selectday = $value->d03;
+                        break;
+                    case '04':
+                        $selectday = $value->d04;
+                        break;
+                    case '05':
+                        $selectday = $value->d05;
+                        break;
+                    case '06':
+                        $selectday = $value->d06;
+                        break;
+                    case '07':
+                        $selectday = $value->d07;
+                        break;
+                    case '08':
+                        $selectday = $value->d08;
+                        break;
+                    case '09':
+                        $selectday = $value->d09;
+                        break;
+                    case '10':
+                        $selectday = $value->d10;
+                        break;
+                    case '11':
+                        $selectday = $value->d11;
+                        break;
+                    case '12':
+                        $selectday = $value->d12;
+                        break;
+                    case '13':
+                        $selectday = $value->d13;
+                        break;
+                    case '14':
+                        $selectday = $value->d14;
+                        break;
+                    case '15':
+                        $selectday = $value->d15;
+                        break;
+                    case '16':
+                        $selectday = $value->d16;
+                        break;
+                    case '17':
+                        $selectday = $value->d17;
+                        break;
+                    case '18':
+                        $selectday = $value->d18;
+                        break;
+                    case '19':
+                        $selectday = $value->d19;
+                        break;
+                    case '20':
+                        $selectday = $value->d20;
+                        break;
+                    case '21':
+                        $selectday = $value->d21;
+                        break;
+                    case '22':
+                        $selectday = $value->d22;
+                        break;
+                    case '23':
+                        $selectday = $value->d23;
+                        break;
+                    case '24':
+                        $selectday = $value->d24;
+                        break;
+                    case '25':
+                        $selectday = $value->d25;
+                        break;
+                    case '26':
+                        $selectday = $value->d26;
+                        break;
+                    case '27':
+                        $selectday = $value->d27;
+                        break;
+                    case '28':
+                        $selectday = $value->d28;
+                        break;
+                    case '29':
+                        $selectday = $value->d29;
+                        break;
+                    case '30':
+                        $selectday = $value->d30;
+                        break;
+                    case '31':
+                        $selectday = $value->d31;
+                        break;
+                }
+
+                $soma = array($value->fixo, $value->dependencia, $selectmonth, $selectweek, $selectday);
+            }
+
+            $data_fechamento = $sislo_fechamento_model->select("MAX(data_fechamento) AS 'data_fechamento'")
+                    ->where("cod_loterico", $this->session->get('cod_lot'))
+                    ->find();            
+
+            $data = array(
+                "scripts" => array(
+                    "sislo_fechamento_cofre_atual.js",
+                    "jquery.validate.js",
+                    "jquery.mask.min.js",
+                    "jquery.maskMoney.min.js",
+                    "sweetalert2.all.min.js",
+                    "util.js"
+                ),
+                "user_name" => $result->sislo_nome,
+                "cod_loterico" => $this->session->get('cod_lot'),
+                "senha_protege" => array_sum($soma),
+                "dados_remessas" => $this->carrega_sangrias()->getResult()
+            );
+            echo view('template/header', $data);
+            echo view('template/menu');
+            echo view('template/content');
+            echo view('sislo_fechamento_cofre_atual', $data);
+            echo view('template/footer', $data);
+            echo view('template/scripts', $data);
+        } else {
+            echo view('login');
+        }
+    }
+
     public function carrega_sangrias() {
         $db = \Config\Database::connect();
         $data_senha = new \Datetime('now');
@@ -348,6 +550,24 @@ class Sislo_FechamentoCofre extends BaseController {
             } else {
                 echo 0;
             }
+        } else {
+            echo view('login');
+        }
+    }
+
+    public function sislo_fechamento_cofre_novo_execute_atual() {
+        if ($this->request->isAJAX()) {
+            $sislo_model = new \App\Models\Sislo_FechamentoCofreModel;
+
+            $datas = array();
+            $remessa = 0;
+
+            foreach ($this->request->getPost('remessa') as $remessas) {
+                $remessa = bcadd($remessa, $this->limparValoresMonetarios($remessas), 2);
+            }
+            $datas['remessa'] = !empty($remessa) ? $remessa : 0;            
+            
+            echo 1;            
         } else {
             echo view('login');
         }
