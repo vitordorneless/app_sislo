@@ -11,7 +11,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label class="text text-sm" for="data_fechamento">Data Fechamento</label>
-                        <input type="date" id="data_fechamento" name="data_fechamento" readonly="readonly" class="form-control" value="<?= $hoje->format('Y-m-d') ?>">
+                        <input type="date" id="data_fechamento" name="data_fechamento" class="form-control" value="<?= $hoje->format('Y-m-d') ?>">
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -51,6 +51,42 @@
                 }
                 ?>
             </div>            
+            <div class="row">
+                <div class="col-sm-12">
+                    <?php
+                        if(empty($dados_remessas_analitico)){
+                            echo '<div class="col-sm-12"><div class="form-group"><h1 class="text text-danger">Sem Sangrias nesse dia!!</h1></div></div>';
+                        }else{
+                            echo '<div class="table-responsive">';
+                            echo '<table class="table table-bordered table-hover table-sm">';
+                            echo '<caption>Relação dos tipos de notas</caption>';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th scope="col">Nota</th>';
+                            echo '<th scope="col">Total</th>';
+                            echo '<th scope="col">Total de Notas</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody>';
+                            echo '<tr>';
+                            echo '<td>';
+                            echo '';//aqui o tipo de nota
+                            echo '</td>';
+                            echo '<td>';
+                            echo '';//aqui o total já somado
+                            echo '</td>';
+                            echo '<td>';
+                            echo '';//aqui a contagem de notas
+                            echo '</td>';
+                            echo '</tr>';
+                            echo '</tbody>';
+                            echo '</table>';
+                            echo '</div>';
+                        }
+
+                    ?>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
