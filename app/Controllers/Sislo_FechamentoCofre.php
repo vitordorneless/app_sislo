@@ -557,9 +557,7 @@ class Sislo_FechamentoCofre extends BaseController {
 
     public function sislo_fechamento_cofre_novo_execute_atual() {
         if ($this->request->isAJAX()) {
-            $sislo_model = new \App\Models\Sislo_FechamentoCofreModel;
-
-            $datas = array();
+            $sislo_model = new \App\Models\Sislo_FechamentoCofreModel;            
             $remessa = 0;
 
             foreach ($this->request->getPost('remessa') as $remessas) {
