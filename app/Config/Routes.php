@@ -96,6 +96,7 @@ $routes->add('sislo_fechamento_dia', 'Sislo_FechamentoCofre::index');
 $routes->get('sislo_fechamento_dia_atual', 'Sislo_FechamentoCofre::fechamento_atual');
 $routes->post('sislo_fechamento_cofre_execute_atual', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_execute_atual');
 $routes->add('sislo_fechamento_cofre_execute', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_execute');
+$routes->post('sislo_fechamento_cofre_novo_execute_atual', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_novo_execute_atual');
 
 $routes->add('sislo_fechamento_cofre', 'Sislo_FechamentoCofre::index');
 $routes->add('sislo_fechamento_cofre_novo_execute', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_novo_execute');

@@ -56,9 +56,15 @@ $(document).ready(function () {
                 },
                 success: function (response) {
                     clearErrors();
-                    var conteudo = response === 1 ? success_note('Fechamento de Cofre') + buttonBack('sislo') : error_note('Fechamento de Cofre') + buttonBack('sislo');
+                    var conteudo = response === '1' ? success_note('Fechamento de Cofre') + buttonBack('sislo') : error_note('Fechamento de Cofre') + buttonBack('sislo');
                     $('#sislo_fechamento_cofre')[0].reset();
                     $("#conteudo").empty();
+                    if (response === '1') {
+                        alerta('success', 'Sucesso', 'Dados Salvos!!');
+                    } else {
+                        alerta('error', 'Aconteceu um erro!', 'Tente Novamente!!');
+                    }
+                    $('html,body').animate({scrollTop: document.body.scrollHeight}, "fast");
                     $("#conteudo").html(conteudo);
                 }
             });

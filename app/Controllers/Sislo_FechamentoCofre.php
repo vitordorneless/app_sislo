@@ -2,9 +2,11 @@
 
 namespace App\Controllers;
 
-class Sislo_FechamentoCofre extends BaseController {
+class Sislo_FechamentoCofre extends BaseController
+{
 
-    public function index() {
+    public function index()
+    {
         if ($this->session->get('user_id')) {
             $sislo_model = new \App\Models\Sislo_UsuariosModel;
             $sislo_protege_model = new \App\Models\Sislo_CarroForteProtegeModel;
@@ -13,8 +15,8 @@ class Sislo_FechamentoCofre extends BaseController {
 
             $data_senha = new \Datetime('now');
             $sislo_protege = $sislo_protege_model->where('cod_loterico', $this->session->get('cod_lot'))
-                            ->where('validade', $data_senha->format('Y'))->where('status', 1)
-                            ->orderBy('validade', 'desc')->findAll();
+                ->where('validade', $data_senha->format('Y'))->where('status', 1)
+                ->orderBy('validade', 'desc')->findAll();
 
             foreach ($sislo_protege as $value) {
                 switch ($data_senha->format('l')) {
@@ -178,15 +180,15 @@ class Sislo_FechamentoCofre extends BaseController {
             }
 
             $data_fechamento = $sislo_fechamento_model->select("MAX(data_fechamento) AS 'data_fechamento'")
-                    ->where("cod_loterico", $this->session->get('cod_lot'))
-                    ->find();
+                ->where("cod_loterico", $this->session->get('cod_lot'))
+                ->find();
 
             $sislo_fechamentos = $sislo_fechamento_model->select("caixa_operador, total_sobra_cx")
-                    ->where("cod_loterico", $this->session->get('cod_lot'))
-                    ->where('data_fechamento', $data_fechamento[0]->data_fechamento)
-                    ->groupBy('caixa_operador')
-                    ->orderBy('caixa_operador', 'asc')
-                    ->get();
+                ->where("cod_loterico", $this->session->get('cod_lot'))
+                ->where('data_fechamento', $data_fechamento[0]->data_fechamento)
+                ->groupBy('caixa_operador')
+                ->orderBy('caixa_operador', 'asc')
+                ->get();
 
             $data = array(
                 "scripts" => array(
@@ -214,7 +216,8 @@ class Sislo_FechamentoCofre extends BaseController {
         }
     }
 
-    public function fechamento_atual() {
+    public function fechamento_atual()
+    {
         if ($this->session->get('user_id')) {
             $sislo_model = new \App\Models\Sislo_UsuariosModel;
             $sislo_protege_model = new \App\Models\Sislo_CarroForteProtegeModel;
@@ -223,8 +226,8 @@ class Sislo_FechamentoCofre extends BaseController {
 
             $data_senha = new \Datetime('now');
             $sislo_protege = $sislo_protege_model->where('cod_loterico', $this->session->get('cod_lot'))
-                            ->where('validade', $data_senha->format('Y'))->where('status', 1)
-                            ->orderBy('validade', 'desc')->findAll();
+                ->where('validade', $data_senha->format('Y'))->where('status', 1)
+                ->orderBy('validade', 'desc')->findAll();
 
             foreach ($sislo_protege as $value) {
                 switch ($data_senha->format('l')) {
@@ -388,15 +391,15 @@ class Sislo_FechamentoCofre extends BaseController {
             }
 
             $data_fechamento = $sislo_fechamento_model->select("MAX(data_fechamento) AS 'data_fechamento'")
-                    ->where("cod_loterico", $this->session->get('cod_lot'))
-                    ->find();            
+                ->where("cod_loterico", $this->session->get('cod_lot'))
+                ->find();
 
             $soma_remessas = 0;
             foreach ($this->carrega_sangrias()->getResult() as $value) {
                 $soma_remessas += $value->valor;
             }
             $porextenso = $this->Extenso($soma_remessas, 2);
-            
+
             $data = array(
                 "scripts" => array(
                     "sislo_fechamento_cofre_atual.js",
@@ -424,39 +427,42 @@ class Sislo_FechamentoCofre extends BaseController {
         }
     }
 
-    public function carrega_sangrias() {
+    public function carrega_sangrias()
+    {
         $db = \Config\Database::connect();
         $data_senha = new \Datetime('now');
         $builder = $db->table('sislo_sangria as ss');
         $query = $builder->select("st.caixa_numero AS caixa_numero, SUM(ss.valor) AS valor")
-                ->join("sislo_tfl as st", "st.idsislo_tfl = ss.idsislo_tfl", "inner")
-                ->where("ss.data_coleta", $data_senha->format('Y-m-d'))
-                ->where("ss.cod_loterico", $this->session->get('cod_lot'))
-                ->groupBy('st.caixa_numero')
-                ->orderBy('st.caixa_numero', 'asc')
-                ->get();
+            ->join("sislo_tfl as st", "st.idsislo_tfl = ss.idsislo_tfl", "inner")
+            ->where("ss.data_coleta", $data_senha->format('Y-m-d'))
+            ->where("ss.cod_loterico", $this->session->get('cod_lot'))
+            ->groupBy('st.caixa_numero')
+            ->orderBy('st.caixa_numero', 'asc')
+            ->get();
         return $query;
     }
 
-    public function carrega_sangrias_analitico() {
+    public function carrega_sangrias_analitico()
+    {
         $db = \Config\Database::connect();
         $data_senha = new \Datetime('now');
         $builder = $db->table('sislo_sangria as ss');
         $query = $builder->select("SUM(ss.numerario_02) AS numerario_02")
-                ->select('SUM(ss.numerario_05) AS numerario_05')
-                ->select('SUM(ss.numerario_10) AS numerario_10')
-                ->select('SUM(ss.numerario_20) AS numerario_20')
-                ->select('SUM(ss.numerario_50) AS numerario_50')
-                ->select('SUM(ss.numerario_100) AS numerario_100')
-                ->select('SUM(ss.numerario_200) AS numerario_200')                
-                ->where("ss.data_coleta", $data_senha->format('Y-m-d'))
-                ->where("ss.cod_loterico", $this->session->get('cod_lot'))                
-                ->orderBy('ss.data_coleta', 'asc')
-                ->get();
+            ->select('SUM(ss.numerario_05) AS numerario_05')
+            ->select('SUM(ss.numerario_10) AS numerario_10')
+            ->select('SUM(ss.numerario_20) AS numerario_20')
+            ->select('SUM(ss.numerario_50) AS numerario_50')
+            ->select('SUM(ss.numerario_100) AS numerario_100')
+            ->select('SUM(ss.numerario_200) AS numerario_200')
+            ->where("ss.data_coleta", $data_senha->format('Y-m-d'))
+            ->where("ss.cod_loterico", $this->session->get('cod_lot'))
+            ->orderBy('ss.data_coleta', 'asc')
+            ->get();
         return $query;
     }
 
-    public function sislo_fechamento_cofre_novo_execute() {
+    public function sislo_fechamento_cofre_novo_execute()
+    {
         if ($this->request->isAJAX()) {
             $sislo_model = new \App\Models\Sislo_FechamentoCofreModel;
 
@@ -581,20 +587,38 @@ class Sislo_FechamentoCofre extends BaseController {
         }
     }
 
-    public function sislo_fechamento_cofre_novo_execute_atual() {
+    public function sislo_fechamento_cofre_novo_execute_atual()
+    {
         if ($this->request->isAJAX()) {
-            $sislo_model = new \App\Models\Sislo_FechamentoCofreModel;            
-            $remessa = 0;
+            $sislo_model = new \App\Models\Sislo_FechamentoCofreModel;
+
+            $datas = array();
+            $remessa = $sobra_cx = $somatudo = 0;
 
             foreach ($this->request->getPost('remessa') as $remessas) {
                 $remessa = bcadd($remessa, $this->limparValoresMonetarios($remessas), 2);
             }
-            $datas['remessa'] = !empty($remessa) ? $remessa : 0;            
-            //pegar da model de remessas os valores por tipo de nota
-            echo 1;            
+            $datas['remessa'] = !empty($remessa) ? $remessa : 0;
+
+            $sislo_model->set('data_fechamento', $this->request->getPost('data_fechamento'));
+            $sislo_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
+            $sislo_model->set('senha_protege', $this->request->getPost('senha_protege'));
+            $sislo_model->set('os_gtv', $this->request->getPost('os_gtv'));
+            $sislo_model->set('guia_gtv', $this->request->getPost('guia_gtv'));
+            $sislo_model->set('remessa', $datas['remessa']);
+            $sislo_model->set('sobra_cx', 0);
+            $sislo_model->set('acumulado_comissao', 0);
+            $sislo_model->set('comissao', 0);
+            $sislo_model->set('pag_lot_fed', 0);
+            $sislo_model->set('pag_telesena', 0);
+            $sislo_model->set('pag_outros', 0);
+            $sislo_model->set('obs_outros', 0);
+            $sislo_model->set('status', 1);
+            $sislo_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
+
+            echo $sislo_model->insert() == true ? 1 : 0;
         } else {
             echo view('login');
         }
     }
-
 }
