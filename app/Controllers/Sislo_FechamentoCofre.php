@@ -391,6 +391,12 @@ class Sislo_FechamentoCofre extends BaseController {
                     ->where("cod_loterico", $this->session->get('cod_lot'))
                     ->find();            
 
+            $soma_remessas = 0;
+            foreach ($this->carrega_sangrias()->getResult() as $value) {
+                $soma_remessas += $value->valor;
+            }
+            $porextenso = $this->Extenso($soma_remessas, 2);
+            
             $data = array(
                 "scripts" => array(
                     "sislo_fechamento_cofre_atual.js",
@@ -404,6 +410,7 @@ class Sislo_FechamentoCofre extends BaseController {
                 "cod_loterico" => $this->session->get('cod_lot'),
                 "senha_protege" => array_sum($soma),
                 "dados_remessas" => $this->carrega_sangrias()->getResult(),
+                "porextenso" => $porextenso,
                 "dados_remessas_analitico" => $this->carrega_sangrias_analitico()->getResult()
             );
             echo view('template/header', $data);
@@ -441,12 +448,10 @@ class Sislo_FechamentoCofre extends BaseController {
                 ->select('SUM(ss.numerario_20) AS numerario_20')
                 ->select('SUM(ss.numerario_50) AS numerario_50')
                 ->select('SUM(ss.numerario_100) AS numerario_100')
-                ->select('SUM(ss.numerario_200) AS numerario_200')
-                ->join("sislo_tfl as st", "st.idsislo_tfl = ss.idsislo_tfl", "inner")
+                ->select('SUM(ss.numerario_200) AS numerario_200')                
                 ->where("ss.data_coleta", $data_senha->format('Y-m-d'))
-                ->where("ss.cod_loterico", $this->session->get('cod_lot'))
-                ->groupBy('st.caixa_numero')
-                ->orderBy('st.caixa_numero', 'asc')
+                ->where("ss.cod_loterico", $this->session->get('cod_lot'))                
+                ->orderBy('ss.data_coleta', 'asc')
                 ->get();
         return $query;
     }
