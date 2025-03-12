@@ -356,17 +356,11 @@
                         <i class="far fa-circle nav-icon"></i>
                         <p>Fechamento de Caixas</p>
                     </a>
-                </li>                
-                <li class="nav-item">
-                    <a href="<?= base_url('sislo_fechamento_dia'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Fechamento Cofre</p>
-                    </a>
-                </li>                
+                </li>                                                
                 <li class="nav-item">
                     <a href="<?= base_url('sislo_fechamento_dia_atual'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Fechamento Cofre Novo</p>
+                        <p>Fechamento Cofre</p>
                     </a>
                 </li>                
                 <li class="nav-item">
