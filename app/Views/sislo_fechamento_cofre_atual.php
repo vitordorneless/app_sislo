@@ -12,7 +12,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label class="text text-sm" for="data_fechamento">Data Fechamento</label>
-                        <input type="date" id="data_fechamento" name="data_fechamento" class="form-control" value="<?= $hoje->format('Y-m-d') ?>">
+                        <input type="date" readonly="readonly" id="data_fechamento" name="data_fechamento" class="form-control" value="<?= $hoje->format('Y-m-d') ?>">
                     </div>
                 </div>
                 <div class="col-sm-3">
