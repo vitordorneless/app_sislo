@@ -63,7 +63,7 @@ class SisloSangrias extends BaseController {
                 $row[] = $value->caixa_numero;
                 $row[] = $value->num_controle;
                 $row[] = $this->formataValoresMonetarios($value->valor);
-                $row[] = strtotime($value->data_coleta) <= strtotime(date('now')) ? '<a class="btn btn-primary" href="' . base_url('redireciona_sangria/?id=' . $value->idsislo_sangria) . '">Editar</a>' : '<h5 class="text text-danger">Proibido Edição</h5>';
+                $row[] = '<a class="btn btn-primary" href="' . base_url('redireciona_sangria/?id=' . $value->idsislo_sangria) . '">Editar</a>';
                 ++$tt;
                 ++$tb;
                 $data[] = $row;
@@ -118,7 +118,7 @@ class SisloSangrias extends BaseController {
                 $dados['data_registro'] = $dados_sangrias->data_registro;
                 $dados['data_coleta'] = $dados_sangrias->data_coleta;
                 $dados['caixa_operador'] = $dados_sangrias->caixa_operador;
-                $dados['idsislo_tfl'] = $dados_sangrias->id_sislo_tfl;
+                $dados['idsislo_tfl'] = $dados_sangrias->idsislo_tfl;
                 $dados['valor'] = $dados_sangrias->valor;
                 $dados['num_controle'] = $dados_sangrias->num_controle;
                 $dados['numerario_02'] = $dados_sangrias->numerario_02;
