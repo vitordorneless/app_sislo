@@ -53,6 +53,7 @@ class SisloSangrias extends BaseController {
             $data = array();
             $tt = 1; //mostra contagem na datatable
             $tb = 0; //carrega campos de footer do datatable
+            $soma = array();
             foreach ($sislo_sangrias as $value) {
                 $row = array();
                 $row[] = $tt;
@@ -66,11 +67,13 @@ class SisloSangrias extends BaseController {
                 ++$tt;
                 ++$tb;
                 $data[] = $row;
+                $soma[] = $value->valor;
                 unset($row);
             }
             $json = array(
                 "recordsTotal" => $tb,
                 "recordsFiltered" => $tb,
+                "sominha" => number_format(array_sum($soma), 2, ',', '.'),
                 "data" => $data
             );
             echo json_encode($json);
