@@ -621,4 +621,28 @@ class Sislo_FechamentoCofre extends BaseController
             echo view('login');
         }
     }
+
+    public function sislo_fechamento_efetivado() {
+        if ($this->session->get('user_id')) {
+            $sislo_fechamento = new \App\Models\Sislo_UsuariosModel;
+            $result = $sislo_fechamento->find($this->session->get('user_id'));
+            $data = array(
+                "scripts" => array(
+                    "sislo_fechamento_efetivado.js",
+                    "jquery.validate.js",
+                    "sweetalert2.all.min.js",
+                    "util.js"
+                ),
+                "user_name" => $result->sislo_nome
+            );
+            echo view('template/header', $data);
+            echo view('template/menu');
+            echo view('template/content');
+            echo view('sislo_fechamento_efetivado', $data);
+            echo view('template/footer', $data);
+            echo view('template/scripts', $data);
+        } else {
+            echo view('login');
+        }
+    }
 }
