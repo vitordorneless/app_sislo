@@ -645,4 +645,33 @@ class Sislo_FechamentoCofre extends BaseController
             echo view('login');
         }
     }
+
+    public function ajax_list_cofre_efetivado() {
+        if ($this->request->isAJAX()) {            
+            $sislo_model = new \App\Models\Sislo_FechamentoCofreModel;
+            $sislo = $sislo_model->where('MONTH(data_fechamento)', $this->request->getPost('mes'))
+                ->where('YEAR(data_fechamento)', $this->request->getPost('ano'))
+                ->orderBy('data_fechamento', 'desc')->findAll();
+            $data = array();
+            $tt = 1; //mostra contagem na datatable
+            $tb = 0; //carrega campos de footer do datatable
+            foreach ($sislo as $value) {
+                $row = array();
+                $row[] = date("d/m/Y", strtotime($value->data_fechamento));
+                $row[] = trim($value->guia_gtv);
+                $row[] = $this->formataValoresMonetarios($value->remessa);
+                ++$tt;
+                ++$tb;
+                $data[] = $row;
+            }
+            $json = array(
+                "recordsTotal" => $tb,
+                "recordsFiltered" => $tb,
+                "data" => $data
+            );
+            echo json_encode($json);
+        } else {
+            echo view('login');
+        }
+    }
 }
