@@ -2696,6 +2696,54 @@ class Sislo_ComissaoBolao extends BaseController {
         }
     }
 
+    public function redireciona_bolao_edit() {
+        if ($this->session->get('user_id')) {
+            $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;
+            $sislo_model = new \App\Models\Sislo_ComissaoBolaoModel;
+            $dadosuser = $sislo_usuarios_model->find($this->session->get('user_id'));
+
+            $incluir = NULL;
+            $dados = array();
+            if ($this->request->getGet('id') == '0') {
+                echo view('login');
+            } else {
+                $incluir = 2;
+                $dados_loterica = $sislo_model->find($this->request->getGet('id'));
+                $dados['idsislo_comissao_bolao'] = $dados_loterica->idsislo_comissao_bolao;
+                $dados['cod_loterico'] = $dados_loterica->cod_loterico;
+                $dados['dia_inicial'] = $dados_loterica->dia_inicial;
+                $dados['id_sislo_jogos_cef'] = $dados_loterica->id_sislo_jogos_cef;
+                $dados['cotas'] = $dados_loterica->cotas;
+                $dados['valor_bolao'] = $dados_loterica->valor_bolao;
+                $dados['tarifa'] = $dados_loterica->tarifa;
+                $dados['valor_tarifa'] = $dados_loterica->valor_tarifa;
+                $dados['status'] = $dados_loterica->status;
+                unset($dados_loterica);
+            }
+            $data = array(
+                "scripts" => array(
+                    "sislo_comissao_bolao_crud_edit.js",
+                    "sweetalert2.all.min.js",
+                    "jquery.validate.js",
+                    "util.js"
+                ),
+                "user_name" => $dadosuser->sislo_nome,
+                "incluir" => $incluir,
+                "cargo" => $dados['cargo'],
+                "id_sislo_cargo" => $dados['id_sislo_cargo'],
+                "status" => $dados['status']
+            );
+            echo view('template/header', $data);
+            echo view('template/menu');
+            echo view('template/content');
+            echo view('sislo_comissao_bolao_crud_edit', $data);
+            echo view('template/footer', $data);
+            echo view('template/scripts', $data);
+        } else {
+            echo view('login');
+        }
+    }
+
     public function ajax_list_comissao_bolao() {//fazer o redireciona FAZER o formulario para incluir, form para editar
         if ($this->request->isAJAX()) {
             $sislo_comissao = $this->carrega_comissoes_boloes()->getResult();
@@ -2711,7 +2759,7 @@ class Sislo_ComissaoBolao extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value->valor_tarifa);
                 $row[] = $value->tarifa;
                 $row[] = '<a class="btn btn-primary" href="' .
-                        base_url('redireciona_comissao_jogosbolao/?id=' .
+                        base_url('redireciona_bolao_edit/?id=' .
                                 $value->idsislo_comissao_bolao) .
                         '">Editar</a>';
                 ++$tt;
