@@ -2701,6 +2701,8 @@ class Sislo_ComissaoBolao extends BaseController {
             $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;
             $sislo_model = new \App\Models\Sislo_ComissaoBolaoModel;
             $dadosuser = $sislo_usuarios_model->find($this->session->get('user_id'));
+            $sislo_jogos = new \App\Models\SisloJogosCefModel;
+            $jogos = $sislo_jogos->where('status', 1)->orderBy('nome', 'asc')->findAll();
 
             $incluir = NULL;
             $dados = array();
@@ -2725,12 +2727,21 @@ class Sislo_ComissaoBolao extends BaseController {
                     "sislo_comissao_bolao_crud_edit.js",
                     "sweetalert2.all.min.js",
                     "jquery.validate.js",
+                    "jquery.mask.min.js",
+                    "jquery.maskMoney.min.js",
                     "util.js"
                 ),
                 "user_name" => $dadosuser->sislo_nome,
                 "incluir" => $incluir,
-                "cargo" => $dados['cargo'],
-                "id_sislo_cargo" => $dados['id_sislo_cargo'],
+                "idsislo_comissao_bolao" => $dados['idsislo_comissao_bolao'],
+                "cod_loterico" => $dados['cod_loterico'],
+                "dia_inicial" => $dados['dia_inicial'],
+                "id_sislo_jogos_cef" => $dados['id_sislo_jogos_cef'],
+                "cotas" => $dados['cotas'],
+                "valor_bolao" => $dados['valor_bolao'],
+                "tarifa" => $dados['tarifa'],
+                "valor_tarifa" => $dados['valor_tarifa'],
+                "jogos" => $jogos,
                 "status" => $dados['status']
             );
             echo view('template/header', $data);
@@ -2779,19 +2790,21 @@ class Sislo_ComissaoBolao extends BaseController {
 
     public function ajax_save_form() {
         if ($this->request->isAJAX()) {
-            $cob = new \App\Models\Sislo_ComissaoBolaoModel;
-            $datas = array();
-            $datas['cod_loterico'] = $this->request->getPost('cod_loterico');
-            $datas['dia_inicial'] = $this->request->getPost('dia_inicial');
-            $datas['id_sislo_jogos_cef'] = $this->request->getPost('id_sislo_jogos_cef');
-            $datas['cotas'] = $this->request->getPost('cotas');
-            $datas['valor_bolao'] = $this->request->getPost('valor_bolao');
-            $datas['tarifa'] = $this->request->getPost('tarifa');
-            $datas['valor_tarifa'] = $this->request->getPost('valor_tarifa');
-            $datas['status'] = 1;
-            $datas['data_ultima_alteracao'] = date('Y-m-d H:i:s');
-            $insert = array();
-            $i = 0;
+            $cob = new \App\Models\Sislo_ComissaoBolaoModel;            
+
+            if ($this->request->getPost('incluir') == '1') {
+                $datas = array();
+                $datas['cod_loterico'] = $this->request->getPost('cod_loterico');
+                $datas['dia_inicial'] = $this->request->getPost('dia_inicial');
+                $datas['id_sislo_jogos_cef'] = $this->request->getPost('id_sislo_jogos_cef');
+                $datas['cotas'] = $this->request->getPost('cotas');
+                $datas['valor_bolao'] = $this->request->getPost('valor_bolao');
+                $datas['tarifa'] = $this->request->getPost('tarifa');
+                $datas['valor_tarifa'] = $this->request->getPost('valor_tarifa');
+                $datas['status'] = 1;
+                $datas['data_ultima_alteracao'] = date('Y-m-d H:i:s');
+                $insert = array();
+                $i = 0;
             foreach ($datas['id_sislo_jogos_cef'] as $value) {
                 $conjunto = [
                     'cod_loterico' => $datas['cod_loterico'],
@@ -2808,8 +2821,6 @@ class Sislo_ComissaoBolao extends BaseController {
                 unset($conjunto);
                 ++$i;
             }
-
-            if ($this->request->getPost('incluir') == '1') {
                 $entrou = $cob->insertBatch($insert) == true ? 1 : 0;
                 $sislo_notificacao_model = new \App\Models\Sislo_NotificacaoModel();
                 $sislo_notificacao_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
@@ -2819,8 +2830,18 @@ class Sislo_ComissaoBolao extends BaseController {
                 $sislo_notificacao_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
                 $sislo_notificacao_model->insert();
                 echo $entrou;
-            } else {//este else trabalhar emcima do editar que vai ser criado
-                //$sislo_contaspagar_model->where('idsislo_contas_pagar', $this->request->getPost('idsislo_contas_pagar'));
+            } else {
+                $cob->set('cod_loterico', $this->request->getPost('cod_loterico'));
+                $cob->set('dia_inicial', $this->request->getPost('dia_inicial'));
+                $cob->set('id_sislo_jogos_cef', $this->request->getPost('id_sislo_jogos_cef'));
+                $cob->set('cotas', $this->request->getPost('cotas'));
+                $cob->set('valor_bolao', $this->limparValoresMonetarios($this->request->getPost('valor_bolao')));
+                $cob->set('tarifa', $this->request->getPost('tarifa'));
+                $cob->set('valor_tarifa', $this->limparValoresMonetarios($this->request->getPost('valor_tarifa')));
+                $cob->set('status', 1);
+                $cob->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
+                $cob->where('idsislo_comissao_bolao', $this->request->getPost('idsislo_comissao_bolao'));
+                $entrou = $cob->update() == true ? 1 : 0;
                 echo $entrou;
             }
         } else {
