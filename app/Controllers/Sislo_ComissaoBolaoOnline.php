@@ -160,7 +160,7 @@ class Sislo_ComissaoBolaoOnline extends BaseController {
                 $row[] = $this->formataValoresMonetarios($value->valor_tarifa);
                 $row[] = $value->tarifa;
                 $row[] = '<a class="btn btn-primary" href="' .
-                        base_url('redireciona_comissao_jogosbolao/?id=' .
+                        base_url('redireciona_bolaoonline_edit/?id=' .
                                 $value->idsislo_comissao_bolao) .
                         '">Editar</a>';
                 ++$tt;
