@@ -59,6 +59,11 @@ class BaseController extends Controller {
         return $semvirgulas;
     }
 
+    public function limparPontosMonetarios($valor) {
+        $sempontos = number_format($valor,2,",",".");
+        return $sempontos;
+    }
+
     public function Extenso($value, $uppercase = 0) {
 
         if (strpos($value, ",") > 0) {

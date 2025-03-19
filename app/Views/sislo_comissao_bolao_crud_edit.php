@@ -12,7 +12,7 @@
                         $d_inicial = new DateTime($dia_inicial);                        
                         ?>
                         <input type="date" id="dia_inicial" name="dia_inicial" required="required" class="form-control" value="<?= $d_inicial->format('Y-m-d'); ?>">
-                        <input type="text" id="incluir" name="incluir" class="form-control" value="<?= $incluir; ?>">
+                        <input type="hidden" id="incluir" name="incluir" class="form-control" value="<?= $incluir; ?>">
                         <input type="hidden" id="idsislo_comissao_bolao" name="idsislo_comissao_bolao" class="form-control" value="<?= $idsislo_comissao_bolao; ?>">                        
                         <input type="hidden" id="cod_loterico" name="cod_loterico" class="form-control" value="<?= $cod_loterico; ?>">
                     </div>

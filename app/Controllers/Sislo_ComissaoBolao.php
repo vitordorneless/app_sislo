@@ -2716,9 +2716,9 @@ class Sislo_ComissaoBolao extends BaseController {
                 $dados['dia_inicial'] = $dados_loterica->dia_inicial;
                 $dados['id_sislo_jogos_cef'] = $dados_loterica->id_sislo_jogos_cef;
                 $dados['cotas'] = $dados_loterica->cotas;
-                $dados['valor_bolao'] = $dados_loterica->valor_bolao;
-                $dados['tarifa'] = $dados_loterica->tarifa;
-                $dados['valor_tarifa'] = $dados_loterica->valor_tarifa;
+                $dados['valor_bolao'] = $this->limparPontosMonetarios($dados_loterica->valor_bolao);
+                $dados['tarifa'] = $this->limparPontosMonetarios($dados_loterica->tarifa);
+                $dados['valor_tarifa'] = $this->limparPontosMonetarios($dados_loterica->valor_tarifa);
                 $dados['status'] = $dados_loterica->status;
                 unset($dados_loterica);
             }
