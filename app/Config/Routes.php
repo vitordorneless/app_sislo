@@ -383,6 +383,7 @@ $routes->get('sislo_comissao_jogosboloes_online', 'Sislo_ComissaoBolaoOnline::in
 $routes->post('ajax_list_comissao_bolao_online', 'Sislo_ComissaoBolaoOnline::ajax_list_comissao_bolao_online');
 $routes->get('redireciona_comissao_jogosbolaoonline', 'Sislo_ComissaoBolaoOnline::redireciona_comissao_jogosbolaoonline');
 $routes->post('ajax_save_formbolaoonline', 'Sislo_ComissaoBolaoOnline::ajax_save_form');
+$routes->get('redireciona_bolaoonline_edit', 'Sislo_ComissaoBolaoOnline::redireciona_bolaoonline_edit');
 //fim 
 //inicio sislo_comissao_jogosbolao com busca
 $routes->get('sislo_comissao_jogosboloes', 'Sislo_ComissaoBolao::index');
