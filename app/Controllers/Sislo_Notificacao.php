@@ -169,18 +169,6 @@ class Sislo_Notificacao extends BaseController {
                         data-slide="true" href="#" role="button">
                             <i class="fas fa-th-large"></i>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="fas fa-users"></i>  
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">                            
-                            <div class="dropdown-divider"></div>
-                            <a href="' . base_url('sair') . '" class="dropdown-item">
-                                <i class="fas fa-users mr-1"></i> Sair do Sislo
-                            </a>
-                            <div class="dropdown-divider"></div>                            
-                        </div>                    
                     </li>';
             }
             $sislo_notifications->set('status', 0);
