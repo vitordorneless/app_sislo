@@ -73,7 +73,7 @@
                     if (empty($dados_remessas_analitico)) {
                         echo '<div class="col-sm-12"><div class="form-group"><h1 class="text text-danger">Sem Sangrias nesse dia!!</h1></div></div>';
                     } else {
-                        echo '<div class="table-responsive">';
+                        echo '<div class="table-responsive table-striped">';
                         echo '<table class="table table-bordered table-hover table-sm">';
                         echo '<caption>Relação dos tipos de notas</caption>';
                         echo '<thead>';
