@@ -165,8 +165,8 @@ class Sislo_ComissaoJogos extends BaseController {
                 "id_sislo_jogos_cef" => $dados['id_sislo_jogos_cef'],
                 "concurso" => $dados['concurso'],
                 "quantidade" => $dados['quantidade'],
-                "valor" => $dados['valor'],
-                "comissao" => $dados['comissao'],
+                "valor" => $this->limparPontosMonetarios($dados['valor']),
+                "comissao" => $this->limparPontosMonetarios($dados['comissao']),
                 "jogos" => $jogos,
                 "status" => $dados['status']
             );
