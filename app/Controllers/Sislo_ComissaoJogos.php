@@ -117,6 +117,70 @@ class Sislo_ComissaoJogos extends BaseController {
         }
     }
 
+    public function redireciona_comissao_jogos_edit() {
+        if ($this->session->get('user_id')) {
+            $sislo_usuarios_model = new \App\Models\Sislo_UsuariosModel;
+            $sislo_model = new \App\Models\Sislo_ComissaoJogosModel;
+            $sislo_jogos = new \App\Models\SisloJogosCefModel;
+            $jogos = $sislo_jogos->where('status', 1)->orderBy('nome', 'asc')->findAll();
+            $dadosuser = $sislo_usuarios_model->find($this->session->get('user_id'));
+            $incluir = NULL;
+            $dados = array();
+            if ($this->request->getGet('id') == '0') {
+                echo view('login');
+            } else {
+                $incluir = 2;
+                $dados_loterica = $sislo_model->find($this->request->getGet('id'));
+                $dados['cod_loterico'] = $this->session->get('cod_lot');
+                $dados['idsislo_comissao_jogos'] = $dados_loterica->idsislo_comissao_jogos;
+                $dados['referencia'] = $dados_loterica->referencia;
+                $dados['dia_inicial'] = $dados_loterica->dia_inicial;
+                $dados['dia_final'] = $dados_loterica->dia_final;
+                $dados['id_sislo_jogos_cef'] = $dados_loterica->id_sislo_jogos_cef;
+                $dados['concurso'] = $dados_loterica->concurso;
+                $dados['quantidade'] = $dados_loterica->quantidade;
+                $dados['valor'] = $dados_loterica->valor;
+                $dados['comissao'] = $dados_loterica->comissao;
+                $dados['percent_comissao'] = $dados_loterica->percent_comissao;
+                $dados['status'] = $dados_loterica->status;                
+                unset($dados_loterica);
+
+            }
+            $data = array(
+                "scripts" => array(
+                    "sislo_comissao_jogos_crud_edit.js",
+                    "sweetalert2.all.min.js",
+                    "jquery.validate.js",
+                    "jquery.mask.min.js",
+                    "jquery.maskMoney.min.js",
+                    "util.js"
+                ),
+                "user_name" => $dadosuser->sislo_nome,
+                "incluir" => $incluir,
+                "idsislo_comissao_jogos" => $dados['idsislo_comissao_jogos'],
+                "cod_loterico" => $dados['cod_loterico'],
+                "referencia" => $dados['referencia'],
+                "dia_inicial" => $dados['dia_inicial'],
+                "dia_final" => $dados['dia_final'],
+                "id_sislo_jogos_cef" => $dados['id_sislo_jogos_cef'],
+                "concurso" => $dados['concurso'],
+                "quantidade" => $dados['quantidade'],
+                "valor" => $dados['valor'],
+                "comissao" => $dados['comissao'],
+                "jogos" => $jogos,
+                "status" => $dados['status']
+            );
+            echo view('template/header', $data);
+            echo view('template/menu');
+            echo view('template/content');
+            echo view('sislo_comissao_jogos_crud_edit', $data);
+            echo view('template/footer', $data);
+            echo view('template/scripts', $data);
+        } else {
+            echo view('login');
+        }
+    }
+
     public function carrega_comissoes() {
         $db = \Config\Database::connect();
         $cod_lot = $this->session->get('cod_lot');
