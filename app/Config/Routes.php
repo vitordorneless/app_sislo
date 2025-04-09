@@ -99,7 +99,6 @@ $routes->post('ajax_list_cofre_efetivado', 'Sislo_FechamentoCofre::ajax_list_cof
 $routes->post('sislo_fechamento_cofre_execute_atual', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_execute_atual');
 $routes->add('sislo_fechamento_cofre_execute', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_execute');
 $routes->post('sislo_fechamento_cofre_novo_execute_atual', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_novo_execute_atual');
-
 $routes->add('sislo_fechamento_cofre', 'Sislo_FechamentoCofre::index');
 $routes->add('sislo_fechamento_cofre_novo_execute', 'Sislo_FechamentoCofre::sislo_fechamento_cofre_novo_execute');
 //fim base crud ajax
@@ -369,14 +368,15 @@ $routes->add('redireciona_dec_servicos', 'Sislo_ServicosDecendio::redireciona_de
 $routes->add('ajax_save_form_dec_servicos', 'Sislo_ServicosDecendio::ajax_save_form');
 //fim 
 //inicio sislo_comissao_jogos com busca
-$routes->add('sislo_comissao_jogos', 'Sislo_ComissaoJogos::index');
-$routes->add('ajax_list_comissao', 'Sislo_ComissaoJogos::ajax_list_comissao');
-$routes->add('redireciona_comissao_jogos', 'Sislo_ComissaoJogos::redireciona_comissao_jogos');
-$routes->add('sislo_comissao_jogos_loterias_form', 'Sislo_ComissaoJogos::ajax_save_form');
+$routes->get('sislo_comissao_jogos', 'Sislo_ComissaoJogos::index');
+$routes->post('ajax_list_comissao', 'Sislo_ComissaoJogos::ajax_list_comissao');
+$routes->get('redireciona_comissao_jogos', 'Sislo_ComissaoJogos::redireciona_comissao_jogos');
+$routes->post('sislo_comissao_jogos_loterias_form', 'Sislo_ComissaoJogos::ajax_save_form');
 $routes->add('sislo_comissao_jogos_situacao', 'Sislo_ComissaoJogos::sislo_comissao_jogos_situacao');
 $routes->add('ajax_table_sislo_situacao_jogos', 'Sislo_ComissaoJogos::ajax_table_sislo_situacao_jogos');
 $routes->add('sislo_comissao_jogos_situacao_geral', 'Sislo_ComissaoJogos::sislo_comissao_jogos_situacao_geral');
 $routes->add('ajax_table_sislo_situacao_jogos_geral', 'Sislo_ComissaoJogos::ajax_table_sislo_situacao_jogos_geral');
+$routes->get('redireciona_comissao_jogos_edit', 'Sislo_ComissaoJogos::redireciona_comissao_jogos_edit');
 //fim 
 //inicio sislo_comissao_jogosbolaoonline com busca
 $routes->get('sislo_comissao_jogosboloes_online', 'Sislo_ComissaoBolaoOnline::index');
