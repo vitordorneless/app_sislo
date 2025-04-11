@@ -437,47 +437,46 @@ class Sislo_ComissaoJogos extends BaseController {
 
     public function ajax_save_form() {//verificar certo o lance da prestação de contas
         if ($this->request->isAJAX()) {
-            $cob_diaria_conta_model = new \App\Models\Sislo_ComissaoJogosModel;
-            $datas = array();
-            $datas['cod_loterico'] = $this->request->getPost('cod_loterico');
-            $datas['referencia'] = $this->request->getPost('referencia');
-            $datas['dia_inicial'] = $this->request->getPost('dia_inicial');
-            $datas['dia_final'] = $this->request->getPost('dia_final');
-            $datas['id_sislo_jogos_cef'] = $this->request->getPost('id_sislo_jogos_cef');
-            $datas['concurso'] = $this->request->getPost('concurso');
-            $datas['quantidade'] = $this->request->getPost('quantidade');
-            $datas['valor'] = $this->request->getPost('valor');
-            $datas['comissao'] = $this->request->getPost('comissao');
-            $datas['percent_comissao'] = $this->request->getPost('percent_comissao');
-            $datas['status'] = 1;
-            $datas['data_ultima_alteracao'] = date('Y-m-d H:i:s');
+            $cob_diaria_conta_model = new \App\Models\Sislo_ComissaoJogosModel;            
 
-            $insert = array();
-            $i = 0;
-            foreach ($datas['id_sislo_jogos_cef'] as $value) {
-                $percent_comissao = ($this->limparValoresMonetarios($datas['comissao'][$i]) / $this->limparValoresMonetarios($datas['valor'][$i])) * 100;
-                $conjunto = [
-                    'cod_loterico' => $datas['cod_loterico'],
-                    'referencia' => $datas['referencia'],
-                    'dia_inicial' => $datas['dia_inicial'],
-                    'dia_final' => $datas['dia_final'],
-                    'id_sislo_jogos_cef' => $value,
-                    'concurso' => $datas['concurso'][$i],
-                    'quantidade' => $datas['quantidade'][$i],
-                    'valor' => $this->limparValoresMonetarios($datas['valor'][$i]),
-                    'comissao' => $this->limparValoresMonetarios($datas['comissao'][$i]),
-                    'percent_comissao' => $percent_comissao,
-                    'status' => $datas['status'],
-                    'data_ultima_alteracao' => $datas['data_ultima_alteracao']
-                ];
+            if ($this->request->getPost('incluir') == '1') {
+                $datas = array();
+                $datas['cod_loterico'] = $this->request->getPost('cod_loterico');
+                $datas['referencia'] = $this->request->getPost('referencia');
+                $datas['dia_inicial'] = $this->request->getPost('dia_inicial');
+                $datas['dia_final'] = $this->request->getPost('dia_final');
+                $datas['id_sislo_jogos_cef'] = $this->request->getPost('id_sislo_jogos_cef');
+                $datas['concurso'] = $this->request->getPost('concurso');
+                $datas['quantidade'] = $this->request->getPost('quantidade');
+                $datas['valor'] = $this->request->getPost('valor');
+                $datas['comissao'] = $this->request->getPost('comissao');
+                $datas['percent_comissao'] = $this->request->getPost('percent_comissao');
+                $datas['status'] = 1;
+                $datas['data_ultima_alteracao'] = date('Y-m-d H:i:s');            
+                $insert = array();
+                $i = 0;
+                foreach ($datas['id_sislo_jogos_cef'] as $value) {
+                    $percent_comissao = ($this->limparValoresMonetarios($datas['comissao'][$i]) / $this->limparValoresMonetarios($datas['valor'][$i])) * 100;
+                    $conjunto = [
+                        'cod_loterico' => $datas['cod_loterico'],
+                        'referencia' => $datas['referencia'],
+                        'dia_inicial' => $datas['dia_inicial'],
+                        'dia_final' => $datas['dia_final'],
+                        'id_sislo_jogos_cef' => $value,
+                        'concurso' => $datas['concurso'][$i],
+                        'quantidade' => $datas['quantidade'][$i],
+                        'valor' => $this->limparValoresMonetarios($datas['valor'][$i]),
+                        'comissao' => $this->limparValoresMonetarios($datas['comissao'][$i]),
+                        'percent_comissao' => $percent_comissao,
+                        'status' => $datas['status'],
+                        'data_ultima_alteracao' => $datas['data_ultima_alteracao']
+                    ];
 
                 array_push($insert, $conjunto);
                 unset($conjunto);
                 unset($percent_comissao);
                 ++$i;
-            }
-
-            if ($this->request->getPost('incluir') == '1') {
+                }
                 $entrou = $cob_diaria_conta_model->insertBatch($insert) == true ? 1 : 0;
                 $sislo_notificacao_model = new \App\Models\Sislo_NotificacaoModel();
                 $sislo_notificacao_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
@@ -485,11 +484,24 @@ class Sislo_ComissaoJogos extends BaseController {
                 $sislo_notificacao_model->set('valor', array_sum($datas['comissao']));
                 $sislo_notificacao_model->set('status', 1);
                 $sislo_notificacao_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
-                $sislo_notificacao_model->insert();
-                //após testar, criar com o relatório a prestação de contas
+                $sislo_notificacao_model->insert();                
                 echo $entrou;
-            } else {//este else trabalhar emcima do editar que vai ser criado
-                //$sislo_contaspagar_model->where('idsislo_contas_pagar', $this->request->getPost('idsislo_contas_pagar'));
+            } else {
+                $percent_comissao = ($this->limparValoresMonetarios($datas['comissao']) / $this->limparValoresMonetarios($datas['valor'])) * 100;
+                $cob_diaria_conta_model->set('cod_loterico', $this->request->getPost('cod_loterico'));
+                $cob_diaria_conta_model->set('referencia', $this->request->getPost('referencia'));
+                $cob_diaria_conta_model->set('dia_inicial', $this->request->getPost('dia_inicial'));
+                $cob_diaria_conta_model->set('dia_final', $this->request->getPost('dia_final'));
+                $cob_diaria_conta_model->set('id_sislo_jogos_cef', $this->limparValoresMonetarios($this->request->getPost('id_sislo_jogos_cef')));
+                $cob_diaria_conta_model->set('concurso', $this->request->getPost('concurso'));
+                $cob_diaria_conta_model->set('quantidade', $this->limparValoresMonetarios($this->request->getPost('quantidade')));
+                $cob_diaria_conta_model->set('valor', $this->limparValoresMonetarios($this->request->getPost('valor')));
+                $cob_diaria_conta_model->set('comissao', $this->limparValoresMonetarios($this->request->getPost('comissao')));
+                $cob_diaria_conta_model->set('percent_comissao', $percent_comissao);
+                $cob_diaria_conta_model->set('status', 1);
+                $cob_diaria_conta_model->set('data_ultima_alteracao', date('Y-m-d H:i:s'));
+                $cob_diaria_conta_model->where('idsislo_comissao_jogos', $this->request->getPost('idsislo_comissao_jogos'));
+                $entrou = $cob_diaria_conta_model->update() == true ? 1 : 0;
                 echo $entrou;
             }
         } else {
